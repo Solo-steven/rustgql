@@ -1,8 +1,9 @@
 #[allow(clippy::all)]
 use std::str::CharIndices;
+use rustql_common::position::Position;
+use rustql_common::token::TokenKind;
 use crate::{lexer_error, internal_error};
-use crate::position::Position;
-use crate::token::TokenKind;
+
 pub struct Lexer<'a> {
     source: &'a str,
     iter: CharIndices<'a>,

@@ -27,9 +27,19 @@ dependencies = [
 ]
 
 [[package]]
-name = "rustql"
+name = "rustql_common"
 version = "0.1.0"
 dependencies = [
+ "serde",
+ "serde_derive",
+ "serde_json",
+]
+
+[[package]]
+name = "rustql_parser"
+version = "0.1.0"
+dependencies = [
+ "rustql_common",
  "serde",
  "serde_derive",
  "serde_json",

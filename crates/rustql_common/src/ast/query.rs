@@ -13,14 +13,16 @@ pub enum Defination<'a> {
     OperationDefination(OperationDefination<'a>),
 }
 #[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
+#[serde(tag="type")]
 pub struct FragmentDefination<'a> {
     pub name: Name<'a>,
-    pub type_condition: Type<'a>,
+    pub type_condition: VarType<'a>,
     pub directives: Option<Vec<Directive<'a>>>,
     pub selectionset: SelectSet<'a>,
     pub span: Span,
 }
 #[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
+#[serde(tag="type")]
 pub enum  OperationDefination<'a> {
     SelectSet(SelectSet<'a>),
     Query(Query<'a>),
@@ -52,18 +54,21 @@ pub struct Subscription<'a> {
     pub span: Span,
 }
 #[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
+#[serde(tag="type")]
 pub struct VariableDefination<'a> {
     pub name: Name<'a>,
-    pub var_type: Type<'a>,
+    pub var_type: VarType<'a>,
     pub default_value: Option<Value<'a>>,
     pub span: Span,
 }
 #[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
+#[serde(tag="type")]
 pub struct  SelectSet<'a> {
     pub selections: Vec<Selection<'a>>,
     pub span: Span,
 }
 #[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
+#[serde(tag="type")]
 pub enum Selection<'a> {
     Field(Field<'a>),
     FragmentSpread(FragmentSpread<'a>),

@@ -5,6 +5,7 @@ use crate::position::Span;
 
 /* ========== Common AST Type  ========== */
 #[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
+#[serde(tag="type")]
 pub enum Value<'a> {
     Variable(Variable<'a>),
     IntValue(IntValue<'a>),
@@ -75,36 +76,39 @@ pub struct ObjectValue<'a> {
     pub span: Span,
 }
 #[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
+#[serde(tag="type")]
 pub struct  Name<'a> {
     pub name: Cow<'a, str>,
     pub span: Span,
 }
 #[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
-pub enum Type<'a> {
-    NameType(Name<'a>),
-    ListType(Box<Type<'a>>),
-    NonNullType(Box<Type<'a>>)
+pub enum VarType<'a> {
+    NameVarType(Name<'a>),
+    ListVarType(Box<VarType<'a>>),
+    NonNullVarType(Box<VarType<'a>>)
 }
-
-pub fn get_type_span(some_type: &Type) -> Span {
+pub fn get_type_span(some_type: &VarType) -> Span {
     match some_type {
-        Type::NameType(name_type) => name_type.span.clone(),
-        Type::ListType(list_type) => get_type_span(list_type.as_ref()),
-        Type::NonNullType(nonull_type) => get_type_span(nonull_type.as_ref())
+        VarType::NameVarType(name_type) => name_type.span.clone(),
+        VarType::ListVarType(list_type) => get_type_span(list_type.as_ref()),
+        VarType::NonNullVarType(nonull_type) => get_type_span(nonull_type.as_ref())
     }
 }
 #[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
+#[serde(tag="type")]
 pub struct Argument<'a> {
     pub name: Name<'a>,
     pub value: Value<'a>,
     pub span: Span,
 }
 #[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
+#[serde(tag="type")]
 pub struct  ObjectField<'a> {
     pub name: Name<'a>,
     pub value: Value<'a>,
 }
 #[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
+#[serde(tag="type")]
 pub struct Directive<'a> {
     pub name: Name<'a>,
     pub arguments: Option<Vec<Argument<'a>>>,

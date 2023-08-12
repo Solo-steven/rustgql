@@ -1,9 +1,9 @@
 use std::borrow::Cow;
-use crate::token::TokenKind;
+use rustql_common::token::TokenKind;
+use rustql_common::ast::common::*;
+use rustql_common::ast::query::*;
+use rustql_common::position::{Position, Span};
 use crate::lexer::Lexer;
-use crate::ast::common::*;
-use crate::ast::query::*;
-use crate::position::{Span, Position};
 use crate::{is_keyword_name, parser_error, internal_error};
 
 pub struct Parser<'a> {
@@ -78,7 +78,7 @@ impl<'a> Parser<'a> {
             parser_error!("fragment need to have type condition", self);
         }
         self.next_token();
-        let type_name = Type::NameType(self.parse_name());
+        let type_name = VarType::NameVarType(self.parse_name());
         let mut directives: Option<Vec<Directive>> = None;
         if self.is_match_token(TokenKind::At) {
             let tuple = self.parse_directives();
@@ -154,17 +154,18 @@ impl<'a> Parser<'a> {
         self.expect_token(TokenKind::ParenthesesRight);
         variable_defination
     }
-    fn parse_type(&mut self) -> Type<'a> {
-        let parsed_type: Type<'a>;
+    fn parse_type(&mut self) -> VarType<'a> {
+        let mut parsed_type: VarType<'a>;
         match self.get_token() {
             TokenKind::BracketLeft => {
                 self.next_token();
                 parsed_type = self.parse_type();
                 self.expect_token(TokenKind::BracketRight);
+                parsed_type = VarType::ListVarType(Box::new(parsed_type))
             },
             TokenKind::Name => {
                 let name = self.parse_name();
-                parsed_type = Type::NameType(name);
+                parsed_type = VarType::NameVarType(name);
             },
             _ => {
                 parser_error!("Unknow token when parse type", self);
@@ -172,7 +173,7 @@ impl<'a> Parser<'a> {
         }
         if self.is_match_token(TokenKind::Point) {
             self.next_token();
-            Type::NonNullType(Box::new(parsed_type))
+            VarType::NonNullVarType(Box::new(parsed_type))
         }else {
             parsed_type
         }

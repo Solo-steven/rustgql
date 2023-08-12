@@ -1,0 +1,157 @@
+{
+  "definations": [
+    {
+      "OperationDefination": {
+        "type": "Query",
+        "name": {
+          "type": "Name",
+          "name": "Foo",
+          "span": {
+            "start": {
+              "col": 10,
+              "row": 1,
+              "index": 11
+            },
+            "end": {
+              "col": 13,
+              "row": 1,
+              "index": 14
+            }
+          }
+        },
+        "variable_definations": [
+          {
+            "type": "VariableDefination",
+            "name": {
+              "type": "Name",
+              "name": "site",
+              "span": {
+                "start": {
+                  "col": 15,
+                  "row": 1,
+                  "index": 16
+                },
+                "end": {
+                  "col": 19,
+                  "row": 1,
+                  "index": 20
+                }
+              }
+            },
+            "var_type": {
+              "NameVarType": {
+                "type": "Name",
+                "name": "Float",
+                "span": {
+                  "start": {
+                    "col": 21,
+                    "row": 1,
+                    "index": 22
+                  },
+                  "end": {
+                    "col": 26,
+                    "row": 1,
+                    "index": 27
+                  }
+                }
+              }
+            },
+            "default_value": {
+              "type": "FloatValue",
+              "value": "0.5",
+              "span": {
+                "start": {
+                  "col": 29,
+                  "row": 1,
+                  "index": 30
+                },
+                "end": {
+                  "col": 32,
+                  "row": 1,
+                  "index": 33
+                }
+              }
+            },
+            "span": {
+              "start": {
+                "col": 14,
+                "row": 1,
+                "index": 15
+              },
+              "end": {
+                "col": 32,
+                "row": 1,
+                "index": 33
+              }
+            }
+          }
+        ],
+        "directives": null,
+        "selectionset": {
+          "type": "SelectSet",
+          "selections": [
+            {
+              "type": "Field",
+              "alias": null,
+              "name": {
+                "type": "Name",
+                "name": "field",
+                "span": {
+                  "start": {
+                    "col": 6,
+                    "row": 2,
+                    "index": 43
+                  },
+                  "end": {
+                    "col": 11,
+                    "row": 2,
+                    "index": 48
+                  }
+                }
+              },
+              "arguments": null,
+              "directives": null,
+              "selectionset": null,
+              "span": {
+                "start": {
+                  "col": 6,
+                  "row": 2,
+                  "index": 43
+                },
+                "end": {
+                  "col": 11,
+                  "row": 2,
+                  "index": 48
+                }
+              }
+            }
+          ],
+          "span": {
+            "start": {
+              "col": 34,
+              "row": 1,
+              "index": 35
+            },
+            "end": {
+              "col": 5,
+              "row": 3,
+              "index": 54
+            }
+          }
+        },
+        "span": {
+          "start": {
+            "col": 4,
+            "row": 1,
+            "index": 5
+          },
+          "end": {
+            "col": 5,
+            "row": 3,
+            "index": 54
+          }
+        }
+      }
+    }
+  ]
+}
