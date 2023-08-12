@@ -45,7 +45,6 @@ pub struct VariableDefination<'a> {
     pub span: Span,
 }
 #[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
-#[serde(tag="type")]
 pub struct  SelectSet<'a> {
     pub selections: Vec<Selection<'a>>,
     pub span: Span,

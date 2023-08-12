@@ -158,6 +158,11 @@ impl<'a> Lexer<'a> {
                         self.finish_token();
                         TokenKind::Point
                     }
+                    '|' => {
+                        self.eat_char(1);
+                        self.finish_token();
+                        TokenKind::Pipe
+                    }
                     '$' => {
                         self.eat_char(1);
                         self.finish_token();

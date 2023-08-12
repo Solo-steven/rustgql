@@ -1,0 +1,70 @@
+{
+  "type": "Document",
+  "definations": [
+    {
+      "type": "UnionTypeDefinition",
+      "description": null,
+      "name": {
+        "type": "Name",
+        "name": "SearchResult",
+        "span": {
+          "start": {
+            "col": 10,
+            "row": 1,
+            "index": 11
+          },
+          "end": {
+            "col": 22,
+            "row": 1,
+            "index": 23
+          }
+        }
+      },
+      "directives": null,
+      "union_member_types": [
+        {
+          "name": "Photo",
+          "span": {
+            "start": {
+              "col": 27,
+              "row": 1,
+              "index": 28
+            },
+            "end": {
+              "col": 32,
+              "row": 1,
+              "index": 33
+            }
+          }
+        },
+        {
+          "name": "Person",
+          "span": {
+            "start": {
+              "col": 35,
+              "row": 1,
+              "index": 36
+            },
+            "end": {
+              "col": 41,
+              "row": 1,
+              "index": 42
+            }
+          }
+        }
+      ],
+      "span": {
+        "start": {
+          "col": 10,
+          "row": 1,
+          "index": 11
+        },
+        "end": {
+          "col": 41,
+          "row": 1,
+          "index": 42
+        }
+      }
+    }
+  ]
+}

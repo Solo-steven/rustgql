@@ -9,23 +9,8 @@ use std::io::Write;
 use serde_json::to_string_pretty;
 fn main() {
     let code = r#"
-    ,,,,,,,,,,,,,,,,,
-    query ,,,,,,, ($houseId: String!, $streetNumber: Int!) ,,,,,,,,,,,, { # comment
-    ,,,,,,,,,,,,,,,,,, # commas should be fine
-      house(id: $houseId) {
-        id
-        name
-        lat
-        lng
-      }
-      street(number: $streetNumber) { # this is a comment
-        id
-      }
-      houseStreet(id: $houseId, number: $streetNumber) {
-        id
-      }
-    }
-    
+    union SearchResult = | Photo | Person
+      
     "#;
     let mut lexer = Lexer::new(code);
     loop {

@@ -4,17 +4,18 @@ use crate::position::Span;
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct SchmaTypeDefination<'a> {
-    pub directive: Option<Vec<Directive<'a>>>,
-    pub query: Vec<Name<'a>>,
-    pub mutation: Vec<Name<'a>>,
-    pub subscription: Vec<Name<'a>>,
+    pub description: Option<StringValue<'a>>,
+    pub directives: Option<Vec<Directive<'a>>>,
+    pub query: Vec<NameVarType<'a>>,
+    pub mutation: Vec<NameVarType<'a>>,
+    pub subscription: Vec<NameVarType<'a>>,
     pub span: Span,
 }
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct DirectiveDefinition<'a> {
     pub description: Option<StringValue<'a>>,
     pub name: Name<'a>,
-    pub argument_definations: Option<Vec<ArgumentDefination<'a>>>,
+    pub argument_definations: Option<Vec<InputValueDefinition<'a>>>,
     pub directive_locations: Vec<DirectiveLocation>,
     pub span: Span,
 }
@@ -43,11 +44,6 @@ pub enum DirectiveLocation {
     VariableDefinition,
 }
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-pub struct  ArgumentDefination<'a> {
-    pub definitions: Vec<InputValueDefinition<'a>>,
-    pub span: Span
-}
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct InputValueDefinition<'a> {
     pub description: Option<StringValue<'a>>,
     pub name: Name<'a>,
@@ -67,17 +63,16 @@ pub struct ScalarTypeDefinition<'a> {
 pub struct ObjectTypeDefinition<'a> {
     pub description: Option<StringValue<'a>>,
     pub name: Name<'a>,
-    pub implement_interfaces: Option<ImplementInterface<'a>>,
-    pub field_definations: Option<FieldDefination<'a>>,
+    pub implement_interfaces: Option<Vec<NameVarType<'a>>>,
+    pub field_definations: Option<Vec<FieldDefination<'a>>>,
     pub directives: Option<Vec<Directive<'a>>>,
     pub span: Span,
 }
-pub type ImplementInterface<'a> = NameVarType<'a>;
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct FieldDefination<'a> {
     pub description: Option<StringValue<'a>>,
     pub name: Name<'a>,
-    pub argument_definations: Option<Vec<ArgumentDefination<'a>>>,
+    pub argument_definations: Option<Vec<InputValueDefinition<'a>>>,
     pub directives: Option<Vec<Directive<'a>>>,
     pub var_type: VarType<'a>,
     pub span: Span,
@@ -87,7 +82,7 @@ pub struct InterfaceTypeDefinition<'a> {
     pub description: Option<StringValue<'a>>,
     pub name: Name<'a>,
     pub directives: Option<Vec<Directive<'a>>>,
-    pub field_definations: Option<FieldDefination<'a>>,
+    pub field_definations: Option<Vec<FieldDefination<'a>>>,
     pub span: Span,
 }
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -95,7 +90,7 @@ pub struct UnionTypeDefinition<'a> {
     pub description: Option<StringValue<'a>>,
     pub name: Name<'a>,
     pub directives: Option<Vec<Directive<'a>>>,
-    pub union_member_types: Option<NameVarType<'a>>,
+    pub union_member_types: Option<Vec<NameVarType<'a>>>,
     pub span: Span,
 }
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -109,7 +104,7 @@ pub struct EnumTypeDefinition<'a> {
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct EnumValueDefinition<'a> {
     pub description: Option<StringValue<'a>>,
-    pub name: Name<'a>,
+    pub value: EnumValue<'a>,
     pub directives: Option<Vec<Directive<'a>>>,
     pub span: Span,
 }

@@ -2,6 +2,7 @@ use std::borrow::Cow;
 use rustql_common::token::TokenKind;
 use rustql_common::ast::common::*;
 use rustql_common::ast::query::*;
+use rustql_common::ast::schema::*;
 use rustql_common::position::{Position, Span};
 use crate::lexer::Lexer;
 use crate::{is_keyword_name, expect_keyword_name, parser_error, internal_error};
@@ -68,6 +69,15 @@ impl<'a> Parser<'a> {
                 match self.get_value() {
                     "query" | "mutation" | "subscription" => self.parse_operation(),
                     "fragment" => Defination::FragmentDefination(self.parse_fragement()),
+                    "schema" => Defination::SchemaTypeDefination(self.parse_schema_type_defination(None)),
+                    "scalar" => Defination::ScalarTypeDefinition(self.parse_scaler_type_defination(None)),
+                    "type" =>  Defination::ObjectTypeDefinition(self.parse_object_type_defination(None)),
+                    "interface" => Defination::InterfaceTypeDefinition(self.parse_interface_type_defination(None)),
+                    "input" => Defination::InputObjectTypeDefinition(self.parse_input_object_type_defination(None)),
+                    "enum" => Defination::EnumTypeDefinition(self.parse_enum_type_defination(None)),
+                    "union" => Defination::UnionTypeDefinition(self.parse_union_type_defination(None)),
+                    "directive" =>  panic!("TODO: implement parse directive, type"),
+                    "extend" => { panic!("TODO: implement extend") }
                     _ => parser_error!(format!("Unknow Name token with value ({:?})", self.get_value() ), self)
                 }
             }
@@ -324,6 +334,13 @@ impl<'a> Parser<'a> {
         let end_pos = directives[directives.len()-1].span.end.clone();
         (directives, start_pos, end_pos)
     }
+    fn parse_maybe_directive(&mut self) -> Option<(Vec<Directive<'a>>, Position, Position)> {
+        if self.is_match_token(TokenKind::At) {
+            Some(self.parse_directives())
+        }else {
+            None
+        }
+    }
     fn parse_name(&mut self) -> Name<'a> {
         match self.get_token() {
             TokenKind::Name => {
@@ -422,6 +439,356 @@ impl<'a> Parser<'a> {
                 Value::ListValue(ListValue { value: values, span })
              },
             _ => parser_error!("Unknow Value" ,self)
+        }
+    }
+    fn parse_schema_type_defination(&mut self, description: Option<StringValue<'a>>) -> SchmaTypeDefination<'a> {
+        let start_pos = self.get_start_pos();
+        expect_keyword_name!("schema", self);
+        let mut directives: Option<Vec<Directive<'a>>> = None;
+        if let Some(tuple) = self.parse_maybe_directive() {
+            directives = Some(tuple.0);
+        }
+        let tuple = self.parse_operation_type_definations();
+        let span = Span::new(start_pos, tuple.4);
+        SchmaTypeDefination { description, directives, query: tuple.0, mutation: tuple.1, subscription: tuple.2, span }
+    }
+    fn parse_operation_type_definations(&mut self) -> (Vec<NameVarType<'a>>, Vec<NameVarType<'a>>, Vec<NameVarType<'a>>, Position, Position) {
+        let start_pos = self.get_start_pos();
+        self.expect_token(TokenKind::BracesLeft);
+        let mut query: Vec<NameVarType<'a>> = Vec::new();
+        let mut mutation: Vec<NameVarType<'a>> = Vec::new();
+        let mut subscription: Vec<NameVarType<'a>> = Vec::new();
+        loop {
+            match self.get_token() {
+                TokenKind::BracesRight | TokenKind::EOFToken  =>{
+                    break;
+                }
+                TokenKind::Name => {
+                    let operation_type = self.get_value();
+                    self.next_token();
+                    self.expect_token(TokenKind::Colon);
+                    let name = match self.parse_type() {
+                        VarType::NameVarType(name) => name,
+                        VarType::ListVarType(_) => parser_error!("", self),
+                        VarType::NonNullVarType(_) => parser_error!("", self),
+                    };
+                    match operation_type {
+                        "query" => query.push(name),
+                        "mutation" => mutation.push(name),
+                        "subscription" => subscription.push(name),
+                        _ => parser_error!(format!("unknow operation type {:?}",operation_type), self)
+                    }
+                }
+                _ => parser_error!(format!("unexpect token {:?} happend at begin of schem's operation defination.", self.get_token()), self)
+            }
+        }
+        let end_pos = self.get_end_pos();
+        self.expect_token(TokenKind::BracesRight);
+        (query, mutation, subscription, start_pos, end_pos)
+    } 
+    fn parse_scaler_type_defination(&mut self, description: Option<StringValue<'a>>) -> ScalarTypeDefinition<'a> {
+        let name = self.parse_name();
+        let start_pos = match description.as_ref() {
+            Some(descr) => descr.span.start.clone(),
+            None =>  name.span.start.clone()
+        };
+        let mut end_pos: Position = name.span.end.clone();;
+        let mut directives: Option<Vec<Directive<'a>>> = None;
+        if let Some(tuple) = self.parse_maybe_directive() {
+            directives = Some(tuple.0);
+            end_pos = tuple.2;
+        }
+        let span = Span::new(start_pos, end_pos);
+        ScalarTypeDefinition { description, name, directives, span }
+    }
+    fn parse_object_type_defination(&mut self, description: Option<StringValue<'a>>) -> ObjectTypeDefinition<'a> {
+        expect_keyword_name!("type", self);
+        let name = self.parse_name();
+        let start_pos = name.span.start.clone();
+        let mut end_pos: Position = name.span.end.clone();
+        let mut implement_interfaces: Vec<NameVarType<'a>> = Vec::new();
+        if is_keyword_name!("implement", self) {
+            self.next_token();
+            let mut is_frist = true;
+            loop {
+                if !is_keyword_name!("&", self) {
+                    if !is_frist {
+                        break;
+                    }
+                    is_frist = false;
+                }
+                self.next_token();
+                implement_interfaces.push(match self.parse_type() {
+                    VarType::NameVarType(name) => name,
+                    VarType::ListVarType(_) => parser_error!("list type can not used in implement interface", self),
+                    VarType::NonNullVarType(_) => parser_error!("non null type can not used in implement interface", self),
+                })
+            }
+        }
+        let mut directives: Option<Vec<Directive<'a>>> = None;
+        if let Some(tuple) = self.parse_maybe_directive() {
+            directives = Some(tuple.0);
+            end_pos = tuple.2;
+        }
+        let mut field_definations: Option<Vec<FieldDefination<'a>>> = None;
+        if self.get_token() == TokenKind::BracesLeft {
+            let tuple = self.parse_field_definations();
+            field_definations = Some(tuple.0);
+            end_pos = tuple.2;
+        }
+        ObjectTypeDefinition { 
+            description, name, 
+            implement_interfaces:  if implement_interfaces.is_empty() { None } else { Some(implement_interfaces) }, 
+            field_definations, directives, 
+            span: Span::new(start_pos, end_pos) 
+        }
+    }
+    fn parse_field_definations(&mut self) -> (Vec<FieldDefination<'a>>, Position, Position ) {
+        let start_pos = self.get_start_pos();
+        self.expect_token(TokenKind::BracesLeft);
+        let mut field_definations: Vec<FieldDefination<'a>> = Vec::new();
+        loop {
+            match self.get_token() {
+                TokenKind::BracesRight | TokenKind::EOFToken => {
+                    break;
+                }
+                _ => {
+                    let field_description = match self.get_token() {
+                        TokenKind::StringValue => {
+                            let span = Span::new(self.get_start_pos(), self.get_end_pos());
+                            let value = Cow::Borrowed(self.get_value());
+                            self.next_token();
+                            Some(StringValue{ value, span })
+                        },
+                        _ => None
+                    };
+                    let name = self.parse_name();
+                    let mut argument_definations = None;
+                    if self.get_token() == TokenKind::ParenthesesLeft {
+                        argument_definations = Some(self.parse_input_value_definations().0);
+                    }
+                    self.expect_token(TokenKind::Colon);
+                    let var_type = self.parse_type();
+                    let mut directives: Option<Vec<Directive<'a>>> = None;
+                    if let Some(tuple) = self.parse_maybe_directive() {
+                        directives = Some(tuple.0);
+                    }
+                    let start_pos = match &field_description {
+                        Some(desc) => desc.span.start.clone(),
+                        None => name.span.start.clone()
+                    };
+                    let end_pos = match directives.as_ref() {
+                        Some(dirs) => dirs[dirs.len()-1].span.end.clone(),
+                        None => get_type_span(&var_type).end
+                    };
+                    field_definations.push(FieldDefination { 
+                        description: field_description, 
+                        name, argument_definations, 
+                        directives, var_type, span: Span::new(start_pos, end_pos) 
+                    })
+                }
+            }
+        }
+        let end_pos = self.get_end_pos();
+        self.expect_token(TokenKind::BracesRight);
+        (field_definations, start_pos, end_pos)
+    }
+    fn parse_input_value_definations(&mut self) -> (Vec<InputValueDefinition<'a>>, Position, Position) {
+        let start_pos = self.get_start_pos();
+        self.expect_token(TokenKind::ParenthesesLeft);
+        let mut argument_definations: Vec<InputValueDefinition<'a>> = Vec::new();
+        loop {
+            match self.get_token() {
+                TokenKind::ParenthesesRight | TokenKind::EOFToken => {
+                    break;
+                }
+                _ => {
+                    let argument_description = match self.get_token() {
+                        TokenKind::StringValue => {
+                            let span = Span::new(self.get_start_pos(), self.get_end_pos());
+                            let value = Cow::Borrowed(self.get_value());
+                            self.next_token();
+                            Some(StringValue{ value, span })
+                        },
+                        _ => None
+                    };
+                    let name = self.parse_name();
+                    let start_pos = match &argument_description {
+                        Some(desc) => desc.span.start.clone(),
+                        None => name.span.start.clone()
+                    };
+                    self.expect_token(TokenKind::Colon);
+                    let mut end_pos: Position;
+                    let var_type = self.parse_type();
+                    end_pos = get_type_span(&var_type).end;
+                    let mut default_value = None;
+                    if self.get_token() == TokenKind::Eqal {
+                        self.next_token();
+                        default_value = Some(self.parse_value());
+                        end_pos = get_value_span(default_value.as_ref().unwrap()).end;
+                    }
+                    let mut directives: Option<Vec<Directive<'a>>> = None;
+                    if let Some(tuple) = self.parse_maybe_directive() {
+                        directives = Some(tuple.0);
+                        end_pos = tuple.2;
+                    }
+                    argument_definations.push(InputValueDefinition { 
+                        description: argument_description, 
+                        name, var_type, default_value, directives, 
+                        span: Span::new(start_pos , end_pos)
+                    })
+                }
+            }
+        }
+        let end_pos = self.get_end_pos();
+        self.expect_token(TokenKind::ParenthesesRight);
+        (argument_definations, start_pos, end_pos)
+    }
+    fn parse_interface_type_defination(&mut self, description: Option<StringValue<'a>>) -> InterfaceTypeDefinition<'a> {
+        expect_keyword_name!("interface", self);
+        let name = self.parse_name();
+        let start_pos = match &description {
+            Some(desc) => desc.span.start.clone(),
+            None => name.span.start.clone()
+        };
+        let mut end_pos = name.span.end.clone();
+        let mut directives: Option<Vec<Directive<'a>>> = None;
+        if let Some(tuple) = self.parse_maybe_directive() {
+            directives = Some(tuple.0);
+            end_pos = tuple.2;
+        }
+        let mut field_definations: Option<Vec<FieldDefination<'a>>> = None;
+        if self.get_token() == TokenKind::BracesLeft {
+            let tuple = self.parse_field_definations();
+            field_definations = Some(tuple.0);
+            end_pos = tuple.2;
+        }
+        InterfaceTypeDefinition { description, name, directives, field_definations, span: Span::new(start_pos, end_pos) }
+    }
+    fn parse_input_object_type_defination(&mut self, description: Option<StringValue<'a>>) -> InputObjectTypeDefinition<'a> {
+        expect_keyword_name!("input", self);
+        let name = self.parse_name();
+        let start_pos = match &description {
+            Some(desc) => desc.span.start.clone(),
+            None => name.span.start.clone()
+        };
+        let mut end_pos = name.span.end.clone();
+        let mut directives: Option<Vec<Directive<'a>>> = None;
+        if let Some(tuple) = self.parse_maybe_directive() {
+            directives = Some(tuple.0);
+            end_pos = tuple.2;
+        }
+        let mut input_definations: Option<Vec<InputValueDefinition<'a>>> = None;
+        if self.get_token() == TokenKind::BracesLeft {
+            let tuple = self.parse_input_value_definations();
+            input_definations = Some(tuple.0);
+            end_pos = tuple.2;
+        }
+        InputObjectTypeDefinition { description, name, directives, input_definations, span: Span::new(start_pos, end_pos) }
+    }
+    fn parse_enum_type_defination(&mut self, description: Option<StringValue<'a>>) -> EnumTypeDefinition<'a> {
+        expect_keyword_name!("enum", self);
+        let name = self.parse_name();
+        let start_pos = match &description {
+            Some(desc) => desc.span.start.clone(),
+            None => name.span.start.clone()
+        };
+        let mut end_pos = name.span.end.clone();
+        let mut directives: Option<Vec<Directive<'a>>> = None;
+        if self.get_token() == TokenKind::At {
+            let tuple = self.parse_directives();
+            directives = Some(tuple.0);
+            end_pos = tuple.2;
+        }
+        let mut value_definations = Vec::new();
+        if self.get_token() == TokenKind::BracesLeft {
+            self.next_token();
+            loop {
+                match self.get_token() {
+                    TokenKind::BracesRight | TokenKind::EOFToken => {
+                        break;
+                    }
+                    _ => {
+                        let enum_description = match self.get_token() {
+                            TokenKind::StringValue => {
+                                let span = Span::new(self.get_start_pos(), self.get_end_pos());
+                                let value = Cow::Borrowed(self.get_value());
+                                self.next_token();
+                                Some(StringValue{ value, span })
+                            },
+                            _ => None
+                        };
+                        let enum_value = match self.parse_value() {
+                            Value::EnumValue(value) => value,
+                            _ => parser_error!("invalid enum value", self)
+                        };
+                        let enum_start_pos = match &enum_description {
+                            Some(desc) => desc.span.start.clone(),
+                            None =>  enum_value.span.start.clone(),
+                        };
+                        let mut enum_end_pos = enum_value.span.end.clone();
+                        let mut enum_directives: Option<Vec<Directive<'a>>> = None;
+                        if let Some(tuple) = self.parse_maybe_directive() {
+                            enum_directives = Some(tuple.0);
+                            enum_end_pos = tuple.2;
+                        }
+                        value_definations.push(EnumValueDefinition {
+                            description: enum_description,
+                            value: enum_value,
+                            directives: enum_directives,
+                            span: Span::new(enum_start_pos, enum_end_pos)
+                        });
+                    }
+                }
+            }
+        }
+        self.expect_token(TokenKind::BracesRight);
+        EnumTypeDefinition { 
+            description, name, directives, span: Span::new(start_pos, end_pos),
+            value_definations: if value_definations.is_empty() { None } else { Some(value_definations) }
+        }
+    }
+    fn parse_union_type_defination(&mut self, description: Option<StringValue<'a>>) -> UnionTypeDefinition<'a> {
+        expect_keyword_name!("union", self);
+        let name = self.parse_name();
+        let start_pos = match &description {
+            Some(desc) => desc.span.start.clone(),
+            None => name.span.start.clone()
+        };
+        let mut end_pos = name.span.end.clone();
+        let mut directives: Option<Vec<Directive<'a>>> = None;
+        if let Some(tuple) = self.parse_maybe_directive() {
+            directives = Some(tuple.0);
+            end_pos = tuple.2;
+        }
+        self.expect_token(TokenKind::Eqal);
+        let mut is_frist = true;
+        let mut union_member_types: Vec<NameVarType<'a>> = Vec::new();
+        loop {
+            if !is_frist {
+                if self.get_token() == TokenKind::Pipe {
+                    self.next_token();
+                }else {
+                    break;
+                }
+            }else {
+                is_frist = false;
+                if self.get_token() == TokenKind::Pipe {
+                    self.next_token();
+                }
+            }
+            let member_type =  match self.parse_type() {
+                VarType::NameVarType(name) => name,
+                VarType::ListVarType(_) => parser_error!("", self),
+                VarType::NonNullVarType(_) => parser_error!("", self)
+            };
+            end_pos = member_type.span.end.clone();
+            union_member_types.push(member_type);
+        }
+        UnionTypeDefinition {
+            description, name, directives, 
+            union_member_types: if union_member_types.is_empty() { None } else { Some(union_member_types) }, 
+            span: Span::new(start_pos, end_pos)
         }
     }
 }
