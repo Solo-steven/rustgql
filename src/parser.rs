@@ -1,8 +1,10 @@
 use std::borrow::Cow;
 use crate::token::TokenKind;
+use crate::lexer::Lexer;
+use crate::ast::common::*;
+use crate::ast::query::*;
+use crate::position::{Span, Position};
 use crate::{is_keyword_name, parser_error, internal_error};
-use crate::{lexer::Lexer, position::Position};
-use crate::ast::*;
 
 pub struct Parser<'a> {
     lexer: Lexer<'a>
@@ -19,12 +21,6 @@ impl<'a> Parser<'a> {
     }
     fn get_end_pos(&self) -> Position {
         self.lexer.get_end_pos()
-    }
-    fn get_start_byte_index(&self) -> usize {
-        self.lexer.get_start_byte_index()
-    }
-    fn get_end_byte_index(&self) -> usize {
-        self.lexer.get_end_byte_index()
     }
     fn get_value(&self) -> &'a str {
         self.lexer.get_value()
@@ -69,7 +65,8 @@ impl<'a> Parser<'a> {
         }
     }
     fn parse_fragement(&mut self) -> FragmentDefination<'a> {
-        if is_keyword_name!("fragment", self) {
+        let start_pos = self.get_start_pos();
+        if !is_keyword_name!("fragment", self) {
             internal_error!("unreach code");
         }
         self.next_token();
@@ -82,37 +79,43 @@ impl<'a> Parser<'a> {
         }
         self.next_token();
         let type_name = Type::NameType(self.parse_name());
-        let mut directives: Vec<Directive> = Vec::new();
+        let mut directives: Option<Vec<Directive>> = None;
         if self.is_match_token(TokenKind::At) {
-            directives = self.parse_directives();
+            let tuple = self.parse_directives();
+            directives = Some(tuple.0);
         }
-        FragmentDefination { name, type_condition: type_name, directives, selectionset: self.parse_selectionset() }
+        let selectionset = self.parse_selectionset();
+        let span = Span::new(start_pos, selectionset.span.end.clone());
+        FragmentDefination { name, type_condition: type_name, directives, selectionset, span }
     }
     fn parse_operation(&mut self) -> OperationDefination<'a> {
+        let start_pos = self.get_start_pos();
         let operation_type = self.get_value();
         self.next_token();
         let mut name: Option<Name<'a>> = None;
-        let mut variable_definations: Vec<VariableDefination<'a>> = Vec::new();
-        let mut directives: Vec<Directive> = Vec::new();
+        let mut variable_definations: Option<Vec<VariableDefination<'a>>>= None;
+        let mut directives: Option<Vec<Directive>> = None;
         if self.is_match_token(TokenKind::Name) {
             name = Some(self.parse_name());
         }
         if self.is_match_token(TokenKind::ParenthesesLeft) {
-            variable_definations = self.parse_variables();
+            variable_definations = Some(self.parse_variables());
         }
         if self.is_match_token(TokenKind::At) {
-            directives = self.parse_directives();
+            let tuple = self.parse_directives();
+            directives = Some(tuple.0);
         }
         let selectionset = self.parse_selectionset();
+        let span = Span::new(start_pos, selectionset.span.end.clone());
         match operation_type {
             "query" => {
-                OperationDefination::Query(Query { name, variable_definations, directives , selectionset })
+                OperationDefination::Query(Query { name, variable_definations, directives , selectionset, span })
             }
             "mutation" => {
-                OperationDefination::Mutation(Mutation { name, variable_definations, directives , selectionset })
+                OperationDefination::Mutation(Mutation { name, variable_definations, directives , selectionset, span })
             }
             "subscription" => {
-                OperationDefination::Subscription(Subscription { name, variable_definations, directives , selectionset })
+                OperationDefination::Subscription(Subscription { name, variable_definations, directives , selectionset, span })
             }
             _ => {
                 internal_error!("unreach code, parse operation can only be called when operation type is query, mutation, subscription.")
@@ -128,15 +131,19 @@ impl<'a> Parser<'a> {
                     break;
                 }
                 TokenKind::DollarSign => {
+                    let start_pos = self.get_start_pos();
                     self.next_token();
                     let name = self.parse_name();
                     self.expect_token(TokenKind::Colon);
                     let var_type = self.parse_type();
                     if self.is_match_token(TokenKind::Eqal) {
                         self.next_token();
-                        variable_defination.push(VariableDefination { name, var_type, default_value: Some(self.parse_value()) })
+                        let value = Some(self.parse_value());
+                        let span = Span::new(start_pos, get_value_span(value.as_ref().unwrap()).end.clone());
+                        variable_defination.push(VariableDefination { name, var_type, default_value: value, span })
                     }else {
-                        variable_defination.push(VariableDefination { name, var_type, default_value: None })
+                        let span = Span::new(start_pos, get_type_span(&var_type).end);
+                        variable_defination.push(VariableDefination { name, var_type, default_value: None, span })
                     }
                 }
                 _ => {
@@ -171,6 +178,7 @@ impl<'a> Parser<'a> {
         }
     }
     fn parse_selectionset(&mut self) -> SelectSet<'a> {
+        let start_pos = self.get_start_pos();
         self.expect_token(TokenKind::BracesLeft);
         let mut selections: Vec<Selection<'a>> = Vec::new();
         loop {
@@ -179,17 +187,19 @@ impl<'a> Parser<'a> {
                 _ => selections.push(self.parse_selection())
             }
         }
+        let end_pos = self.get_end_pos();
         self.expect_token(TokenKind::BracesRight);
-        SelectSet { selections }
+        SelectSet { selections, span: Span::new(start_pos, end_pos) }
     }
     fn parse_selection(&mut self) -> Selection<'a> {
         match self.get_token() {
             TokenKind::Ellipsis => {
+                let start_pos = self.get_start_pos();
                 self.next_token();
                 if is_keyword_name!("on", self) || self.is_match_token(TokenKind::At) || self.is_match_token(TokenKind::BracesLeft) {
-                    Selection::InlineFragment(self.parse_inline_fragment())
+                    Selection::InlineFragment(self.parse_inline_fragment(start_pos))
                 }else {
-                    Selection::FragmentSpread(self.parse_fragment_spread())
+                    Selection::FragmentSpread(self.parse_fragment_spread(start_pos))
                 }
             }
             TokenKind::Name => {
@@ -205,6 +215,8 @@ impl<'a> Parser<'a> {
             Alias(opt) Name Arguments(opt) Directives(opt) SelectionSet(opt)
      */
     fn parse_field(&mut self) -> Field<'a> {
+        let start_pos = self.get_start_pos();
+        let mut end_pos = self.get_end_pos();
         let mut alias = Some(self.parse_name());
         let name: Name<'_>;
         if self.is_match_token(TokenKind::Colon) {
@@ -214,43 +226,55 @@ impl<'a> Parser<'a> {
             name = alias.take().unwrap();
             alias = None;
         }
-        let mut arguments: Vec<Argument<'a>> = Vec::new();
+        let mut arguments: Option<Vec<Argument<'a>>> = None;
         if self.is_match_token(TokenKind::ParenthesesLeft) {
-            arguments = self.parse_arguments();
+            let tuple = self.parse_arguments();
+            arguments = Some(tuple.0);
+            end_pos = tuple.2;
         }
-        let mut directives: Vec<Directive<'a>> = Vec::new();
+        let mut directives: Option<Vec<Directive<'a>>> = None;
         if self.is_match_token(TokenKind::At) {
-            directives = self.parse_directives()
+           let tuple = self.parse_directives();
+           directives = Some(tuple.0);
+           end_pos = tuple.2;
         }
         let mut selectionset:Option<SelectSet<'a>> = None;
         if self.is_match_token(TokenKind::BracesLeft) {
             selectionset = Some(self.parse_selectionset());
+            end_pos = selectionset.as_ref().unwrap().span.end.clone();
         }
-        Field { alias, name, arguments, directives, selectionset, }
+        Field { alias, name, arguments, directives, selectionset, span: Span::new(start_pos, end_pos) }
     }
-    fn parse_inline_fragment(&mut self) -> InlineFragment<'a> {
+    fn parse_inline_fragment(&mut self, start_pos: Position) -> InlineFragment<'a> {
         let mut type_name: Option<Name<'a>> = None;
         if is_keyword_name!("on", self) {
             self.next_token();
             type_name = Some(self.parse_name());
         }
-        let mut directives: Vec<Directive> = Vec::new();
+        let mut directives: Option<Vec<Directive>> = None;
         if self.is_match_token(TokenKind::At) {
-            directives = self.parse_directives();
+            let tuple = self.parse_directives();
+            directives = Some(tuple.0);
         }
-        InlineFragment { type_condition: type_name, directives, selectionset: self.parse_selectionset() }
+       let selectionset = self.parse_selectionset();
+       let span = Span::new(start_pos, selectionset.span.end.clone());
+       InlineFragment { type_condition: type_name, directives, selectionset, span}
     }
-    fn parse_fragment_spread(&mut self)-> FragmentSpread<'a> {
+    fn parse_fragment_spread(&mut self, start_pos: Position)-> FragmentSpread<'a> {
+        let name = self.parse_name();
+        let mut end_pos = self.get_end_pos();
+        let mut directives: Option<Vec<Directive<'a>>> = None;
+        if self.get_token() == TokenKind::At {
+            let tuple = self.parse_directives();
+            directives = Some(tuple.0);
+            end_pos = tuple.2;
+        }
         FragmentSpread { 
-            name: self.parse_name(), 
-            directives: if self.get_token() == TokenKind::At {
-                self.parse_directives()
-            }else {
-                Vec::new()
-            } 
+            name, directives, span: Span::new(start_pos, end_pos)
         }
     }
-    fn parse_arguments(&mut self) -> Vec<Argument<'a>>{
+    fn parse_arguments(&mut self) -> (Vec<Argument<'a>>, Position, Position){
+        let start_pos = self.get_start_pos();
         self.expect_token(TokenKind::ParenthesesLeft);
         let mut arguments: Vec::<Argument<'a>> =  Vec::new();
         loop {
@@ -262,34 +286,40 @@ impl<'a> Parser<'a> {
                     let name = self.parse_name();
                     self.expect_token(TokenKind::Colon);
                     let value = self.parse_value();
-                    arguments.push(Argument { name, value })
+                    let span = Span::new(name.span.start.clone(), get_value_span(&value).end);
+                    arguments.push(Argument { name, value, span})
                 }
             }
         }
+        let end_pos = self.get_end_pos();
         self.expect_token(TokenKind::ParenthesesRight);
-        arguments
+        (arguments, start_pos, end_pos)
     }
-    fn parse_directives(&mut self) -> Vec<Directive<'a>> {
+    fn parse_directives(&mut self) -> (Vec<Directive<'a>>, Position, Position) {
         let mut directives: Vec::<Directive<'a>> =  Vec::new();
         while self.get_token() == TokenKind::At {
             self.next_token();
-            directives.push(Directive{ 
-                name: self.parse_name(),
-                arguments: if self.get_token() == TokenKind::ParenthesesLeft {
-                    self.parse_arguments()
-                }else {
-                    Vec::new()
-                }
-            })
+            let name = self.parse_name();
+            let start_pos = name.span.start.clone();
+            let end_pos = name.span.end.clone();
+            directives.push( if self.get_token() == TokenKind::ParenthesesLeft {
+                let tuple = self.parse_arguments();
+                Directive { name, arguments: Some(tuple.0), span: Span::new(start_pos, tuple.2)  }
+            } else {
+                Directive { name, arguments: None, span: Span::new(start_pos, end_pos) }
+            });
         }
-        directives
+        let start_pos = directives[0].span.start.clone();
+        let end_pos = directives[directives.len()-1].span.end.clone();
+        (directives, start_pos, end_pos)
     }
     fn parse_name(&mut self) -> Name<'a> {
         match self.get_token() {
             TokenKind::Name => {
-                let name = Name(Cow::Borrowed(self.get_value()));
+                let name =Cow::Borrowed(self.get_value());
+                let span = Span::new(self.get_start_pos(), self.get_end_pos());
                 self.next_token();
-                name
+                Name { name, span }
             },
             _ => parser_error!("Unknow token when parse name", self)
         }
@@ -297,24 +327,32 @@ impl<'a> Parser<'a> {
     fn parse_value(&mut self)-> Value<'a> {
         match self.get_token() {
             TokenKind::FloatValue => {
+                let span = Span::new(self.get_start_pos(), self.get_end_pos());
+                let value = self.get_value();
                 self.next_token();
-                Value::FloatValue
+                Value::FloatValue(FloatValue { value: Cow::Borrowed(value), span })
             },
             TokenKind::IntValue =>{
+                let span = Span::new(self.get_start_pos(), self.get_end_pos());
+                let value = self.get_value();
                 self.next_token();
-                Value::IntValue
+                Value::IntValue(IntValue { value: Cow::Borrowed(value), span })
             },
             TokenKind::StringValue => {
+                let span = Span::new(self.get_start_pos(), self.get_end_pos());
+                let value = self.get_value();
                 self.next_token();
-                Value::StringValue(Cow::Borrowed(self.get_value()))
+                Value::StringValue(StringValue { value: Cow::Borrowed(value), span })
             },
             TokenKind::DollarSign => {
+                let start_pos = self.get_start_pos();
                 self.next_token();
                 match self.get_token() {
                     TokenKind::Name => {
                         let name = Cow::Borrowed(self.get_value());
+                        let span = Span::new(start_pos, self.get_end_pos());
                         self.next_token();
-                        Value::Variable(name)
+                        Value::Variable(Variable { value: name, span })
                     }
                     _ => {
                         panic!()
@@ -322,22 +360,17 @@ impl<'a> Parser<'a> {
                 }
             },
             TokenKind::Name => {
-                match self.get_value() {
-                    "true" | "false" => {
-                        self.next_token();
-                        Value::BooleanValue(false)
-                    },
-                    "null" => {
-                        self.next_token();
-                        Value::NullValue
-                    },
-                    _ => {
-                        self.next_token();
-                        Value::EnumValue(Cow::Borrowed(self.get_value()))
-                    }
+                let span = Span::new(self.get_start_pos(), self.get_end_pos());
+                let value = self.get_value();
+                self.next_token();
+                match value {
+                    "true" | "false" => Value::BooleanValue(BoolValue { value: Cow::Borrowed(value), span }),
+                    "null" => Value::NullValue(NullValue { span }),
+                    _ => Value::EnumValue(EnumValue { value: Cow::Borrowed(value), span }),
                 }
             }
             TokenKind::BracesLeft => { 
+                let start_pos = self.get_start_pos();
                 self.next_token();
                 let mut object_fields: Vec<ObjectField> = Vec::new();
                 loop {
@@ -355,10 +388,12 @@ impl<'a> Parser<'a> {
                         }
                     }
                 }
+                let span = Span::new(start_pos, self.get_end_pos());
                 self.expect_token(TokenKind::BracesRight);
-                Value::ObjectValue(object_fields)
+                Value::ObjectValue(ObjectValue { value: object_fields, span })
             },
             TokenKind::BracketLeft => {
+                let start_pos = self.get_start_pos();
                 self.next_token();
                 let mut values:Vec<Value<'a>> = Vec::new();
                 loop {
@@ -371,8 +406,9 @@ impl<'a> Parser<'a> {
                         }
                     }
                 }
+                let span = Span::new(start_pos, self.get_end_pos());
                 self.expect_token(TokenKind::BracketRight);
-                Value::ListValue(values)
+                Value::ListValue(ListValue { value: values, span })
              },
             _ => parser_error!("Unknow Value" ,self)
         }

@@ -18,7 +18,14 @@ impl Position {
     }
 }
 #[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
-struct Span {
+pub struct Span {
     pub start: Position,
     pub end: Position,
+}
+impl Span {
+    pub fn new(start_pos: Position, end_pos: Position) -> Self {
+        Self {
+            start: start_pos, end: end_pos
+        }
+    }
 }
