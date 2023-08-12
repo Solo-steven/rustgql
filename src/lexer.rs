@@ -132,7 +132,7 @@ impl<'a> Lexer<'a> {
     pub fn get_source_string(&self, start: usize, end: usize) -> &'a str {
         &self.source[start..end]
     }
-    pub fn get_current_value(&self)-> &'a str {
+    pub fn get_value(&self)-> &'a str {
         &self.source[self.start_byte_index..self.end_byte_index]
     }
     pub fn get_token(&mut self) -> TokenKind {
@@ -147,6 +147,7 @@ impl<'a> Lexer<'a> {
         self.start_token();
         self.tok = match self.get_char() {
             None => {
+                self.finish_token();
                 TokenKind::EOFToken
             }
             Some(code) => {
@@ -328,6 +329,7 @@ impl<'a> Lexer<'a> {
             }
         };
         self.eat_char(1);
+        self.finish_token();
         TokenKind::StringValue
     }
     fn read_block_string(&mut self) -> TokenKind {

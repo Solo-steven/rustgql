@@ -18,3 +18,26 @@ macro_rules! internal_error {
         panic!("[Internal Error]: {:?}, please report this bug to developer, Thanks ~", $message)
     };
 }
+#[macro_export]
+macro_rules! is_keyword_name  {
+    ($expect_value: expr, $parser: expr) => {{
+        match $parser.get_token() {
+            TokenKind::Name => {
+                match $parser.get_value() {
+                    $expect_value => {
+                        true
+                    }
+                    _ => {  false }
+                }
+            }
+            _ =>  {  false }
+        }
+    }};
+}
+#[macro_export]
+macro_rules! parser_error {
+    ($msg: expr, $parser: expr) => {{
+        let pos = $parser.get_start_pos();
+        panic!("[Syntax Error]: Unexpect Token {:?}, {} at ({:?}, {:?}).", $parser.get_token(), $msg, pos.row, pos.col);
+    }};
+}
