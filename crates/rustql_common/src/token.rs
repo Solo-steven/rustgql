@@ -26,4 +26,6 @@ pub enum TokenKind {
     FloatValue,
     /* StringValue */
     StringValue,
+    /* Comment */
+    Comment,
 }

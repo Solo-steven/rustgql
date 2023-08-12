@@ -214,6 +214,9 @@ impl<'a> Lexer<'a> {
                     '-' | '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' => {
                         self.read_number()
                     }
+                    '#' => {
+                        self.read_comment()
+                    }
                     '\"' => {
                         if self.start_with("\"\"\"") {
                             self.read_block_string()
@@ -309,6 +312,16 @@ impl<'a> Lexer<'a> {
                 break;
             }
         }
+    }
+    fn read_comment(&mut self) -> TokenKind {
+        while let Some(ch) = self.get_char() {
+            match ch {
+                '\n' => break,
+                _ => self.eat_char(1)
+            }
+        }
+        self.finish_token();
+        TokenKind::Comment
     }
     fn read_string(&mut self) -> TokenKind {
         if !self.start_with("\"") {

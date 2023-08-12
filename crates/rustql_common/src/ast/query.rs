@@ -4,15 +4,6 @@ use crate::ast::common::*;
 
 /* ============ Document AST Type ========== */
 #[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
-pub struct Document<'a> {
-    pub definations: Vec<Defination<'a>>,
-}
-#[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
-pub enum Defination<'a> {
-    FragmentDefination(FragmentDefination<'a>),
-    OperationDefination(OperationDefination<'a>),
-}
-#[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
 #[serde(tag="type")]
 pub struct FragmentDefination<'a> {
     pub name: Name<'a>,

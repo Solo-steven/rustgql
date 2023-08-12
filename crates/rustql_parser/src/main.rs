@@ -9,9 +9,23 @@ use std::io::Write;
 use serde_json::to_string_pretty;
 fn main() {
     let code = r#"
-    query Foo($site: Float = 0.5) {
-      field
+    ,,,,,,,,,,,,,,,,,
+    query ,,,,,,, ($houseId: String!, $streetNumber: Int!) ,,,,,,,,,,,, { # comment
+    ,,,,,,,,,,,,,,,,,, # commas should be fine
+      house(id: $houseId) {
+        id
+        name
+        lat
+        lng
+      }
+      street(number: $streetNumber) { # this is a comment
+        id
+      }
+      houseStreet(id: $houseId, number: $streetNumber) {
+        id
+      }
     }
+    
     "#;
     let mut lexer = Lexer::new(code);
     loop {
@@ -22,9 +36,11 @@ fn main() {
             break;
         }
     }
+    
     let mut parser = Parser::new(code);
     let root = parser.parse();
     let mut output = fs::File::create("./test.json").unwrap();
+    println!("{:?}", root);
     write!(output, "{}", to_string_pretty(&root).unwrap().as_str()).unwrap();
 
 }

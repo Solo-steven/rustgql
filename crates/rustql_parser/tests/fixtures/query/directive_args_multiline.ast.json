@@ -1,0 +1,345 @@
+{
+  "type": "Document",
+  "definations": [
+    {
+      "OperationDefination": {
+        "type": "Query",
+        "name": null,
+        "variable_definations": null,
+        "directives": null,
+        "selectionset": {
+          "type": "SelectSet",
+          "selections": [
+            {
+              "type": "Field",
+              "alias": null,
+              "name": {
+                "type": "Name",
+                "name": "node",
+                "span": {
+                  "start": {
+                    "col": 2,
+                    "row": 1,
+                    "index": 10
+                  },
+                  "end": {
+                    "col": 6,
+                    "row": 1,
+                    "index": 14
+                  }
+                }
+              },
+              "arguments": null,
+              "directives": [
+                {
+                  "type": "Directive",
+                  "name": {
+                    "type": "Name",
+                    "name": "dir",
+                    "span": {
+                      "start": {
+                        "col": 8,
+                        "row": 1,
+                        "index": 16
+                      },
+                      "end": {
+                        "col": 11,
+                        "row": 1,
+                        "index": 19
+                      }
+                    }
+                  },
+                  "arguments": [
+                    {
+                      "type": "Argument",
+                      "name": {
+                        "type": "Name",
+                        "name": "a",
+                        "span": {
+                          "start": {
+                            "col": 4,
+                            "row": 2,
+                            "index": 25
+                          },
+                          "end": {
+                            "col": 5,
+                            "row": 2,
+                            "index": 26
+                          }
+                        }
+                      },
+                      "value": {
+                        "type": "IntValue",
+                        "value": "1",
+                        "span": {
+                          "start": {
+                            "col": 7,
+                            "row": 2,
+                            "index": 28
+                          },
+                          "end": {
+                            "col": 8,
+                            "row": 2,
+                            "index": 29
+                          }
+                        }
+                      },
+                      "span": {
+                        "start": {
+                          "col": 4,
+                          "row": 2,
+                          "index": 25
+                        },
+                        "end": {
+                          "col": 8,
+                          "row": 2,
+                          "index": 29
+                        }
+                      }
+                    },
+                    {
+                      "type": "Argument",
+                      "name": {
+                        "type": "Name",
+                        "name": "b",
+                        "span": {
+                          "start": {
+                            "col": 4,
+                            "row": 3,
+                            "index": 35
+                          },
+                          "end": {
+                            "col": 5,
+                            "row": 3,
+                            "index": 36
+                          }
+                        }
+                      },
+                      "value": {
+                        "type": "StringValue",
+                        "value": "\"2\"",
+                        "span": {
+                          "start": {
+                            "col": 7,
+                            "row": 3,
+                            "index": 38
+                          },
+                          "end": {
+                            "col": 10,
+                            "row": 3,
+                            "index": 41
+                          }
+                        }
+                      },
+                      "span": {
+                        "start": {
+                          "col": 4,
+                          "row": 3,
+                          "index": 35
+                        },
+                        "end": {
+                          "col": 10,
+                          "row": 3,
+                          "index": 41
+                        }
+                      }
+                    },
+                    {
+                      "type": "Argument",
+                      "name": {
+                        "type": "Name",
+                        "name": "c",
+                        "span": {
+                          "start": {
+                            "col": 4,
+                            "row": 4,
+                            "index": 47
+                          },
+                          "end": {
+                            "col": 5,
+                            "row": 4,
+                            "index": 48
+                          }
+                        }
+                      },
+                      "value": {
+                        "type": "BooleanValue",
+                        "value": "true",
+                        "span": {
+                          "start": {
+                            "col": 7,
+                            "row": 4,
+                            "index": 50
+                          },
+                          "end": {
+                            "col": 11,
+                            "row": 4,
+                            "index": 54
+                          }
+                        }
+                      },
+                      "span": {
+                        "start": {
+                          "col": 4,
+                          "row": 4,
+                          "index": 47
+                        },
+                        "end": {
+                          "col": 11,
+                          "row": 4,
+                          "index": 54
+                        }
+                      }
+                    },
+                    {
+                      "type": "Argument",
+                      "name": {
+                        "type": "Name",
+                        "name": "d",
+                        "span": {
+                          "start": {
+                            "col": 4,
+                            "row": 5,
+                            "index": 60
+                          },
+                          "end": {
+                            "col": 5,
+                            "row": 5,
+                            "index": 61
+                          }
+                        }
+                      },
+                      "value": {
+                        "type": "BooleanValue",
+                        "value": "false",
+                        "span": {
+                          "start": {
+                            "col": 7,
+                            "row": 5,
+                            "index": 63
+                          },
+                          "end": {
+                            "col": 12,
+                            "row": 5,
+                            "index": 68
+                          }
+                        }
+                      },
+                      "span": {
+                        "start": {
+                          "col": 4,
+                          "row": 5,
+                          "index": 60
+                        },
+                        "end": {
+                          "col": 12,
+                          "row": 5,
+                          "index": 68
+                        }
+                      }
+                    },
+                    {
+                      "type": "Argument",
+                      "name": {
+                        "type": "Name",
+                        "name": "e",
+                        "span": {
+                          "start": {
+                            "col": 4,
+                            "row": 6,
+                            "index": 74
+                          },
+                          "end": {
+                            "col": 5,
+                            "row": 6,
+                            "index": 75
+                          }
+                        }
+                      },
+                      "value": {
+                        "type": "NullValue",
+                        "span": {
+                          "start": {
+                            "col": 7,
+                            "row": 6,
+                            "index": 77
+                          },
+                          "end": {
+                            "col": 11,
+                            "row": 6,
+                            "index": 81
+                          }
+                        }
+                      },
+                      "span": {
+                        "start": {
+                          "col": 4,
+                          "row": 6,
+                          "index": 74
+                        },
+                        "end": {
+                          "col": 11,
+                          "row": 6,
+                          "index": 81
+                        }
+                      }
+                    }
+                  ],
+                  "span": {
+                    "start": {
+                      "col": 8,
+                      "row": 1,
+                      "index": 16
+                    },
+                    "end": {
+                      "col": 3,
+                      "row": 7,
+                      "index": 85
+                    }
+                  }
+                }
+              ],
+              "selectionset": null,
+              "span": {
+                "start": {
+                  "col": 2,
+                  "row": 1,
+                  "index": 10
+                },
+                "end": {
+                  "col": 3,
+                  "row": 7,
+                  "index": 85
+                }
+              }
+            }
+          ],
+          "span": {
+            "start": {
+              "col": 6,
+              "row": 0,
+              "index": 6
+            },
+            "end": {
+              "col": 1,
+              "row": 8,
+              "index": 87
+            }
+          }
+        },
+        "span": {
+          "start": {
+            "col": 0,
+            "row": 0,
+            "index": 0
+          },
+          "end": {
+            "col": 1,
+            "row": 8,
+            "index": 87
+          }
+        }
+      }
+    }
+  ]
+}

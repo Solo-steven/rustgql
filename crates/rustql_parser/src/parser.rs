@@ -25,11 +25,21 @@ impl<'a> Parser<'a> {
     fn get_value(&self) -> &'a str {
         self.lexer.get_value()
     }
-    fn get_token(&mut self) -> TokenKind {
-        self.lexer.get_token()
+    pub fn get_token(&mut self) -> TokenKind {
+        let token = self.lexer.get_token();
+        match token {
+            TokenKind::Comment => self.next_token(),
+            _ => token
+        }
     }
-    fn next_token(&mut self)-> TokenKind {
-        self.lexer.next_token()
+    pub fn next_token(&mut self)-> TokenKind {
+        loop {
+            let token = self.lexer.next_token();
+            match token {
+                TokenKind::Comment => continue,
+                _ => return token
+            }
+        }
     }
     fn expect_token(&mut self, expect_token_kind: TokenKind) {
         if self.get_token() == expect_token_kind {
@@ -78,7 +88,7 @@ impl<'a> Parser<'a> {
             parser_error!("fragment need to have type condition", self);
         }
         self.next_token();
-        let type_name = VarType::NameVarType(self.parse_name());
+        let type_name = self.parse_type();
         let mut directives: Option<Vec<Directive>> = None;
         if self.is_match_token(TokenKind::At) {
             let tuple = self.parse_directives();
@@ -161,11 +171,13 @@ impl<'a> Parser<'a> {
                 self.next_token();
                 parsed_type = self.parse_type();
                 self.expect_token(TokenKind::BracketRight);
-                parsed_type = VarType::ListVarType(Box::new(parsed_type))
+                parsed_type = VarType::ListVarType(ListVarType { list_type: Box::new(parsed_type) })
             },
             TokenKind::Name => {
-                let name = self.parse_name();
-                parsed_type = VarType::NameVarType(name);
+                let name = Cow::Borrowed(self.get_value());
+                let span = Span::new(self.get_start_pos(), self.get_end_pos());
+                self.next_token();
+                parsed_type = VarType::NameVarType(NameVarType { name, span });
             },
             _ => {
                 parser_error!("Unknow token when parse type", self);
@@ -173,7 +185,7 @@ impl<'a> Parser<'a> {
         }
         if self.is_match_token(TokenKind::Point) {
             self.next_token();
-            VarType::NonNullVarType(Box::new(parsed_type))
+            VarType::NonNullVarType(NonNullType{ nonull_type: Box::new(parsed_type) })
         }else {
             parsed_type
         }

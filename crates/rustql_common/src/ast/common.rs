@@ -1,6 +1,7 @@
 use std::borrow::Cow;
 use serde_derive::{Deserialize, Serialize};
 use crate::position::Span;
+use crate::ast::query::*;
 // use crate::position::Position;
 
 /* ========== Common AST Type  ========== */
@@ -82,16 +83,30 @@ pub struct  Name<'a> {
     pub span: Span,
 }
 #[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
+#[serde(tag="type")]
 pub enum VarType<'a> {
-    NameVarType(Name<'a>),
-    ListVarType(Box<VarType<'a>>),
-    NonNullVarType(Box<VarType<'a>>)
+    NameVarType(NameVarType<'a>),
+    ListVarType(ListVarType<'a>),
+    NonNullVarType(NonNullType<'a>)
+}
+#[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
+pub struct NameVarType<'a> {
+    pub name: Cow<'a, str>,
+    pub span: Span,
+}
+#[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
+pub struct ListVarType<'a> {
+    pub list_type: Box<VarType<'a>>
+}
+#[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
+pub struct  NonNullType<'a> {
+    pub nonull_type: Box<VarType<'a>>
 }
 pub fn get_type_span(some_type: &VarType) -> Span {
     match some_type {
         VarType::NameVarType(name_type) => name_type.span.clone(),
-        VarType::ListVarType(list_type) => get_type_span(list_type.as_ref()),
-        VarType::NonNullVarType(nonull_type) => get_type_span(nonull_type.as_ref())
+        VarType::ListVarType(list_type) => get_type_span(list_type.list_type.as_ref()),
+        VarType::NonNullVarType(nonull_type) => get_type_span(nonull_type.nonull_type.as_ref())
     }
 }
 #[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
@@ -113,4 +128,14 @@ pub struct Directive<'a> {
     pub name: Name<'a>,
     pub arguments: Option<Vec<Argument<'a>>>,
     pub span: Span,
+}
+#[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
+#[serde(tag="type")]
+pub struct Document<'a> {
+    pub definations: Vec<Defination<'a>>,
+}
+#[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
+pub enum Defination<'a> {
+    FragmentDefination(FragmentDefination<'a>),
+    OperationDefination(OperationDefination<'a>),
 }
