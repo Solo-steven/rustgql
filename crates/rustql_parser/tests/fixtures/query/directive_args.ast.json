@@ -2,93 +2,79 @@
   "type": "Document",
   "definations": [
     {
-      "OperationDefination": {
-        "type": "Query",
-        "name": null,
-        "variable_definations": null,
-        "directives": null,
-        "selectionset": {
-          "type": "SelectSet",
-          "selections": [
-            {
-              "type": "Field",
-              "alias": null,
-              "name": {
-                "type": "Name",
-                "name": "node",
-                "span": {
-                  "start": {
-                    "col": 2,
-                    "row": 1,
-                    "index": 10
-                  },
-                  "end": {
-                    "col": 6,
-                    "row": 1,
-                    "index": 14
-                  }
+      "type": "Query",
+      "name": null,
+      "variable_definations": null,
+      "directives": null,
+      "selectionset": {
+        "type": "SelectSet",
+        "selections": [
+          {
+            "type": "Field",
+            "alias": null,
+            "name": {
+              "type": "Name",
+              "name": "node",
+              "span": {
+                "start": {
+                  "col": 2,
+                  "row": 1,
+                  "index": 10
+                },
+                "end": {
+                  "col": 6,
+                  "row": 1,
+                  "index": 14
                 }
-              },
-              "arguments": null,
-              "directives": [
-                {
-                  "type": "Directive",
-                  "name": {
-                    "type": "Name",
-                    "name": "dir",
-                    "span": {
-                      "start": {
-                        "col": 8,
-                        "row": 1,
-                        "index": 16
-                      },
-                      "end": {
-                        "col": 11,
-                        "row": 1,
-                        "index": 19
-                      }
+              }
+            },
+            "arguments": null,
+            "directives": [
+              {
+                "type": "Directive",
+                "name": {
+                  "type": "Name",
+                  "name": "dir",
+                  "span": {
+                    "start": {
+                      "col": 8,
+                      "row": 1,
+                      "index": 16
+                    },
+                    "end": {
+                      "col": 11,
+                      "row": 1,
+                      "index": 19
                     }
-                  },
-                  "arguments": [
-                    {
-                      "type": "Argument",
-                      "name": {
-                        "type": "Name",
-                        "name": "a",
-                        "span": {
-                          "start": {
-                            "col": 12,
-                            "row": 1,
-                            "index": 20
-                          },
-                          "end": {
-                            "col": 13,
-                            "row": 1,
-                            "index": 21
-                          }
-                        }
-                      },
-                      "value": {
-                        "type": "IntValue",
-                        "value": "1",
-                        "span": {
-                          "start": {
-                            "col": 15,
-                            "row": 1,
-                            "index": 23
-                          },
-                          "end": {
-                            "col": 16,
-                            "row": 1,
-                            "index": 24
-                          }
-                        }
-                      },
+                  }
+                },
+                "arguments": [
+                  {
+                    "type": "Argument",
+                    "name": {
+                      "type": "Name",
+                      "name": "a",
                       "span": {
                         "start": {
                           "col": 12,
                           "row": 1,
                           "index": 20
+                        },
+                        "end": {
+                          "col": 13,
+                          "row": 1,
+                          "index": 21
+                        }
+                      }
+                    },
+                    "value": {
+                      "type": "IntValue",
+                      "value": "1",
+                      "span": {
+                        "start": {
+                          "col": 15,
+                          "row": 1,
+                          "index": 23
                         },
                         "end": {
                           "col": 16,
@@ -97,45 +83,45 @@
                         }
                       }
                     },
-                    {
-                      "type": "Argument",
-                      "name": {
-                        "type": "Name",
-                        "name": "b",
-                        "span": {
-                          "start": {
-                            "col": 18,
-                            "row": 1,
-                            "index": 26
-                          },
-                          "end": {
-                            "col": 19,
-                            "row": 1,
-                            "index": 27
-                          }
-                        }
+                    "span": {
+                      "start": {
+                        "col": 12,
+                        "row": 1,
+                        "index": 20
                       },
-                      "value": {
-                        "type": "StringValue",
-                        "value": "\"2\"",
-                        "span": {
-                          "start": {
-                            "col": 21,
-                            "row": 1,
-                            "index": 29
-                          },
-                          "end": {
-                            "col": 24,
-                            "row": 1,
-                            "index": 32
-                          }
-                        }
-                      },
+                      "end": {
+                        "col": 16,
+                        "row": 1,
+                        "index": 24
+                      }
+                    }
+                  },
+                  {
+                    "type": "Argument",
+                    "name": {
+                      "type": "Name",
+                      "name": "b",
                       "span": {
                         "start": {
                           "col": 18,
                           "row": 1,
                           "index": 26
+                        },
+                        "end": {
+                          "col": 19,
+                          "row": 1,
+                          "index": 27
+                        }
+                      }
+                    },
+                    "value": {
+                      "type": "StringValue",
+                      "value": "\"2\"",
+                      "span": {
+                        "start": {
+                          "col": 21,
+                          "row": 1,
+                          "index": 29
                         },
                         "end": {
                           "col": 24,
@@ -144,45 +130,45 @@
                         }
                       }
                     },
-                    {
-                      "type": "Argument",
-                      "name": {
-                        "type": "Name",
-                        "name": "c",
-                        "span": {
-                          "start": {
-                            "col": 26,
-                            "row": 1,
-                            "index": 34
-                          },
-                          "end": {
-                            "col": 27,
-                            "row": 1,
-                            "index": 35
-                          }
-                        }
+                    "span": {
+                      "start": {
+                        "col": 18,
+                        "row": 1,
+                        "index": 26
                       },
-                      "value": {
-                        "type": "BooleanValue",
-                        "value": "true",
-                        "span": {
-                          "start": {
-                            "col": 29,
-                            "row": 1,
-                            "index": 37
-                          },
-                          "end": {
-                            "col": 33,
-                            "row": 1,
-                            "index": 41
-                          }
-                        }
-                      },
+                      "end": {
+                        "col": 24,
+                        "row": 1,
+                        "index": 32
+                      }
+                    }
+                  },
+                  {
+                    "type": "Argument",
+                    "name": {
+                      "type": "Name",
+                      "name": "c",
                       "span": {
                         "start": {
                           "col": 26,
                           "row": 1,
                           "index": 34
+                        },
+                        "end": {
+                          "col": 27,
+                          "row": 1,
+                          "index": 35
+                        }
+                      }
+                    },
+                    "value": {
+                      "type": "BooleanValue",
+                      "value": "true",
+                      "span": {
+                        "start": {
+                          "col": 29,
+                          "row": 1,
+                          "index": 37
                         },
                         "end": {
                           "col": 33,
@@ -191,45 +177,45 @@
                         }
                       }
                     },
-                    {
-                      "type": "Argument",
-                      "name": {
-                        "type": "Name",
-                        "name": "d",
-                        "span": {
-                          "start": {
-                            "col": 35,
-                            "row": 1,
-                            "index": 43
-                          },
-                          "end": {
-                            "col": 36,
-                            "row": 1,
-                            "index": 44
-                          }
-                        }
+                    "span": {
+                      "start": {
+                        "col": 26,
+                        "row": 1,
+                        "index": 34
                       },
-                      "value": {
-                        "type": "BooleanValue",
-                        "value": "false",
-                        "span": {
-                          "start": {
-                            "col": 38,
-                            "row": 1,
-                            "index": 46
-                          },
-                          "end": {
-                            "col": 43,
-                            "row": 1,
-                            "index": 51
-                          }
-                        }
-                      },
+                      "end": {
+                        "col": 33,
+                        "row": 1,
+                        "index": 41
+                      }
+                    }
+                  },
+                  {
+                    "type": "Argument",
+                    "name": {
+                      "type": "Name",
+                      "name": "d",
                       "span": {
                         "start": {
                           "col": 35,
                           "row": 1,
                           "index": 43
+                        },
+                        "end": {
+                          "col": 36,
+                          "row": 1,
+                          "index": 44
+                        }
+                      }
+                    },
+                    "value": {
+                      "type": "BooleanValue",
+                      "value": "false",
+                      "span": {
+                        "start": {
+                          "col": 38,
+                          "row": 1,
+                          "index": 46
                         },
                         "end": {
                           "col": 43,
@@ -238,39 +224,24 @@
                         }
                       }
                     },
-                    {
-                      "type": "Argument",
-                      "name": {
-                        "type": "Name",
-                        "name": "e",
-                        "span": {
-                          "start": {
-                            "col": 45,
-                            "row": 1,
-                            "index": 53
-                          },
-                          "end": {
-                            "col": 46,
-                            "row": 1,
-                            "index": 54
-                          }
-                        }
+                    "span": {
+                      "start": {
+                        "col": 35,
+                        "row": 1,
+                        "index": 43
                       },
-                      "value": {
-                        "type": "NullValue",
-                        "span": {
-                          "start": {
-                            "col": 48,
-                            "row": 1,
-                            "index": 56
-                          },
-                          "end": {
-                            "col": 52,
-                            "row": 1,
-                            "index": 60
-                          }
-                        }
-                      },
+                      "end": {
+                        "col": 43,
+                        "row": 1,
+                        "index": 51
+                      }
+                    }
+                  },
+                  {
+                    "type": "Argument",
+                    "name": {
+                      "type": "Name",
+                      "name": "e",
                       "span": {
                         "start": {
                           "col": 45,
@@ -278,66 +249,93 @@
                           "index": 53
                         },
                         "end": {
+                          "col": 46,
+                          "row": 1,
+                          "index": 54
+                        }
+                      }
+                    },
+                    "value": {
+                      "type": "NullValue",
+                      "span": {
+                        "start": {
+                          "col": 48,
+                          "row": 1,
+                          "index": 56
+                        },
+                        "end": {
                           "col": 52,
                           "row": 1,
                           "index": 60
                         }
                       }
-                    }
-                  ],
-                  "span": {
-                    "start": {
-                      "col": 8,
-                      "row": 1,
-                      "index": 16
                     },
-                    "end": {
-                      "col": 53,
-                      "row": 1,
-                      "index": 61
+                    "span": {
+                      "start": {
+                        "col": 45,
+                        "row": 1,
+                        "index": 53
+                      },
+                      "end": {
+                        "col": 52,
+                        "row": 1,
+                        "index": 60
+                      }
                     }
                   }
-                }
-              ],
-              "selectionset": null,
-              "span": {
-                "start": {
-                  "col": 2,
-                  "row": 1,
-                  "index": 10
-                },
-                "end": {
-                  "col": 53,
-                  "row": 1,
-                  "index": 61
+                ],
+                "span": {
+                  "start": {
+                    "col": 8,
+                    "row": 1,
+                    "index": 16
+                  },
+                  "end": {
+                    "col": 53,
+                    "row": 1,
+                    "index": 61
+                  }
                 }
               }
-            }
-          ],
-          "span": {
-            "start": {
-              "col": 6,
-              "row": 0,
-              "index": 6
-            },
-            "end": {
-              "col": 1,
-              "row": 2,
-              "index": 63
+            ],
+            "selectionset": null,
+            "span": {
+              "start": {
+                "col": 2,
+                "row": 1,
+                "index": 10
+              },
+              "end": {
+                "col": 53,
+                "row": 1,
+                "index": 61
+              }
             }
           }
-        },
+        ],
         "span": {
           "start": {
-            "col": 0,
+            "col": 6,
             "row": 0,
-            "index": 0
+            "index": 6
           },
           "end": {
             "col": 1,
             "row": 2,
             "index": 63
           }
+        }
+      },
+      "span": {
+        "start": {
+          "col": 0,
+          "row": 0,
+          "index": 0
+        },
+        "end": {
+          "col": 1,
+          "row": 2,
+          "index": 63
         }
       }
     }

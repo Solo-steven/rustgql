@@ -34,6 +34,20 @@ macro_rules! is_keyword_name  {
         }
     }};
 }
+#[macro_export] 
+macro_rules! expect_keyword_name {
+    ($expect_value: expr, $parser: expr) => {{
+        match $parser.get_token() {
+            TokenKind::Name => {
+                match $parser.get_value() {
+                    $expect_value => $parser.next_token(),
+                    _ => parser_error!(format!("expect name token with {:?}, value.", $parser.get_token()), $parser)
+                }
+            }
+            _ =>  parser_error!(format!("expect name token with {:?}, value.", $parser.get_token()), $parser)
+        }
+    }};
+}
 #[macro_export]
 macro_rules! parser_error {
     ($msg: expr, $parser: expr) => {{

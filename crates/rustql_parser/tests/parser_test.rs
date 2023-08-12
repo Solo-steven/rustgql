@@ -26,7 +26,6 @@ mod test {
                     write!(output, "{}",to_string_pretty(&root).unwrap().as_str()).unwrap();
                 }
             };
-
         };
     }
     #[test]
@@ -44,5 +43,13 @@ mod test {
     #[test]
     fn test_fragment() {
         test_case_for_parser!("./tests/fixtures/query/fragment");
+    }
+    #[test]
+    fn test_inline_fragment_dir() {
+        test_case_for_parser!("./tests/fixtures/query/inline_fragment_dir");
+    }
+    #[test]
+    fn test_inline_fragment() {
+
     }
 }

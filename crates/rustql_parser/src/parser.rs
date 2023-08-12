@@ -4,7 +4,7 @@ use rustql_common::ast::common::*;
 use rustql_common::ast::query::*;
 use rustql_common::position::{Position, Span};
 use crate::lexer::Lexer;
-use crate::{is_keyword_name, parser_error, internal_error};
+use crate::{is_keyword_name, expect_keyword_name, parser_error, internal_error};
 
 pub struct Parser<'a> {
     lexer: Lexer<'a>
@@ -63,10 +63,10 @@ impl<'a> Parser<'a> {
     }
     fn parse_defination(&mut self) -> Defination<'a> {
         match self.get_token() {
-            TokenKind::BracesLeft => Defination::OperationDefination(OperationDefination::SelectSet(self.parse_selectionset())),
+            TokenKind::BracesLeft => Defination::SelectSet(self.parse_selectionset()),
             TokenKind::Name => {
                 match self.get_value() {
-                    "query" | "mutation" | "subscription" => Defination::OperationDefination(self.parse_operation()),
+                    "query" | "mutation" | "subscription" => self.parse_operation(),
                     "fragment" => Defination::FragmentDefination(self.parse_fragement()),
                     _ => parser_error!(format!("Unknow Name token with value ({:?})", self.get_value() ), self)
                 }
@@ -76,18 +76,12 @@ impl<'a> Parser<'a> {
     }
     fn parse_fragement(&mut self) -> FragmentDefination<'a> {
         let start_pos = self.get_start_pos();
-        if !is_keyword_name!("fragment", self) {
-            internal_error!("unreach code");
-        }
-        self.next_token();
+        expect_keyword_name!("fragment", self);
         if is_keyword_name!("on", self) {
             parser_error!("fragment name can not be `on`", self);
         }
         let name = self.parse_name();
-        if !is_keyword_name!("on", self) {
-            parser_error!("fragment need to have type condition", self);
-        }
-        self.next_token();
+        expect_keyword_name!("on", self);
         let type_name = self.parse_type();
         let mut directives: Option<Vec<Directive>> = None;
         if self.is_match_token(TokenKind::At) {
@@ -98,7 +92,7 @@ impl<'a> Parser<'a> {
         let span = Span::new(start_pos, selectionset.span.end.clone());
         FragmentDefination { name, type_condition: type_name, directives, selectionset, span }
     }
-    fn parse_operation(&mut self) -> OperationDefination<'a> {
+    fn parse_operation(&mut self) -> Defination<'a> {
         let start_pos = self.get_start_pos();
         let operation_type = self.get_value();
         self.next_token();
@@ -119,13 +113,13 @@ impl<'a> Parser<'a> {
         let span = Span::new(start_pos, selectionset.span.end.clone());
         match operation_type {
             "query" => {
-                OperationDefination::Query(Query { name, variable_definations, directives , selectionset, span })
+                Defination::Query(Query { name, variable_definations, directives , selectionset, span })
             }
             "mutation" => {
-                OperationDefination::Mutation(Mutation { name, variable_definations, directives , selectionset, span })
+                Defination::Mutation(Mutation { name, variable_definations, directives , selectionset, span })
             }
             "subscription" => {
-                OperationDefination::Subscription(Subscription { name, variable_definations, directives , selectionset, span })
+                Defination::Subscription(Subscription { name, variable_definations, directives , selectionset, span })
             }
             _ => {
                 internal_error!("unreach code, parse operation can only be called when operation type is query, mutation, subscription.")
@@ -259,10 +253,14 @@ impl<'a> Parser<'a> {
         Field { alias, name, arguments, directives, selectionset, span: Span::new(start_pos, end_pos) }
     }
     fn parse_inline_fragment(&mut self, start_pos: Position) -> InlineFragment<'a> {
-        let mut type_name: Option<Name<'a>> = None;
+        let mut type_name: Option<NameVarType<'a>> = None;
         if is_keyword_name!("on", self) {
             self.next_token();
-            type_name = Some(self.parse_name());
+            type_name = Some(match self.parse_type() {
+                VarType::ListVarType(_) => parser_error!("inline fragment type can not be list type", self),
+                VarType::NonNullVarType(_) => parser_error!("inline fragment type can not be non null type", self),
+                VarType::NameVarType(name_type) => name_type,
+            })
         }
         let mut directives: Option<Vec<Directive>> = None;
         if self.is_match_token(TokenKind::At) {

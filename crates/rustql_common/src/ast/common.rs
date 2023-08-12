@@ -2,6 +2,7 @@ use std::borrow::Cow;
 use serde_derive::{Deserialize, Serialize};
 use crate::position::Span;
 use crate::ast::query::*;
+use crate::ast::schema::*;
 // use crate::position::Position;
 
 /* ========== Common AST Type  ========== */
@@ -135,7 +136,24 @@ pub struct Document<'a> {
     pub definations: Vec<Defination<'a>>,
 }
 #[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
+#[serde(tag="type")]
 pub enum Defination<'a> {
+    // type system defination
+    SchemaTypeDefination(SchmaTypeDefination<'a>),
+    DirectiveDefination(DirectiveDefinition<'a>),
+    ScalarTypeDefinition(ScalarTypeDefinition<'a>),
+    ObjectTypeDefinition(ObjectTypeDefinition<'a>),
+    InterfaceTypeDefinition(InterfaceTypeDefinition<'a>),
+    UnionTypeDefinition(UnionTypeDefinition<'a>),
+    EnumTypeDefinition(EnumTypeDefinition<'a>),
+    InputObjectTypeDefinition(InputObjectTypeDefinition<'a>),
+    // type extension defination
+    /* TODO */
+    // operation defination
+    SelectSet(SelectSet<'a>),
+    Query(Query<'a>),
+    Mutation(Mutation<'a>),
+    Subscription(Subscription<'a>),
+    // fragment defination
     FragmentDefination(FragmentDefination<'a>),
-    OperationDefination(OperationDefination<'a>),
 }

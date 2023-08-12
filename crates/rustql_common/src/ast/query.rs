@@ -13,14 +13,6 @@ pub struct FragmentDefination<'a> {
     pub span: Span,
 }
 #[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
-#[serde(tag="type")]
-pub enum  OperationDefination<'a> {
-    SelectSet(SelectSet<'a>),
-    Query(Query<'a>),
-    Mutation(Mutation<'a>),
-    Subscription(Subscription<'a>),
-}
-#[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
 pub struct Query<'a> {
     pub name: Option<Name<'a>>,
     pub variable_definations: Option<Vec<VariableDefination<'a>>>,
@@ -82,7 +74,7 @@ pub struct FragmentSpread<'a> {
 }
 #[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
 pub struct InlineFragment<'a> {
-    pub type_condition: Option<Name<'a>>,
+    pub type_condition: Option<NameVarType<'a>>,
     pub directives: Option<Vec<Directive<'a>>>,
     pub selectionset: SelectSet<'a>,
     pub span: Span
