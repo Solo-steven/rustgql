@@ -76,7 +76,7 @@ impl<'a> Parser<'a> {
                     "input" => Defination::InputObjectTypeDefinition(self.parse_input_object_type_defination(None)),
                     "enum" => Defination::EnumTypeDefinition(self.parse_enum_type_defination(None)),
                     "union" => Defination::UnionTypeDefinition(self.parse_union_type_defination(None)),
-                    "directive" =>  panic!("TODO: implement parse directive, type"),
+                    "directive" =>  Defination::DirectiveDefination(self.parse_directive(None)),
                     "extend" => self.parse_extends(),
                     _ => parser_error!(format!("Unknow Name token with value ({:?})", self.get_value() ), self)
                 }
@@ -97,6 +97,7 @@ impl<'a> Parser<'a> {
                             "input" => Defination::InputObjectTypeDefinition(self.parse_input_object_type_defination(Some(description))),
                             "enum" => Defination::EnumTypeDefinition(self.parse_enum_type_defination(Some(description))),
                             "union" => Defination::UnionTypeDefinition(self.parse_union_type_defination(Some(description))),
+                            "directive" =>  Defination::DirectiveDefination(self.parse_directive(Some(description))),
                             "extend" => self.parse_extends(),
                             _ => parser_error!(format!("Unknow Name token with value ({:?})", self.get_value() ), self)
                         }
@@ -145,15 +146,9 @@ impl<'a> Parser<'a> {
         let selectionset = self.parse_selectionset();
         let span = Span::new(start_pos, selectionset.span.end.clone());
         match operation_type {
-            "query" => {
-                Defination::Query(Query { name, variable_definations, directives , selectionset, span })
-            }
-            "mutation" => {
-                Defination::Mutation(Mutation { name, variable_definations, directives , selectionset, span })
-            }
-            "subscription" => {
-                Defination::Subscription(Subscription { name, variable_definations, directives , selectionset, span })
-            }
+            "query" => Defination::Query(Query { name, variable_definations, directives , selectionset, span }),
+            "mutation" => Defination::Mutation(Mutation { name, variable_definations, directives , selectionset, span }),
+            "subscription" => Defination::Subscription(Subscription { name, variable_definations, directives , selectionset, span }),
             _ => {
                 internal_error!("unreach code, parse operation can only be called when operation type is query, mutation, subscription.")
             }
@@ -500,6 +495,64 @@ impl<'a> Parser<'a> {
             directives: schema_def.directives, span: Span::new(start_pos, schema_def.span.end),
             query: schema_def.query, mutation: schema_def.mutation, subscription: schema_def.subscription 
         }
+    }
+    fn parse_directive(&mut self, description: Option<StringValue<'a>>) -> DirectiveDefinition<'a> {
+        expect_keyword_name!("directive", self);
+        self.expect_token(TokenKind::At);
+        let name = self.parse_name();
+        let start_pos = match description.as_ref() {
+            Some(descr) => descr.span.start.clone(),
+            None =>  name.span.start.clone()
+        };
+        let mut argument_definations = None;
+        if self.is_match_token(TokenKind::ParenthesesLeft) {
+            argument_definations = Some(self.parse_input_value_definations().0);
+        }
+        expect_keyword_name!("on", self);
+        let mut end_pos: Position = Position::new();
+        let mut directive_locations = Vec::new();
+        let mut is_frist = true;
+        loop {
+            if is_frist {
+                is_frist = false;
+                if self.is_match_token(TokenKind::Pipe) {
+                    self.next_token();
+                }
+            }else if self.is_match_token(TokenKind::Pipe) {
+                self.next_token();
+            }else {
+                break;
+            }
+            directive_locations.push(match self.get_token() {
+                TokenKind::Name => {
+                    match self.get_value() {
+                        "QUERY" => DirectiveLocation::Query,
+                        "MUTATION" => DirectiveLocation::Mutation,
+                        "SUBSCRIPTION" => DirectiveLocation::Subscription,
+                        "FIELD" => DirectiveLocation::Field,
+                        "FRAGMENT_DEFINITION" => DirectiveLocation::FieldDefinition,
+                        "FRAGMENT_SPREAD" => DirectiveLocation::FragmentSpread,
+                        "INLINE_FRAGMENT" => DirectiveLocation::InlineFragment,
+                        "SCHEMA" => DirectiveLocation::Schema,
+                        "SCALAR" => DirectiveLocation::Scalar,
+                        "OBJECT" => DirectiveLocation::Object,
+                        "FIELD_DEFINITION" => DirectiveLocation::FieldDefinition,
+                        "ARGUMENT_DEFINITION" => DirectiveLocation::ArgumentDefinition,
+                        "INTERFACE" => DirectiveLocation::Interface,
+                        "UNION" => DirectiveLocation::Union,
+                        "ENUM" => DirectiveLocation::Enum,
+                        "ENUM_VALUE" => DirectiveLocation::EnumValue,
+                        "INPUT_OBJECT" => DirectiveLocation::InputObject,
+                        "INPUT_FIELD_DEFINITION" => DirectiveLocation::InputFieldDefinition,
+                        _ => parser_error!("", self)
+                    }
+                }
+                _ => parser_error!("", self)
+            });
+            end_pos = self.get_end_pos();
+            self.next_token();
+        }
+        DirectiveDefinition { description, name, argument_definations, directive_locations, span: Span::new(start_pos, end_pos) }
     }
     fn parse_operation_type_definations(&mut self) -> (Vec<NameVarType<'a>>, Vec<NameVarType<'a>>, Vec<NameVarType<'a>>, Position, Position) {
         let start_pos = self.get_start_pos();
