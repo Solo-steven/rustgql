@@ -6,7 +6,7 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-rustql_common = {path = "../rustql_common"}
+rustql_common = { version = "*", path = "../rustql_common"}
 
 [dev-dependencies]
 criterion = { version = "0.4", features = ["html_reports"] }
