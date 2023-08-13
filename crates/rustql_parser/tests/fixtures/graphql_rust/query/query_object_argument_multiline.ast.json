@@ -1,0 +1,240 @@
+{
+  "type": "Document",
+  "definations": [
+    {
+      "type": "Query",
+      "name": null,
+      "variable_definations": null,
+      "directives": null,
+      "selectionset": {
+        "selections": [
+          {
+            "type": "Field",
+            "alias": null,
+            "name": {
+              "type": "Name",
+              "name": "node",
+              "span": {
+                "start": {
+                  "col": 2,
+                  "row": 1,
+                  "index": 10
+                },
+                "end": {
+                  "col": 6,
+                  "row": 1,
+                  "index": 14
+                }
+              }
+            },
+            "arguments": [
+              {
+                "type": "Argument",
+                "name": {
+                  "type": "Name",
+                  "name": "id",
+                  "span": {
+                    "start": {
+                      "col": 4,
+                      "row": 2,
+                      "index": 20
+                    },
+                    "end": {
+                      "col": 6,
+                      "row": 2,
+                      "index": 22
+                    }
+                  }
+                },
+                "value": {
+                  "type": "IntValue",
+                  "value": "1",
+                  "span": {
+                    "start": {
+                      "col": 8,
+                      "row": 2,
+                      "index": 24
+                    },
+                    "end": {
+                      "col": 9,
+                      "row": 2,
+                      "index": 25
+                    }
+                  }
+                },
+                "span": {
+                  "start": {
+                    "col": 4,
+                    "row": 2,
+                    "index": 20
+                  },
+                  "end": {
+                    "col": 9,
+                    "row": 2,
+                    "index": 25
+                  }
+                }
+              },
+              {
+                "type": "Argument",
+                "name": {
+                  "type": "Name",
+                  "name": "obj",
+                  "span": {
+                    "start": {
+                      "col": 4,
+                      "row": 3,
+                      "index": 31
+                    },
+                    "end": {
+                      "col": 7,
+                      "row": 3,
+                      "index": 34
+                    }
+                  }
+                },
+                "value": {
+                  "type": "ObjectValue",
+                  "value": [
+                    {
+                      "type": "ObjectField",
+                      "name": {
+                        "type": "Name",
+                        "name": "key1",
+                        "span": {
+                          "start": {
+                            "col": 6,
+                            "row": 4,
+                            "index": 44
+                          },
+                          "end": {
+                            "col": 10,
+                            "row": 4,
+                            "index": 48
+                          }
+                        }
+                      },
+                      "value": {
+                        "type": "IntValue",
+                        "value": "123",
+                        "span": {
+                          "start": {
+                            "col": 12,
+                            "row": 4,
+                            "index": 50
+                          },
+                          "end": {
+                            "col": 15,
+                            "row": 4,
+                            "index": 53
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "type": "ObjectField",
+                      "name": {
+                        "type": "Name",
+                        "name": "key2",
+                        "span": {
+                          "start": {
+                            "col": 6,
+                            "row": 5,
+                            "index": 61
+                          },
+                          "end": {
+                            "col": 10,
+                            "row": 5,
+                            "index": 65
+                          }
+                        }
+                      },
+                      "value": {
+                        "type": "IntValue",
+                        "value": "456",
+                        "span": {
+                          "start": {
+                            "col": 12,
+                            "row": 5,
+                            "index": 67
+                          },
+                          "end": {
+                            "col": 15,
+                            "row": 5,
+                            "index": 70
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "span": {
+                    "start": {
+                      "col": 9,
+                      "row": 3,
+                      "index": 36
+                    },
+                    "end": {
+                      "col": 5,
+                      "row": 6,
+                      "index": 76
+                    }
+                  }
+                },
+                "span": {
+                  "start": {
+                    "col": 4,
+                    "row": 3,
+                    "index": 31
+                  },
+                  "end": {
+                    "col": 5,
+                    "row": 6,
+                    "index": 76
+                  }
+                }
+              }
+            ],
+            "directives": null,
+            "selectionset": null,
+            "span": {
+              "start": {
+                "col": 2,
+                "row": 1,
+                "index": 10
+              },
+              "end": {
+                "col": 3,
+                "row": 7,
+                "index": 80
+              }
+            }
+          }
+        ],
+        "span": {
+          "start": {
+            "col": 6,
+            "row": 0,
+            "index": 6
+          },
+          "end": {
+            "col": 1,
+            "row": 8,
+            "index": 82
+          }
+        }
+      },
+      "span": {
+        "start": {
+          "col": 0,
+          "row": 0,
+          "index": 0
+        },
+        "end": {
+          "col": 1,
+          "row": 8,
+          "index": 82
+        }
+      }
+    }
+  ]
+}

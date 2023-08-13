@@ -1,0 +1,97 @@
+{
+  "type": "Document",
+  "definations": [
+    {
+      "type": "DirectiveDefination",
+      "description": null,
+      "name": {
+        "type": "Name",
+        "name": "skip",
+        "span": {
+          "start": {
+            "col": 11,
+            "row": 0,
+            "index": 11
+          },
+          "end": {
+            "col": 15,
+            "row": 0,
+            "index": 15
+          }
+        }
+      },
+      "argument_definations": [
+        {
+          "description": null,
+          "name": {
+            "type": "Name",
+            "name": "if",
+            "span": {
+              "start": {
+                "col": 16,
+                "row": 0,
+                "index": 16
+              },
+              "end": {
+                "col": 18,
+                "row": 0,
+                "index": 18
+              }
+            }
+          },
+          "var_type": {
+            "type": "NonNullVarType",
+            "nonull_type": {
+              "type": "NameVarType",
+              "name": "Boolean",
+              "span": {
+                "start": {
+                  "col": 20,
+                  "row": 0,
+                  "index": 20
+                },
+                "end": {
+                  "col": 27,
+                  "row": 0,
+                  "index": 27
+                }
+              }
+            }
+          },
+          "default_value": null,
+          "directives": null,
+          "span": {
+            "start": {
+              "col": 16,
+              "row": 0,
+              "index": 16
+            },
+            "end": {
+              "col": 27,
+              "row": 0,
+              "index": 27
+            }
+          }
+        }
+      ],
+      "directive_locations": [
+        "Field",
+        "FragmentSpread",
+        "InlineFragment"
+      ],
+      "is_repeatable": false,
+      "span": {
+        "start": {
+          "col": 11,
+          "row": 0,
+          "index": 11
+        },
+        "end": {
+          "col": 74,
+          "row": 0,
+          "index": 74
+        }
+      }
+    }
+  ]
+}

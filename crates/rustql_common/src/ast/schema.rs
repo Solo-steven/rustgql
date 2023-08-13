@@ -25,6 +25,7 @@ pub struct DirectiveDefinition<'a> {
     pub name: Name<'a>,
     pub argument_definations: Option<Vec<InputValueDefinition<'a>>>,
     pub directive_locations: Vec<DirectiveLocation>,
+    pub is_repeatable: bool,
     pub span: Span,
 }
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -37,6 +38,7 @@ pub enum DirectiveLocation {
     FragmentDefinition,
     FragmentSpread,
     InlineFragment,
+    VariableDefination,
     // type_system
     Schema,
     Scalar,
@@ -49,7 +51,6 @@ pub enum DirectiveLocation {
     EnumValue,
     InputObject,
     InputFieldDefinition,
-    VariableDefinition,
 }
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct InputValueDefinition<'a> {
@@ -102,6 +103,7 @@ pub struct FieldDefination<'a> {
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct InterfaceTypeDefinition<'a> {
     pub description: Option<StringValue<'a>>,
+    pub implement_interfaces: Option<Vec<NameVarType<'a>>>,
     pub name: Name<'a>,
     pub directives: Option<Vec<Directive<'a>>>,
     pub field_definations: Option<Vec<FieldDefination<'a>>>,
@@ -110,6 +112,7 @@ pub struct InterfaceTypeDefinition<'a> {
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct InterfaceTypeExtension<'a> {
     pub name: Name<'a>,
+    pub implement_interfaces: Option<Vec<NameVarType<'a>>>,
     pub directives: Option<Vec<Directive<'a>>>,
     pub field_definations: Option<Vec<FieldDefination<'a>>>,
     pub span: Span,

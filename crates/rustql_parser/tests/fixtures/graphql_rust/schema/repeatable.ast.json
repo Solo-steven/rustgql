@@ -1,0 +1,95 @@
+{
+  "type": "Document",
+  "definations": [
+    {
+      "type": "DirectiveDefination",
+      "description": null,
+      "name": {
+        "type": "Name",
+        "name": "filter",
+        "span": {
+          "start": {
+            "col": 11,
+            "row": 0,
+            "index": 11
+          },
+          "end": {
+            "col": 17,
+            "row": 0,
+            "index": 17
+          }
+        }
+      },
+      "argument_definations": [
+        {
+          "description": null,
+          "name": {
+            "type": "Name",
+            "name": "expression",
+            "span": {
+              "start": {
+                "col": 18,
+                "row": 0,
+                "index": 18
+              },
+              "end": {
+                "col": 28,
+                "row": 0,
+                "index": 28
+              }
+            }
+          },
+          "var_type": {
+            "type": "NonNullVarType",
+            "nonull_type": {
+              "type": "NameVarType",
+              "name": "String",
+              "span": {
+                "start": {
+                  "col": 30,
+                  "row": 0,
+                  "index": 30
+                },
+                "end": {
+                  "col": 36,
+                  "row": 0,
+                  "index": 36
+                }
+              }
+            }
+          },
+          "default_value": null,
+          "directives": null,
+          "span": {
+            "start": {
+              "col": 18,
+              "row": 0,
+              "index": 18
+            },
+            "end": {
+              "col": 36,
+              "row": 0,
+              "index": 36
+            }
+          }
+        }
+      ],
+      "directive_locations": [
+        "Field"
+      ],
+      "is_repeatable": true,
+      "span": {
+        "start": {
+          "col": 11,
+          "row": 0,
+          "index": 11
+        },
+        "end": {
+          "col": 58,
+          "row": 0,
+          "index": 58
+        }
+      }
+    }
+  ]
+}

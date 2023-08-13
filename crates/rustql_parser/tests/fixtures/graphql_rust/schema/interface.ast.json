@@ -1,0 +1,90 @@
+{
+  "type": "Document",
+  "definations": [
+    {
+      "type": "InterfaceTypeDefinition",
+      "description": null,
+      "implement_interfaces": null,
+      "name": {
+        "type": "Name",
+        "name": "Bar",
+        "span": {
+          "start": {
+            "col": 10,
+            "row": 0,
+            "index": 10
+          },
+          "end": {
+            "col": 13,
+            "row": 0,
+            "index": 13
+          }
+        }
+      },
+      "directives": null,
+      "field_definations": [
+        {
+          "description": null,
+          "name": {
+            "type": "Name",
+            "name": "one",
+            "span": {
+              "start": {
+                "col": 2,
+                "row": 1,
+                "index": 18
+              },
+              "end": {
+                "col": 5,
+                "row": 1,
+                "index": 21
+              }
+            }
+          },
+          "argument_definations": null,
+          "directives": null,
+          "var_type": {
+            "type": "NameVarType",
+            "name": "Type",
+            "span": {
+              "start": {
+                "col": 7,
+                "row": 1,
+                "index": 23
+              },
+              "end": {
+                "col": 11,
+                "row": 1,
+                "index": 27
+              }
+            }
+          },
+          "span": {
+            "start": {
+              "col": 2,
+              "row": 1,
+              "index": 18
+            },
+            "end": {
+              "col": 11,
+              "row": 1,
+              "index": 27
+            }
+          }
+        }
+      ],
+      "span": {
+        "start": {
+          "col": 10,
+          "row": 0,
+          "index": 10
+        },
+        "end": {
+          "col": 1,
+          "row": 2,
+          "index": 29
+        }
+      }
+    }
+  ]
+}

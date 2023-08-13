@@ -1,0 +1,122 @@
+{
+  "type": "Document",
+  "definations": [
+    {
+      "type": "ObjectTypeDefinition",
+      "description": null,
+      "name": {
+        "type": "Name",
+        "name": "Type1",
+        "span": {
+          "start": {
+            "col": 5,
+            "row": 0,
+            "index": 5
+          },
+          "end": {
+            "col": 10,
+            "row": 0,
+            "index": 10
+          }
+        }
+      },
+      "implement_interfaces": [
+        {
+          "name": "IOne",
+          "span": {
+            "start": {
+              "col": 24,
+              "row": 0,
+              "index": 24
+            },
+            "end": {
+              "col": 28,
+              "row": 0,
+              "index": 28
+            }
+          }
+        },
+        {
+          "name": "ITwo",
+          "span": {
+            "start": {
+              "col": 31,
+              "row": 0,
+              "index": 31
+            },
+            "end": {
+              "col": 35,
+              "row": 0,
+              "index": 35
+            }
+          }
+        }
+      ],
+      "field_definations": null,
+      "directives": null,
+      "span": {
+        "start": {
+          "col": 5,
+          "row": 0,
+          "index": 5
+        },
+        "end": {
+          "col": 10,
+          "row": 0,
+          "index": 10
+        }
+      }
+    },
+    {
+      "type": "ObjectTypeDefinition",
+      "description": null,
+      "name": {
+        "type": "Name",
+        "name": "Type2",
+        "span": {
+          "start": {
+            "col": 5,
+            "row": 1,
+            "index": 41
+          },
+          "end": {
+            "col": 10,
+            "row": 1,
+            "index": 46
+          }
+        }
+      },
+      "implement_interfaces": [
+        {
+          "name": "IOne",
+          "span": {
+            "start": {
+              "col": 24,
+              "row": 1,
+              "index": 60
+            },
+            "end": {
+              "col": 28,
+              "row": 1,
+              "index": 64
+            }
+          }
+        }
+      ],
+      "field_definations": null,
+      "directives": null,
+      "span": {
+        "start": {
+          "col": 5,
+          "row": 1,
+          "index": 41
+        },
+        "end": {
+          "col": 10,
+          "row": 1,
+          "index": 46
+        }
+      }
+    }
+  ]
+}

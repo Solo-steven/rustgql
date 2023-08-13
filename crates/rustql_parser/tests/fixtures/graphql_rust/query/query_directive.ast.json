@@ -1,0 +1,107 @@
+{
+  "type": "Document",
+  "definations": [
+    {
+      "type": "Query",
+      "name": null,
+      "variable_definations": null,
+      "directives": [
+        {
+          "type": "Directive",
+          "name": {
+            "type": "Name",
+            "name": "directive",
+            "span": {
+              "start": {
+                "col": 7,
+                "row": 0,
+                "index": 7
+              },
+              "end": {
+                "col": 16,
+                "row": 0,
+                "index": 16
+              }
+            }
+          },
+          "arguments": null,
+          "span": {
+            "start": {
+              "col": 7,
+              "row": 0,
+              "index": 7
+            },
+            "end": {
+              "col": 16,
+              "row": 0,
+              "index": 16
+            }
+          }
+        }
+      ],
+      "selectionset": {
+        "selections": [
+          {
+            "type": "Field",
+            "alias": null,
+            "name": {
+              "type": "Name",
+              "name": "node",
+              "span": {
+                "start": {
+                  "col": 2,
+                  "row": 1,
+                  "index": 21
+                },
+                "end": {
+                  "col": 6,
+                  "row": 1,
+                  "index": 25
+                }
+              }
+            },
+            "arguments": null,
+            "directives": null,
+            "selectionset": null,
+            "span": {
+              "start": {
+                "col": 2,
+                "row": 1,
+                "index": 21
+              },
+              "end": {
+                "col": 6,
+                "row": 1,
+                "index": 25
+              }
+            }
+          }
+        ],
+        "span": {
+          "start": {
+            "col": 17,
+            "row": 0,
+            "index": 17
+          },
+          "end": {
+            "col": 1,
+            "row": 2,
+            "index": 27
+          }
+        }
+      },
+      "span": {
+        "start": {
+          "col": 0,
+          "row": 0,
+          "index": 0
+        },
+        "end": {
+          "col": 1,
+          "row": 2,
+          "index": 27
+        }
+      }
+    }
+  ]
+}

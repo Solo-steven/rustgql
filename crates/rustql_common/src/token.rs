@@ -18,6 +18,7 @@ pub enum TokenKind {
     BracesLeft,     // {
     Pipe,           // |
     BracesRight,    // }
+    And, // & (not in the spec, but need it)
     /* Name */
     Name,
     /* IntValue */

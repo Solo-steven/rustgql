@@ -1,0 +1,107 @@
+{
+  "type": "Document",
+  "definations": [
+    {
+      "type": "Subscription",
+      "name": null,
+      "variable_definations": null,
+      "directives": [
+        {
+          "type": "Directive",
+          "name": {
+            "type": "Name",
+            "name": "directive",
+            "span": {
+              "start": {
+                "col": 14,
+                "row": 0,
+                "index": 14
+              },
+              "end": {
+                "col": 23,
+                "row": 0,
+                "index": 23
+              }
+            }
+          },
+          "arguments": null,
+          "span": {
+            "start": {
+              "col": 14,
+              "row": 0,
+              "index": 14
+            },
+            "end": {
+              "col": 23,
+              "row": 0,
+              "index": 23
+            }
+          }
+        }
+      ],
+      "selectionset": {
+        "selections": [
+          {
+            "type": "Field",
+            "alias": null,
+            "name": {
+              "type": "Name",
+              "name": "node",
+              "span": {
+                "start": {
+                  "col": 2,
+                  "row": 1,
+                  "index": 28
+                },
+                "end": {
+                  "col": 6,
+                  "row": 1,
+                  "index": 32
+                }
+              }
+            },
+            "arguments": null,
+            "directives": null,
+            "selectionset": null,
+            "span": {
+              "start": {
+                "col": 2,
+                "row": 1,
+                "index": 28
+              },
+              "end": {
+                "col": 6,
+                "row": 1,
+                "index": 32
+              }
+            }
+          }
+        ],
+        "span": {
+          "start": {
+            "col": 24,
+            "row": 0,
+            "index": 24
+          },
+          "end": {
+            "col": 1,
+            "row": 2,
+            "index": 34
+          }
+        }
+      },
+      "span": {
+        "start": {
+          "col": 0,
+          "row": 0,
+          "index": 0
+        },
+        "end": {
+          "col": 1,
+          "row": 2,
+          "index": 34
+        }
+      }
+    }
+  ]
+}

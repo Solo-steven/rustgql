@@ -1,0 +1,42 @@
+{
+  "type": "Document",
+  "definations": [
+    {
+      "type": "DirectiveDefination",
+      "description": null,
+      "name": {
+        "type": "Name",
+        "name": "configurable",
+        "span": {
+          "start": {
+            "col": 11,
+            "row": 0,
+            "index": 11
+          },
+          "end": {
+            "col": 23,
+            "row": 0,
+            "index": 23
+          }
+        }
+      },
+      "argument_definations": null,
+      "directive_locations": [
+        "VariableDefination"
+      ],
+      "is_repeatable": false,
+      "span": {
+        "start": {
+          "col": 11,
+          "row": 0,
+          "index": 11
+        },
+        "end": {
+          "col": 46,
+          "row": 0,
+          "index": 46
+        }
+      }
+    }
+  ]
+}

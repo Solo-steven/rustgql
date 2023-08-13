@@ -1,0 +1,316 @@
+{
+  "type": "Document",
+  "definations": [
+    {
+      "type": "InterfaceTypeExtension",
+      "name": {
+        "type": "Name",
+        "name": "Bar",
+        "span": {
+          "start": {
+            "col": 17,
+            "row": 0,
+            "index": 17
+          },
+          "end": {
+            "col": 20,
+            "row": 0,
+            "index": 20
+          }
+        }
+      },
+      "implement_interfaces": null,
+      "directives": null,
+      "field_definations": [
+        {
+          "description": null,
+          "name": {
+            "type": "Name",
+            "name": "two",
+            "span": {
+              "start": {
+                "col": 2,
+                "row": 1,
+                "index": 25
+              },
+              "end": {
+                "col": 5,
+                "row": 1,
+                "index": 28
+              }
+            }
+          },
+          "argument_definations": [
+            {
+              "description": null,
+              "name": {
+                "type": "Name",
+                "name": "argument",
+                "span": {
+                  "start": {
+                    "col": 6,
+                    "row": 1,
+                    "index": 29
+                  },
+                  "end": {
+                    "col": 14,
+                    "row": 1,
+                    "index": 37
+                  }
+                }
+              },
+              "var_type": {
+                "type": "NonNullVarType",
+                "nonull_type": {
+                  "type": "NameVarType",
+                  "name": "InputType",
+                  "span": {
+                    "start": {
+                      "col": 16,
+                      "row": 1,
+                      "index": 39
+                    },
+                    "end": {
+                      "col": 25,
+                      "row": 1,
+                      "index": 48
+                    }
+                  }
+                }
+              },
+              "default_value": null,
+              "directives": null,
+              "span": {
+                "start": {
+                  "col": 6,
+                  "row": 1,
+                  "index": 29
+                },
+                "end": {
+                  "col": 25,
+                  "row": 1,
+                  "index": 48
+                }
+              }
+            }
+          ],
+          "directives": null,
+          "var_type": {
+            "type": "NameVarType",
+            "name": "Type",
+            "span": {
+              "start": {
+                "col": 29,
+                "row": 1,
+                "index": 52
+              },
+              "end": {
+                "col": 33,
+                "row": 1,
+                "index": 56
+              }
+            }
+          },
+          "span": {
+            "start": {
+              "col": 2,
+              "row": 1,
+              "index": 25
+            },
+            "end": {
+              "col": 33,
+              "row": 1,
+              "index": 56
+            }
+          }
+        }
+      ],
+      "span": {
+        "start": {
+          "col": 0,
+          "row": 0,
+          "index": 0
+        },
+        "end": {
+          "col": 1,
+          "row": 2,
+          "index": 58
+        }
+      }
+    },
+    {
+      "type": "InterfaceTypeExtension",
+      "name": {
+        "type": "Name",
+        "name": "Foo",
+        "span": {
+          "start": {
+            "col": 17,
+            "row": 4,
+            "index": 77
+          },
+          "end": {
+            "col": 20,
+            "row": 4,
+            "index": 80
+          }
+        }
+      },
+      "implement_interfaces": [
+        {
+          "name": "IOne",
+          "span": {
+            "start": {
+              "col": 32,
+              "row": 4,
+              "index": 92
+            },
+            "end": {
+              "col": 36,
+              "row": 4,
+              "index": 96
+            }
+          }
+        },
+        {
+          "name": "ITwo",
+          "span": {
+            "start": {
+              "col": 39,
+              "row": 4,
+              "index": 99
+            },
+            "end": {
+              "col": 43,
+              "row": 4,
+              "index": 103
+            }
+          }
+        }
+      ],
+      "directives": null,
+      "field_definations": [
+        {
+          "description": null,
+          "name": {
+            "type": "Name",
+            "name": "three",
+            "span": {
+              "start": {
+                "col": 2,
+                "row": 5,
+                "index": 108
+              },
+              "end": {
+                "col": 7,
+                "row": 5,
+                "index": 113
+              }
+            }
+          },
+          "argument_definations": [
+            {
+              "description": null,
+              "name": {
+                "type": "Name",
+                "name": "argument",
+                "span": {
+                  "start": {
+                    "col": 8,
+                    "row": 5,
+                    "index": 114
+                  },
+                  "end": {
+                    "col": 16,
+                    "row": 5,
+                    "index": 122
+                  }
+                }
+              },
+              "var_type": {
+                "type": "NonNullVarType",
+                "nonull_type": {
+                  "type": "ListVarType",
+                  "list_type": {
+                    "type": "NonNullVarType",
+                    "nonull_type": {
+                      "type": "NameVarType",
+                      "name": "InputType",
+                      "span": {
+                        "start": {
+                          "col": 19,
+                          "row": 5,
+                          "index": 125
+                        },
+                        "end": {
+                          "col": 28,
+                          "row": 5,
+                          "index": 134
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "default_value": null,
+              "directives": null,
+              "span": {
+                "start": {
+                  "col": 8,
+                  "row": 5,
+                  "index": 114
+                },
+                "end": {
+                  "col": 28,
+                  "row": 5,
+                  "index": 134
+                }
+              }
+            }
+          ],
+          "directives": null,
+          "var_type": {
+            "type": "NameVarType",
+            "name": "Type",
+            "span": {
+              "start": {
+                "col": 34,
+                "row": 5,
+                "index": 140
+              },
+              "end": {
+                "col": 38,
+                "row": 5,
+                "index": 144
+              }
+            }
+          },
+          "span": {
+            "start": {
+              "col": 2,
+              "row": 5,
+              "index": 108
+            },
+            "end": {
+              "col": 38,
+              "row": 5,
+              "index": 144
+            }
+          }
+        }
+      ],
+      "span": {
+        "start": {
+          "col": 0,
+          "row": 4,
+          "index": 60
+        },
+        "end": {
+          "col": 1,
+          "row": 6,
+          "index": 146
+        }
+      }
+    }
+  ]
+}

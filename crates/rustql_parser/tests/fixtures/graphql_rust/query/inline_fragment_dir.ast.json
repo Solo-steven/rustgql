@@ -7,7 +7,6 @@
       "variable_definations": null,
       "directives": null,
       "selectionset": {
-        "type": "SelectSet",
         "selections": [
           {
             "type": "Field",
@@ -31,7 +30,6 @@
             "arguments": null,
             "directives": null,
             "selectionset": {
-              "type": "SelectSet",
               "selections": [
                 {
                   "type": "Field",
@@ -120,7 +118,6 @@
                     }
                   ],
                   "selectionset": {
-                    "type": "SelectSet",
                     "selections": [
                       {
                         "type": "Field",

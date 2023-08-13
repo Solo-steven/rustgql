@@ -1,0 +1,74 @@
+{
+  "type": "Document",
+  "definations": [
+    {
+      "type": "Mutation",
+      "name": null,
+      "variable_definations": null,
+      "directives": null,
+      "selectionset": {
+        "selections": [
+          {
+            "type": "Field",
+            "alias": null,
+            "name": {
+              "type": "Name",
+              "name": "notify",
+              "span": {
+                "start": {
+                  "col": 2,
+                  "row": 1,
+                  "index": 13
+                },
+                "end": {
+                  "col": 8,
+                  "row": 1,
+                  "index": 19
+                }
+              }
+            },
+            "arguments": null,
+            "directives": null,
+            "selectionset": null,
+            "span": {
+              "start": {
+                "col": 2,
+                "row": 1,
+                "index": 13
+              },
+              "end": {
+                "col": 8,
+                "row": 1,
+                "index": 19
+              }
+            }
+          }
+        ],
+        "span": {
+          "start": {
+            "col": 9,
+            "row": 0,
+            "index": 9
+          },
+          "end": {
+            "col": 1,
+            "row": 2,
+            "index": 21
+          }
+        }
+      },
+      "span": {
+        "start": {
+          "col": 0,
+          "row": 0,
+          "index": 0
+        },
+        "end": {
+          "col": 1,
+          "row": 2,
+          "index": 21
+        }
+      }
+    }
+  ]
+}

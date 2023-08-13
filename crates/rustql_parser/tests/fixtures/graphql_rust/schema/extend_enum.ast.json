@@ -1,0 +1,70 @@
+{
+  "type": "Document",
+  "definations": [
+    {
+      "type": "EnumTypeExtension",
+      "name": {
+        "type": "Name",
+        "name": "Site",
+        "span": {
+          "start": {
+            "col": 12,
+            "row": 0,
+            "index": 12
+          },
+          "end": {
+            "col": 16,
+            "row": 0,
+            "index": 16
+          }
+        }
+      },
+      "directives": null,
+      "value_definations": [
+        {
+          "description": null,
+          "value": {
+            "value": "VR",
+            "span": {
+              "start": {
+                "col": 2,
+                "row": 1,
+                "index": 21
+              },
+              "end": {
+                "col": 4,
+                "row": 1,
+                "index": 23
+              }
+            }
+          },
+          "directives": null,
+          "span": {
+            "start": {
+              "col": 2,
+              "row": 1,
+              "index": 21
+            },
+            "end": {
+              "col": 4,
+              "row": 1,
+              "index": 23
+            }
+          }
+        }
+      ],
+      "span": {
+        "start": {
+          "col": 0,
+          "row": 0,
+          "index": 0
+        },
+        "end": {
+          "col": 16,
+          "row": 0,
+          "index": 16
+        }
+      }
+    }
+  ]
+}

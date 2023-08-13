@@ -1,0 +1,245 @@
+{
+  "type": "Document",
+  "definations": [
+    {
+      "type": "DirectiveDefination",
+      "description": {
+        "value": "\"\"\"\nDirects the executor to include this field or fragment only when the `if` argument is true.\n\"\"\"",
+        "span": {
+          "start": {
+            "col": 0,
+            "row": 0,
+            "index": 0
+          },
+          "end": {
+            "col": 3,
+            "row": 2,
+            "index": 99
+          }
+        }
+      },
+      "name": {
+        "type": "Name",
+        "name": "include",
+        "span": {
+          "start": {
+            "col": 11,
+            "row": 3,
+            "index": 111
+          },
+          "end": {
+            "col": 18,
+            "row": 3,
+            "index": 118
+          }
+        }
+      },
+      "argument_definations": [
+        {
+          "description": {
+            "value": "\"\"\"\n  Included when true.\n  \"\"\"",
+            "span": {
+              "start": {
+                "col": 2,
+                "row": 4,
+                "index": 122
+              },
+              "end": {
+                "col": 5,
+                "row": 6,
+                "index": 153
+              }
+            }
+          },
+          "name": {
+            "type": "Name",
+            "name": "if",
+            "span": {
+              "start": {
+                "col": 2,
+                "row": 7,
+                "index": 156
+              },
+              "end": {
+                "col": 4,
+                "row": 7,
+                "index": 158
+              }
+            }
+          },
+          "var_type": {
+            "type": "NonNullVarType",
+            "nonull_type": {
+              "type": "NameVarType",
+              "name": "Boolean",
+              "span": {
+                "start": {
+                  "col": 6,
+                  "row": 7,
+                  "index": 160
+                },
+                "end": {
+                  "col": 13,
+                  "row": 7,
+                  "index": 167
+                }
+              }
+            }
+          },
+          "default_value": null,
+          "directives": null,
+          "span": {
+            "start": {
+              "col": 2,
+              "row": 4,
+              "index": 122
+            },
+            "end": {
+              "col": 13,
+              "row": 7,
+              "index": 167
+            }
+          }
+        }
+      ],
+      "directive_locations": [
+        "Field",
+        "FragmentSpread",
+        "InlineFragment"
+      ],
+      "is_repeatable": false,
+      "span": {
+        "start": {
+          "col": 0,
+          "row": 0,
+          "index": 0
+        },
+        "end": {
+          "col": 46,
+          "row": 8,
+          "index": 215
+        }
+      }
+    },
+    {
+      "type": "DirectiveDefination",
+      "description": {
+        "value": "\"\"\"\nDirects the executor to skip this field or fragment when the `if` argument is true.\n\"\"\"",
+        "span": {
+          "start": {
+            "col": 0,
+            "row": 10,
+            "index": 217
+          },
+          "end": {
+            "col": 3,
+            "row": 12,
+            "index": 308
+          }
+        }
+      },
+      "name": {
+        "type": "Name",
+        "name": "skip",
+        "span": {
+          "start": {
+            "col": 11,
+            "row": 13,
+            "index": 320
+          },
+          "end": {
+            "col": 15,
+            "row": 13,
+            "index": 324
+          }
+        }
+      },
+      "argument_definations": [
+        {
+          "description": {
+            "value": "\"\"\"\n  Skipped when true.\n  \"\"\"",
+            "span": {
+              "start": {
+                "col": 2,
+                "row": 14,
+                "index": 328
+              },
+              "end": {
+                "col": 5,
+                "row": 16,
+                "index": 358
+              }
+            }
+          },
+          "name": {
+            "type": "Name",
+            "name": "if",
+            "span": {
+              "start": {
+                "col": 2,
+                "row": 17,
+                "index": 361
+              },
+              "end": {
+                "col": 4,
+                "row": 17,
+                "index": 363
+              }
+            }
+          },
+          "var_type": {
+            "type": "NonNullVarType",
+            "nonull_type": {
+              "type": "NameVarType",
+              "name": "Boolean",
+              "span": {
+                "start": {
+                  "col": 6,
+                  "row": 17,
+                  "index": 365
+                },
+                "end": {
+                  "col": 13,
+                  "row": 17,
+                  "index": 372
+                }
+              }
+            }
+          },
+          "default_value": null,
+          "directives": null,
+          "span": {
+            "start": {
+              "col": 2,
+              "row": 14,
+              "index": 328
+            },
+            "end": {
+              "col": 13,
+              "row": 17,
+              "index": 372
+            }
+          }
+        }
+      ],
+      "directive_locations": [
+        "Field",
+        "FragmentSpread",
+        "InlineFragment"
+      ],
+      "is_repeatable": false,
+      "span": {
+        "start": {
+          "col": 0,
+          "row": 10,
+          "index": 217
+        },
+        "end": {
+          "col": 46,
+          "row": 18,
+          "index": 420
+        }
+      }
+    }
+  ]
+}

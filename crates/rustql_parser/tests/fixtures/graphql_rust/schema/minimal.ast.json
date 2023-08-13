@@ -1,0 +1,41 @@
+{
+  "type": "Document",
+  "definations": [
+    {
+      "type": "SchemaTypeDefination",
+      "description": null,
+      "directives": null,
+      "query": [
+        {
+          "name": "Query",
+          "span": {
+            "start": {
+              "col": 9,
+              "row": 1,
+              "index": 18
+            },
+            "end": {
+              "col": 14,
+              "row": 1,
+              "index": 23
+            }
+          }
+        }
+      ],
+      "mutation": [],
+      "subscription": [],
+      "span": {
+        "start": {
+          "col": 0,
+          "row": 0,
+          "index": 0
+        },
+        "end": {
+          "col": 1,
+          "row": 2,
+          "index": 25
+        }
+      }
+    }
+  ]
+}

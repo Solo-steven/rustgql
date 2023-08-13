@@ -506,7 +506,12 @@ impl<'a> Parser<'a> {
         };
         let mut argument_definations = None;
         if self.is_match_token(TokenKind::ParenthesesLeft) {
-            argument_definations = Some(self.parse_input_value_definations().0);
+            argument_definations = Some(self.parse_input_value_definations(TokenKind::ParenthesesLeft, TokenKind::ParenthesesRight).0);
+        }
+        let mut is_repeatable = false;
+        if is_keyword_name!("repeatable", self) {
+            self.next_token();
+            is_repeatable = true;
         }
         expect_keyword_name!("on", self);
         let mut end_pos: Position = Position::new();
@@ -533,6 +538,7 @@ impl<'a> Parser<'a> {
                         "FRAGMENT_DEFINITION" => DirectiveLocation::FieldDefinition,
                         "FRAGMENT_SPREAD" => DirectiveLocation::FragmentSpread,
                         "INLINE_FRAGMENT" => DirectiveLocation::InlineFragment,
+                        "VARIABLE_DEFINITION" => DirectiveLocation::VariableDefination,
                         "SCHEMA" => DirectiveLocation::Schema,
                         "SCALAR" => DirectiveLocation::Scalar,
                         "OBJECT" => DirectiveLocation::Object,
@@ -552,7 +558,7 @@ impl<'a> Parser<'a> {
             end_pos = self.get_end_pos();
             self.next_token();
         }
-        DirectiveDefinition { description, name, argument_definations, directive_locations, span: Span::new(start_pos, end_pos) }
+        DirectiveDefinition { description, name, argument_definations, directive_locations, is_repeatable, span: Span::new(start_pos, end_pos) }
     }
     fn parse_operation_type_definations(&mut self) -> (Vec<NameVarType<'a>>, Vec<NameVarType<'a>>, Vec<NameVarType<'a>>, Position, Position) {
         let start_pos = self.get_start_pos();
@@ -589,6 +595,7 @@ impl<'a> Parser<'a> {
         (query, mutation, subscription, start_pos, end_pos)
     } 
     fn parse_scaler_type_defination(&mut self, description: Option<StringValue<'a>>) -> ScalarTypeDefinition<'a> {
+        expect_keyword_name!("scalar",self);
         let name = self.parse_name();
         let start_pos = match description.as_ref() {
             Some(descr) => descr.span.start.clone(),
@@ -616,17 +623,20 @@ impl<'a> Parser<'a> {
         let start_pos = name.span.start.clone();
         let mut end_pos: Position = name.span.end.clone();
         let mut implement_interfaces: Vec<NameVarType<'a>> = Vec::new();
-        if is_keyword_name!("implement", self) {
+        if is_keyword_name!("implements", self) {
             self.next_token();
             let mut is_frist = true;
             loop {
-                if !is_keyword_name!("&", self) {
-                    if !is_frist {
-                        break;
+                if is_frist {
+                    if self.is_match_token(TokenKind::And) {
+                        self.next_token();
                     }
                     is_frist = false;
+                }else if self.is_match_token(TokenKind::And) {
+                    self.next_token();
+                }else {
+                    break;
                 }
-                self.next_token();
                 implement_interfaces.push(match self.parse_type() {
                     VarType::NameVarType(name) => name,
                     VarType::ListVarType(_) => parser_error!("list type can not used in implement interface", self),
@@ -682,7 +692,7 @@ impl<'a> Parser<'a> {
                     let name = self.parse_name();
                     let mut argument_definations = None;
                     if self.get_token() == TokenKind::ParenthesesLeft {
-                        argument_definations = Some(self.parse_input_value_definations().0);
+                        argument_definations = Some(self.parse_input_value_definations(TokenKind::ParenthesesLeft, TokenKind::ParenthesesRight).0);
                     }
                     self.expect_token(TokenKind::Colon);
                     let var_type = self.parse_type();
@@ -710,55 +720,52 @@ impl<'a> Parser<'a> {
         self.expect_token(TokenKind::BracesRight);
         (field_definations, start_pos, end_pos)
     }
-    fn parse_input_value_definations(&mut self) -> (Vec<InputValueDefinition<'a>>, Position, Position) {
+    fn parse_input_value_definations(&mut self, start_token: TokenKind, end_token: TokenKind) -> (Vec<InputValueDefinition<'a>>, Position, Position) {
         let start_pos = self.get_start_pos();
-        self.expect_token(TokenKind::ParenthesesLeft);
+        self.expect_token(start_token);
         let mut argument_definations: Vec<InputValueDefinition<'a>> = Vec::new();
         loop {
-            match self.get_token() {
-                TokenKind::ParenthesesRight | TokenKind::EOFToken => {
-                    break;
-                }
-                _ => {
-                    let argument_description = match self.get_token() {
-                        TokenKind::StringValue => {
-                            let span = Span::new(self.get_start_pos(), self.get_end_pos());
-                            let value = Cow::Borrowed(self.get_value());
-                            self.next_token();
-                            Some(StringValue{ value, span })
-                        },
-                        _ => None
-                    };
-                    let name = self.parse_name();
-                    let start_pos = match &argument_description {
-                        Some(desc) => desc.span.start.clone(),
-                        None => name.span.start.clone()
-                    };
-                    self.expect_token(TokenKind::Colon);
-                    let mut end_pos: Position;
-                    let var_type = self.parse_type();
-                    end_pos = get_type_span(&var_type).end;
-                    let mut default_value = None;
-                    if self.get_token() == TokenKind::Eqal {
-                        self.next_token();
-                        default_value = Some(self.parse_value());
-                        end_pos = get_value_span(default_value.as_ref().unwrap()).end;
-                    }
-                    let mut directives: Option<Vec<Directive<'a>>> = None;
-                    if let Some(tuple) = self.parse_maybe_directive() {
-                        directives = Some(tuple.0);
-                        end_pos = tuple.2;
-                    }
-                    argument_definations.push(InputValueDefinition { 
-                        description: argument_description, 
-                        name, var_type, default_value, directives, 
-                        span: Span::new(start_pos , end_pos)
-                    })
-                }
+            let token = self.get_token();
+            if token == end_token || token == TokenKind::EOFToken {
+                break;
             }
+            let argument_description = match self.get_token() {
+                TokenKind::StringValue => {
+                    let span = Span::new(self.get_start_pos(), self.get_end_pos());
+                    let value = Cow::Borrowed(self.get_value());
+                    self.next_token();
+                    Some(StringValue{ value, span })
+                },
+                _ => None
+            };
+            let name = self.parse_name();
+            let start_pos = match &argument_description {
+                Some(desc) => desc.span.start.clone(),
+                None => name.span.start.clone()
+            };
+            self.expect_token(TokenKind::Colon);
+            let mut end_pos: Position;
+            let var_type = self.parse_type();
+            end_pos = get_type_span(&var_type).end;
+            let mut default_value = None;
+            if self.get_token() == TokenKind::Eqal {
+                self.next_token();
+                default_value = Some(self.parse_value());
+                end_pos = get_value_span(default_value.as_ref().unwrap()).end;
+            }
+            let mut directives: Option<Vec<Directive<'a>>> = None;
+            if let Some(tuple) = self.parse_maybe_directive() {
+                directives = Some(tuple.0);
+                end_pos = tuple.2;
+            }
+            argument_definations.push(InputValueDefinition { 
+                description: argument_description, 
+                name, var_type, default_value, directives, 
+                span: Span::new(start_pos , end_pos)
+            });
         }
         let end_pos = self.get_end_pos();
-        self.expect_token(TokenKind::ParenthesesRight);
+        self.expect_token(end_token);
         (argument_definations, start_pos, end_pos)
     }
     fn parse_interface_type_defination(&mut self, description: Option<StringValue<'a>>) -> InterfaceTypeDefinition<'a> {
@@ -768,6 +775,29 @@ impl<'a> Parser<'a> {
             Some(desc) => desc.span.start.clone(),
             None => name.span.start.clone()
         };
+        let mut implement_interfaces = None;
+        if is_keyword_name!("implements", self) {
+            implement_interfaces = Some(Vec::new());
+            self.next_token();
+            let mut is_frist = true;
+            loop {
+                if is_frist {
+                    if self.is_match_token(TokenKind::And) {
+                        self.next_token();
+                    }
+                    is_frist = false;
+                }else if self.is_match_token(TokenKind::And) {
+                    self.next_token();
+                }else {
+                    break;
+                }
+                implement_interfaces.as_mut().unwrap().push(match self.parse_type() {
+                    VarType::NameVarType(name) => name,
+                    VarType::ListVarType(_) => parser_error!("list type can not used in implement interface", self),
+                    VarType::NonNullVarType(_) => parser_error!("non null type can not used in implement interface", self),
+                })
+            }
+        }
         let mut end_pos = name.span.end.clone();
         let mut directives: Option<Vec<Directive<'a>>> = None;
         if let Some(tuple) = self.parse_maybe_directive() {
@@ -780,13 +810,14 @@ impl<'a> Parser<'a> {
             field_definations = Some(tuple.0);
             end_pos = tuple.2;
         }
-        InterfaceTypeDefinition { description, name, directives, field_definations, span: Span::new(start_pos, end_pos) }
+        InterfaceTypeDefinition { description, name, directives, field_definations, implement_interfaces, span: Span::new(start_pos, end_pos) }
     }
     fn parse_interface_extension(&mut self, start_pos: Position) -> InterfaceTypeExtension<'a> {
         let interface_def = self.parse_interface_type_defination(None);
         InterfaceTypeExtension { 
             name: interface_def.name, span: Span::new(start_pos, interface_def.span.end),
-            directives: interface_def.directives, field_definations: interface_def.field_definations
+            directives: interface_def.directives, field_definations: interface_def.field_definations,
+            implement_interfaces: interface_def.implement_interfaces,
          }
     }
     fn parse_input_object_type_defination(&mut self, description: Option<StringValue<'a>>) -> InputObjectTypeDefinition<'a> {
@@ -804,7 +835,7 @@ impl<'a> Parser<'a> {
         }
         let mut input_definations: Option<Vec<InputValueDefinition<'a>>> = None;
         if self.get_token() == TokenKind::BracesLeft {
-            let tuple = self.parse_input_value_definations();
+            let tuple = self.parse_input_value_definations(TokenKind::BracesLeft, TokenKind::BracesRight);
             input_definations = Some(tuple.0);
             end_pos = tuple.2;
         }
@@ -872,8 +903,8 @@ impl<'a> Parser<'a> {
                     }
                 }
             }
+            self.expect_token(TokenKind::BracesRight);
         }
-        self.expect_token(TokenKind::BracesRight);
         EnumTypeDefinition { 
             description, name, directives, span: Span::new(start_pos, end_pos),
             value_definations: if value_definations.is_empty() { None } else { Some(value_definations) }
@@ -898,29 +929,31 @@ impl<'a> Parser<'a> {
             directives = Some(tuple.0);
             end_pos = tuple.2;
         }
-        self.expect_token(TokenKind::Eqal);
-        let mut is_frist = true;
         let mut union_member_types: Vec<NameVarType<'a>> = Vec::new();
-        loop {
-            if !is_frist {
-                if self.get_token() == TokenKind::Pipe {
-                    self.next_token();
+        if self.is_match_token(TokenKind::Eqal) {
+            self.next_token();
+            let mut is_frist = true;
+            loop {
+                if !is_frist {
+                    if self.get_token() == TokenKind::Pipe {
+                        self.next_token();
+                    }else {
+                        break;
+                    }
                 }else {
-                    break;
+                    is_frist = false;
+                    if self.get_token() == TokenKind::Pipe {
+                        self.next_token();
+                    }
                 }
-            }else {
-                is_frist = false;
-                if self.get_token() == TokenKind::Pipe {
-                    self.next_token();
-                }
+                let member_type =  match self.parse_type() {
+                    VarType::NameVarType(name) => name,
+                    VarType::ListVarType(_) => parser_error!("", self),
+                    VarType::NonNullVarType(_) => parser_error!("", self)
+                };
+                end_pos = member_type.span.end.clone();
+                union_member_types.push(member_type);
             }
-            let member_type =  match self.parse_type() {
-                VarType::NameVarType(name) => name,
-                VarType::ListVarType(_) => parser_error!("", self),
-                VarType::NonNullVarType(_) => parser_error!("", self)
-            };
-            end_pos = member_type.span.end.clone();
-            union_member_types.push(member_type);
         }
         UnionTypeDefinition {
             description, name, directives, 

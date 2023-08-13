@@ -1,0 +1,189 @@
+{
+  "type": "Document",
+  "definations": [
+    {
+      "type": "Query",
+      "name": {
+        "type": "Name",
+        "name": "Foo",
+        "span": {
+          "start": {
+            "col": 6,
+            "row": 0,
+            "index": 6
+          },
+          "end": {
+            "col": 9,
+            "row": 0,
+            "index": 9
+          }
+        }
+      },
+      "variable_definations": [
+        {
+          "type": "VariableDefination",
+          "name": {
+            "type": "Name",
+            "name": "site",
+            "span": {
+              "start": {
+                "col": 11,
+                "row": 0,
+                "index": 11
+              },
+              "end": {
+                "col": 15,
+                "row": 0,
+                "index": 15
+              }
+            }
+          },
+          "var_type": {
+            "type": "ListVarType",
+            "list_type": {
+              "type": "NameVarType",
+              "name": "Int",
+              "span": {
+                "start": {
+                  "col": 18,
+                  "row": 0,
+                  "index": 18
+                },
+                "end": {
+                  "col": 21,
+                  "row": 0,
+                  "index": 21
+                }
+              }
+            }
+          },
+          "default_value": {
+            "type": "ListValue",
+            "value": [
+              {
+                "type": "IntValue",
+                "value": "123",
+                "span": {
+                  "start": {
+                    "col": 26,
+                    "row": 0,
+                    "index": 26
+                  },
+                  "end": {
+                    "col": 29,
+                    "row": 0,
+                    "index": 29
+                  }
+                }
+              },
+              {
+                "type": "IntValue",
+                "value": "456",
+                "span": {
+                  "start": {
+                    "col": 31,
+                    "row": 0,
+                    "index": 31
+                  },
+                  "end": {
+                    "col": 34,
+                    "row": 0,
+                    "index": 34
+                  }
+                }
+              }
+            ],
+            "span": {
+              "start": {
+                "col": 25,
+                "row": 0,
+                "index": 25
+              },
+              "end": {
+                "col": 35,
+                "row": 0,
+                "index": 35
+              }
+            }
+          },
+          "span": {
+            "start": {
+              "col": 10,
+              "row": 0,
+              "index": 10
+            },
+            "end": {
+              "col": 35,
+              "row": 0,
+              "index": 35
+            }
+          }
+        }
+      ],
+      "directives": null,
+      "selectionset": {
+        "selections": [
+          {
+            "type": "Field",
+            "alias": null,
+            "name": {
+              "type": "Name",
+              "name": "field",
+              "span": {
+                "start": {
+                  "col": 2,
+                  "row": 1,
+                  "index": 41
+                },
+                "end": {
+                  "col": 7,
+                  "row": 1,
+                  "index": 46
+                }
+              }
+            },
+            "arguments": null,
+            "directives": null,
+            "selectionset": null,
+            "span": {
+              "start": {
+                "col": 2,
+                "row": 1,
+                "index": 41
+              },
+              "end": {
+                "col": 7,
+                "row": 1,
+                "index": 46
+              }
+            }
+          }
+        ],
+        "span": {
+          "start": {
+            "col": 37,
+            "row": 0,
+            "index": 37
+          },
+          "end": {
+            "col": 1,
+            "row": 2,
+            "index": 48
+          }
+        }
+      },
+      "span": {
+        "start": {
+          "col": 0,
+          "row": 0,
+          "index": 0
+        },
+        "end": {
+          "col": 1,
+          "row": 2,
+          "index": 48
+        }
+      }
+    }
+  ]
+}

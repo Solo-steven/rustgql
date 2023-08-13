@@ -1,0 +1,122 @@
+{
+  "type": "Document",
+  "definations": [
+    {
+      "type": "InterfaceTypeDefinition",
+      "description": null,
+      "implement_interfaces": [
+        {
+          "name": "ITwo",
+          "span": {
+            "start": {
+              "col": 26,
+              "row": 0,
+              "index": 26
+            },
+            "end": {
+              "col": 30,
+              "row": 0,
+              "index": 30
+            }
+          }
+        }
+      ],
+      "name": {
+        "type": "Name",
+        "name": "IOne",
+        "span": {
+          "start": {
+            "col": 10,
+            "row": 0,
+            "index": 10
+          },
+          "end": {
+            "col": 14,
+            "row": 0,
+            "index": 14
+          }
+        }
+      },
+      "directives": null,
+      "field_definations": null,
+      "span": {
+        "start": {
+          "col": 10,
+          "row": 0,
+          "index": 10
+        },
+        "end": {
+          "col": 14,
+          "row": 0,
+          "index": 14
+        }
+      }
+    },
+    {
+      "type": "InterfaceTypeDefinition",
+      "description": null,
+      "implement_interfaces": [
+        {
+          "name": "IFour",
+          "span": {
+            "start": {
+              "col": 28,
+              "row": 2,
+              "index": 60
+            },
+            "end": {
+              "col": 33,
+              "row": 2,
+              "index": 65
+            }
+          }
+        },
+        {
+          "name": "IFive",
+          "span": {
+            "start": {
+              "col": 36,
+              "row": 2,
+              "index": 68
+            },
+            "end": {
+              "col": 41,
+              "row": 2,
+              "index": 73
+            }
+          }
+        }
+      ],
+      "name": {
+        "type": "Name",
+        "name": "IThree",
+        "span": {
+          "start": {
+            "col": 10,
+            "row": 2,
+            "index": 42
+          },
+          "end": {
+            "col": 16,
+            "row": 2,
+            "index": 48
+          }
+        }
+      },
+      "directives": null,
+      "field_definations": null,
+      "span": {
+        "start": {
+          "col": 10,
+          "row": 2,
+          "index": 42
+        },
+        "end": {
+          "col": 16,
+          "row": 2,
+          "index": 48
+        }
+      }
+    }
+  ]
+}

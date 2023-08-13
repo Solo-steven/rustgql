@@ -1,0 +1,70 @@
+{
+  "type": "Document",
+  "definations": [
+    {
+      "type": "ScalarTypeExtension",
+      "name": {
+        "type": "Name",
+        "name": "CustomScalar",
+        "span": {
+          "start": {
+            "col": 14,
+            "row": 0,
+            "index": 14
+          },
+          "end": {
+            "col": 26,
+            "row": 0,
+            "index": 26
+          }
+        }
+      },
+      "directives": [
+        {
+          "type": "Directive",
+          "name": {
+            "type": "Name",
+            "name": "onScalar",
+            "span": {
+              "start": {
+                "col": 28,
+                "row": 0,
+                "index": 28
+              },
+              "end": {
+                "col": 36,
+                "row": 0,
+                "index": 36
+              }
+            }
+          },
+          "arguments": null,
+          "span": {
+            "start": {
+              "col": 28,
+              "row": 0,
+              "index": 28
+            },
+            "end": {
+              "col": 36,
+              "row": 0,
+              "index": 36
+            }
+          }
+        }
+      ],
+      "span": {
+        "start": {
+          "col": 0,
+          "row": 0,
+          "index": 0
+        },
+        "end": {
+          "col": 36,
+          "row": 0,
+          "index": 36
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "type": "Document",
+  "definations": [
+    {
+      "type": "UnionTypeDefinition",
+      "description": null,
+      "name": {
+        "type": "Name",
+        "name": "Feed",
+        "span": {
+          "start": {
+            "col": 6,
+            "row": 0,
+            "index": 6
+          },
+          "end": {
+            "col": 10,
+            "row": 0,
+            "index": 10
+          }
+        }
+      },
+      "directives": null,
+      "union_member_types": [
+        {
+          "name": "Story",
+          "span": {
+            "start": {
+              "col": 13,
+              "row": 0,
+              "index": 13
+            },
+            "end": {
+              "col": 18,
+              "row": 0,
+              "index": 18
+            }
+          }
+        },
+        {
+          "name": "Article",
+          "span": {
+            "start": {
+              "col": 21,
+              "row": 0,
+              "index": 21
+            },
+            "end": {
+              "col": 28,
+              "row": 0,
+              "index": 28
+            }
+          }
+        },
+        {
+          "name": "Advert",
+          "span": {
+            "start": {
+              "col": 31,
+              "row": 0,
+              "index": 31
+            },
+            "end": {
+              "col": 37,
+              "row": 0,
+              "index": 37
+            }
+          }
+        }
+      ],
+      "span": {
+        "start": {
+          "col": 6,
+          "row": 0,
+          "index": 6
+        },
+        "end": {
+          "col": 37,
+          "row": 0,
+          "index": 37
+        }
+      }
+    }
+  ]
+}

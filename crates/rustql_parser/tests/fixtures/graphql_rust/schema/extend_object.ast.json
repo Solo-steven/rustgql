@@ -1,0 +1,316 @@
+{
+  "type": "Document",
+  "definations": [
+    {
+      "type": "ObjectTypeExtension",
+      "name": {
+        "type": "Name",
+        "name": "Foo",
+        "span": {
+          "start": {
+            "col": 12,
+            "row": 0,
+            "index": 12
+          },
+          "end": {
+            "col": 15,
+            "row": 0,
+            "index": 15
+          }
+        }
+      },
+      "implement_interfaces": null,
+      "field_definations": [
+        {
+          "description": null,
+          "name": {
+            "type": "Name",
+            "name": "seven",
+            "span": {
+              "start": {
+                "col": 2,
+                "row": 1,
+                "index": 20
+              },
+              "end": {
+                "col": 7,
+                "row": 1,
+                "index": 25
+              }
+            }
+          },
+          "argument_definations": [
+            {
+              "description": null,
+              "name": {
+                "type": "Name",
+                "name": "argument",
+                "span": {
+                  "start": {
+                    "col": 8,
+                    "row": 1,
+                    "index": 26
+                  },
+                  "end": {
+                    "col": 16,
+                    "row": 1,
+                    "index": 34
+                  }
+                }
+              },
+              "var_type": {
+                "type": "ListVarType",
+                "list_type": {
+                  "type": "NameVarType",
+                  "name": "String",
+                  "span": {
+                    "start": {
+                      "col": 19,
+                      "row": 1,
+                      "index": 37
+                    },
+                    "end": {
+                      "col": 25,
+                      "row": 1,
+                      "index": 43
+                    }
+                  }
+                }
+              },
+              "default_value": null,
+              "directives": null,
+              "span": {
+                "start": {
+                  "col": 8,
+                  "row": 1,
+                  "index": 26
+                },
+                "end": {
+                  "col": 25,
+                  "row": 1,
+                  "index": 43
+                }
+              }
+            }
+          ],
+          "directives": null,
+          "var_type": {
+            "type": "NameVarType",
+            "name": "Type",
+            "span": {
+              "start": {
+                "col": 29,
+                "row": 1,
+                "index": 47
+              },
+              "end": {
+                "col": 33,
+                "row": 1,
+                "index": 51
+              }
+            }
+          },
+          "span": {
+            "start": {
+              "col": 2,
+              "row": 1,
+              "index": 20
+            },
+            "end": {
+              "col": 33,
+              "row": 1,
+              "index": 51
+            }
+          }
+        }
+      ],
+      "directives": null,
+      "span": {
+        "start": {
+          "col": 0,
+          "row": 0,
+          "index": 0
+        },
+        "end": {
+          "col": 1,
+          "row": 2,
+          "index": 53
+        }
+      }
+    },
+    {
+      "type": "ObjectTypeExtension",
+      "name": {
+        "type": "Name",
+        "name": "Bar",
+        "span": {
+          "start": {
+            "col": 12,
+            "row": 4,
+            "index": 67
+          },
+          "end": {
+            "col": 15,
+            "row": 4,
+            "index": 70
+          }
+        }
+      },
+      "implement_interfaces": [
+        {
+          "name": "IOne",
+          "span": {
+            "start": {
+              "col": 27,
+              "row": 4,
+              "index": 82
+            },
+            "end": {
+              "col": 31,
+              "row": 4,
+              "index": 86
+            }
+          }
+        },
+        {
+          "name": "ITwo",
+          "span": {
+            "start": {
+              "col": 34,
+              "row": 4,
+              "index": 89
+            },
+            "end": {
+              "col": 38,
+              "row": 4,
+              "index": 93
+            }
+          }
+        }
+      ],
+      "field_definations": [
+        {
+          "description": null,
+          "name": {
+            "type": "Name",
+            "name": "five",
+            "span": {
+              "start": {
+                "col": 2,
+                "row": 5,
+                "index": 98
+              },
+              "end": {
+                "col": 6,
+                "row": 5,
+                "index": 102
+              }
+            }
+          },
+          "argument_definations": [
+            {
+              "description": null,
+              "name": {
+                "type": "Name",
+                "name": "argument",
+                "span": {
+                  "start": {
+                    "col": 7,
+                    "row": 5,
+                    "index": 103
+                  },
+                  "end": {
+                    "col": 15,
+                    "row": 5,
+                    "index": 111
+                  }
+                }
+              },
+              "var_type": {
+                "type": "NonNullVarType",
+                "nonull_type": {
+                  "type": "ListVarType",
+                  "list_type": {
+                    "type": "NonNullVarType",
+                    "nonull_type": {
+                      "type": "NameVarType",
+                      "name": "String",
+                      "span": {
+                        "start": {
+                          "col": 18,
+                          "row": 5,
+                          "index": 114
+                        },
+                        "end": {
+                          "col": 24,
+                          "row": 5,
+                          "index": 120
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "default_value": null,
+              "directives": null,
+              "span": {
+                "start": {
+                  "col": 7,
+                  "row": 5,
+                  "index": 103
+                },
+                "end": {
+                  "col": 24,
+                  "row": 5,
+                  "index": 120
+                }
+              }
+            }
+          ],
+          "directives": null,
+          "var_type": {
+            "type": "NameVarType",
+            "name": "Type",
+            "span": {
+              "start": {
+                "col": 30,
+                "row": 5,
+                "index": 126
+              },
+              "end": {
+                "col": 34,
+                "row": 5,
+                "index": 130
+              }
+            }
+          },
+          "span": {
+            "start": {
+              "col": 2,
+              "row": 5,
+              "index": 98
+            },
+            "end": {
+              "col": 34,
+              "row": 5,
+              "index": 130
+            }
+          }
+        }
+      ],
+      "directives": null,
+      "span": {
+        "start": {
+          "col": 0,
+          "row": 4,
+          "index": 55
+        },
+        "end": {
+          "col": 1,
+          "row": 6,
+          "index": 132
+        }
+      }
+    }
+  ]
+}

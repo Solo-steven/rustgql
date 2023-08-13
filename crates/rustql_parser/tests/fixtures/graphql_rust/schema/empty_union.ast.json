@@ -1,0 +1,39 @@
+{
+  "type": "Document",
+  "definations": [
+    {
+      "type": "UnionTypeDefinition",
+      "description": null,
+      "name": {
+        "type": "Name",
+        "name": "UndefinedUnion",
+        "span": {
+          "start": {
+            "col": 6,
+            "row": 0,
+            "index": 6
+          },
+          "end": {
+            "col": 20,
+            "row": 0,
+            "index": 20
+          }
+        }
+      },
+      "directives": null,
+      "union_member_types": null,
+      "span": {
+        "start": {
+          "col": 6,
+          "row": 0,
+          "index": 6
+        },
+        "end": {
+          "col": 20,
+          "row": 0,
+          "index": 20
+        }
+      }
+    }
+  ]
+}

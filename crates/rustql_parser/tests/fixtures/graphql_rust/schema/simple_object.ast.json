@@ -1,0 +1,90 @@
+{
+  "type": "Document",
+  "definations": [
+    {
+      "type": "ObjectTypeDefinition",
+      "description": null,
+      "name": {
+        "type": "Name",
+        "name": "Foo",
+        "span": {
+          "start": {
+            "col": 5,
+            "row": 0,
+            "index": 5
+          },
+          "end": {
+            "col": 8,
+            "row": 0,
+            "index": 8
+          }
+        }
+      },
+      "implement_interfaces": null,
+      "field_definations": [
+        {
+          "description": null,
+          "name": {
+            "type": "Name",
+            "name": "bar",
+            "span": {
+              "start": {
+                "col": 2,
+                "row": 1,
+                "index": 13
+              },
+              "end": {
+                "col": 5,
+                "row": 1,
+                "index": 16
+              }
+            }
+          },
+          "argument_definations": null,
+          "directives": null,
+          "var_type": {
+            "type": "NameVarType",
+            "name": "Type",
+            "span": {
+              "start": {
+                "col": 7,
+                "row": 1,
+                "index": 18
+              },
+              "end": {
+                "col": 11,
+                "row": 1,
+                "index": 22
+              }
+            }
+          },
+          "span": {
+            "start": {
+              "col": 2,
+              "row": 1,
+              "index": 13
+            },
+            "end": {
+              "col": 11,
+              "row": 1,
+              "index": 22
+            }
+          }
+        }
+      ],
+      "directives": null,
+      "span": {
+        "start": {
+          "col": 5,
+          "row": 0,
+          "index": 5
+        },
+        "end": {
+          "col": 1,
+          "row": 2,
+          "index": 24
+        }
+      }
+    }
+  ]
+}

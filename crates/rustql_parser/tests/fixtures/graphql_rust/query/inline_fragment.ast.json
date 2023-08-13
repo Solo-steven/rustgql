@@ -1,0 +1,206 @@
+{
+  "type": "Document",
+  "definations": [
+    {
+      "type": "Query",
+      "name": null,
+      "variable_definations": null,
+      "directives": null,
+      "selectionset": {
+        "selections": [
+          {
+            "type": "Field",
+            "alias": null,
+            "name": {
+              "type": "Name",
+              "name": "node",
+              "span": {
+                "start": {
+                  "col": 2,
+                  "row": 1,
+                  "index": 10
+                },
+                "end": {
+                  "col": 6,
+                  "row": 1,
+                  "index": 14
+                }
+              }
+            },
+            "arguments": null,
+            "directives": null,
+            "selectionset": {
+              "selections": [
+                {
+                  "type": "Field",
+                  "alias": null,
+                  "name": {
+                    "type": "Name",
+                    "name": "id",
+                    "span": {
+                      "start": {
+                        "col": 4,
+                        "row": 2,
+                        "index": 21
+                      },
+                      "end": {
+                        "col": 6,
+                        "row": 2,
+                        "index": 23
+                      }
+                    }
+                  },
+                  "arguments": null,
+                  "directives": null,
+                  "selectionset": null,
+                  "span": {
+                    "start": {
+                      "col": 4,
+                      "row": 2,
+                      "index": 21
+                    },
+                    "end": {
+                      "col": 6,
+                      "row": 2,
+                      "index": 23
+                    }
+                  }
+                },
+                {
+                  "type": "InlineFragment",
+                  "type_condition": {
+                    "name": "User",
+                    "span": {
+                      "start": {
+                        "col": 11,
+                        "row": 3,
+                        "index": 35
+                      },
+                      "end": {
+                        "col": 15,
+                        "row": 3,
+                        "index": 39
+                      }
+                    }
+                  },
+                  "directives": null,
+                  "selectionset": {
+                    "selections": [
+                      {
+                        "type": "Field",
+                        "alias": null,
+                        "name": {
+                          "type": "Name",
+                          "name": "name",
+                          "span": {
+                            "start": {
+                              "col": 6,
+                              "row": 4,
+                              "index": 48
+                            },
+                            "end": {
+                              "col": 10,
+                              "row": 4,
+                              "index": 52
+                            }
+                          }
+                        },
+                        "arguments": null,
+                        "directives": null,
+                        "selectionset": null,
+                        "span": {
+                          "start": {
+                            "col": 6,
+                            "row": 4,
+                            "index": 48
+                          },
+                          "end": {
+                            "col": 10,
+                            "row": 4,
+                            "index": 52
+                          }
+                        }
+                      }
+                    ],
+                    "span": {
+                      "start": {
+                        "col": 16,
+                        "row": 3,
+                        "index": 40
+                      },
+                      "end": {
+                        "col": 5,
+                        "row": 5,
+                        "index": 58
+                      }
+                    }
+                  },
+                  "span": {
+                    "start": {
+                      "col": 4,
+                      "row": 3,
+                      "index": 28
+                    },
+                    "end": {
+                      "col": 5,
+                      "row": 5,
+                      "index": 58
+                    }
+                  }
+                }
+              ],
+              "span": {
+                "start": {
+                  "col": 7,
+                  "row": 1,
+                  "index": 15
+                },
+                "end": {
+                  "col": 3,
+                  "row": 6,
+                  "index": 62
+                }
+              }
+            },
+            "span": {
+              "start": {
+                "col": 2,
+                "row": 1,
+                "index": 10
+              },
+              "end": {
+                "col": 3,
+                "row": 6,
+                "index": 62
+              }
+            }
+          }
+        ],
+        "span": {
+          "start": {
+            "col": 6,
+            "row": 0,
+            "index": 6
+          },
+          "end": {
+            "col": 1,
+            "row": 7,
+            "index": 64
+          }
+        }
+      },
+      "span": {
+        "start": {
+          "col": 0,
+          "row": 0,
+          "index": 0
+        },
+        "end": {
+          "col": 1,
+          "row": 7,
+          "index": 64
+        }
+      }
+    }
+  ]
+}

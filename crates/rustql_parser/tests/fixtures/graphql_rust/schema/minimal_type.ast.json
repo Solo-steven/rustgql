@@ -1,0 +1,40 @@
+{
+  "type": "Document",
+  "definations": [
+    {
+      "type": "ObjectTypeDefinition",
+      "description": null,
+      "name": {
+        "type": "Name",
+        "name": "UndefinedType",
+        "span": {
+          "start": {
+            "col": 5,
+            "row": 0,
+            "index": 5
+          },
+          "end": {
+            "col": 18,
+            "row": 0,
+            "index": 18
+          }
+        }
+      },
+      "implement_interfaces": null,
+      "field_definations": null,
+      "directives": null,
+      "span": {
+        "start": {
+          "col": 5,
+          "row": 0,
+          "index": 5
+        },
+        "end": {
+          "col": 18,
+          "row": 0,
+          "index": 18
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "type": "Document",
+  "definations": [
+    {
+      "type": "EnumTypeDefinition",
+      "description": null,
+      "name": {
+        "type": "Name",
+        "name": "Site",
+        "span": {
+          "start": {
+            "col": 5,
+            "row": 0,
+            "index": 5
+          },
+          "end": {
+            "col": 9,
+            "row": 0,
+            "index": 9
+          }
+        }
+      },
+      "directives": null,
+      "value_definations": [
+        {
+          "description": null,
+          "value": {
+            "value": "DESKTOP",
+            "span": {
+              "start": {
+                "col": 2,
+                "row": 1,
+                "index": 14
+              },
+              "end": {
+                "col": 9,
+                "row": 1,
+                "index": 21
+              }
+            }
+          },
+          "directives": null,
+          "span": {
+            "start": {
+              "col": 2,
+              "row": 1,
+              "index": 14
+            },
+            "end": {
+              "col": 9,
+              "row": 1,
+              "index": 21
+            }
+          }
+        },
+        {
+          "description": null,
+          "value": {
+            "value": "MOBILE",
+            "span": {
+              "start": {
+                "col": 2,
+                "row": 2,
+                "index": 24
+              },
+              "end": {
+                "col": 8,
+                "row": 2,
+                "index": 30
+              }
+            }
+          },
+          "directives": null,
+          "span": {
+            "start": {
+              "col": 2,
+              "row": 2,
+              "index": 24
+            },
+            "end": {
+              "col": 8,
+              "row": 2,
+              "index": 30
+            }
+          }
+        }
+      ],
+      "span": {
+        "start": {
+          "col": 5,
+          "row": 0,
+          "index": 5
+        },
+        "end": {
+          "col": 9,
+          "row": 0,
+          "index": 9
+        }
+      }
+    }
+  ]
+}

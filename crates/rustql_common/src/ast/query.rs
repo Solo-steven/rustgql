@@ -4,7 +4,6 @@ use crate::ast::common::*;
 
 /* ============ Document AST Type ========== */
 #[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
-#[serde(tag="type")]
 pub struct FragmentDefination<'a> {
     pub name: Name<'a>,
     pub type_condition: VarType<'a>,

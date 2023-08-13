@@ -2,43 +2,44 @@
   "type": "Document",
   "definations": [
     {
-      "type": "FragmentDefination",
-      "type": "FragmentDefination",
-      "name": {
-        "type": "Name",
-        "name": "frag",
-        "span": {
-          "start": {
-            "col": 9,
-            "row": 0,
-            "index": 9
+      "type": "Mutation",
+      "name": null,
+      "variable_definations": null,
+      "directives": [
+        {
+          "type": "Directive",
+          "name": {
+            "type": "Name",
+            "name": "directive",
+            "span": {
+              "start": {
+                "col": 10,
+                "row": 0,
+                "index": 10
+              },
+              "end": {
+                "col": 19,
+                "row": 0,
+                "index": 19
+              }
+            }
           },
-          "end": {
-            "col": 13,
-            "row": 0,
-            "index": 13
+          "arguments": null,
+          "span": {
+            "start": {
+              "col": 10,
+              "row": 0,
+              "index": 10
+            },
+            "end": {
+              "col": 19,
+              "row": 0,
+              "index": 19
+            }
           }
         }
-      },
-      "type_condition": {
-        "type": "NameVarType",
-        "name": "Friend",
-        "span": {
-          "start": {
-            "col": 17,
-            "row": 0,
-            "index": 17
-          },
-          "end": {
-            "col": 23,
-            "row": 0,
-            "index": 23
-          }
-        }
-      },
-      "directives": null,
+      ],
       "selectionset": {
-        "type": "SelectSet",
         "selections": [
           {
             "type": "Field",
@@ -50,12 +51,12 @@
                 "start": {
                   "col": 2,
                   "row": 1,
-                  "index": 28
+                  "index": 24
                 },
                 "end": {
                   "col": 6,
                   "row": 1,
-                  "index": 32
+                  "index": 28
                 }
               }
             },
@@ -66,26 +67,26 @@
               "start": {
                 "col": 2,
                 "row": 1,
-                "index": 28
+                "index": 24
               },
               "end": {
                 "col": 6,
                 "row": 1,
-                "index": 32
+                "index": 28
               }
             }
           }
         ],
         "span": {
           "start": {
-            "col": 24,
+            "col": 20,
             "row": 0,
-            "index": 24
+            "index": 20
           },
           "end": {
             "col": 1,
             "row": 2,
-            "index": 34
+            "index": 30
           }
         }
       },
@@ -98,7 +99,7 @@
         "end": {
           "col": 1,
           "row": 2,
-          "index": 34
+          "index": 30
         }
       }
     }

@@ -1,0 +1,69 @@
+{
+  "type": "Document",
+  "definations": [
+    {
+      "type": "UnionTypeExtension",
+      "name": {
+        "type": "Name",
+        "name": "Feed",
+        "span": {
+          "start": {
+            "col": 13,
+            "row": 0,
+            "index": 13
+          },
+          "end": {
+            "col": 17,
+            "row": 0,
+            "index": 17
+          }
+        }
+      },
+      "directives": null,
+      "union_member_types": [
+        {
+          "name": "Photo",
+          "span": {
+            "start": {
+              "col": 20,
+              "row": 0,
+              "index": 20
+            },
+            "end": {
+              "col": 25,
+              "row": 0,
+              "index": 25
+            }
+          }
+        },
+        {
+          "name": "Video",
+          "span": {
+            "start": {
+              "col": 28,
+              "row": 0,
+              "index": 28
+            },
+            "end": {
+              "col": 33,
+              "row": 0,
+              "index": 33
+            }
+          }
+        }
+      ],
+      "span": {
+        "start": {
+          "col": 0,
+          "row": 0,
+          "index": 0
+        },
+        "end": {
+          "col": 33,
+          "row": 0,
+          "index": 33
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "type": "Document",
+  "definations": [
+    {
+      "type": "Query",
+      "name": null,
+      "variable_definations": null,
+      "directives": null,
+      "selectionset": {
+        "selections": [
+          {
+            "type": "Field",
+            "alias": {
+              "type": "Name",
+              "name": "an_alias",
+              "span": {
+                "start": {
+                  "col": 2,
+                  "row": 1,
+                  "index": 10
+                },
+                "end": {
+                  "col": 10,
+                  "row": 1,
+                  "index": 18
+                }
+              }
+            },
+            "name": {
+              "type": "Name",
+              "name": "node",
+              "span": {
+                "start": {
+                  "col": 12,
+                  "row": 1,
+                  "index": 20
+                },
+                "end": {
+                  "col": 16,
+                  "row": 1,
+                  "index": 24
+                }
+              }
+            },
+            "arguments": null,
+            "directives": null,
+            "selectionset": null,
+            "span": {
+              "start": {
+                "col": 2,
+                "row": 1,
+                "index": 10
+              },
+              "end": {
+                "col": 10,
+                "row": 1,
+                "index": 18
+              }
+            }
+          }
+        ],
+        "span": {
+          "start": {
+            "col": 6,
+            "row": 0,
+            "index": 6
+          },
+          "end": {
+            "col": 1,
+            "row": 2,
+            "index": 26
+          }
+        }
+      },
+      "span": {
+        "start": {
+          "col": 0,
+          "row": 0,
+          "index": 0
+        },
+        "end": {
+          "col": 1,
+          "row": 2,
+          "index": 26
+        }
+      }
+    }
+  ]
+}
