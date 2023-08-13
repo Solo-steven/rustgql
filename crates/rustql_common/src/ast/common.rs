@@ -148,6 +148,13 @@ pub enum Defination<'a> {
     EnumTypeDefinition(EnumTypeDefinition<'a>),
     InputObjectTypeDefinition(InputObjectTypeDefinition<'a>),
     // type extension defination
+    SchemaTypeExtension(SchemaTypeExtension<'a>),
+    ScalarTypeExtension(ScalarTypeExtension<'a>),
+    ObjectTypeExtension(ObjectTypeExtension<'a>),
+    InterfaceTypeExtension(InterfaceTypeExtension<'a>),
+    UnionTypeExtension(UnionTypeExtension<'a>),
+    EnumTypeExtension(EnumTypeExtension<'a>),
+    InputObjectTypeExtension(InputObjectTypeExtension<'a>),
     /* TODO */
     // operation defination
     SelectSet(SelectSet<'a>),

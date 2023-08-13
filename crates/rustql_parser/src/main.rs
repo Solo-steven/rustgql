@@ -9,7 +9,7 @@ use std::io::Write;
 use serde_json::to_string_pretty;
 fn main() {
     let code = r#"
-    union SearchResult = | Photo | Person
+    extend union SearchResult = | Photo | Person
       
     "#;
     let mut lexer = Lexer::new(code);

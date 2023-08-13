@@ -77,11 +77,34 @@ impl<'a> Parser<'a> {
                     "enum" => Defination::EnumTypeDefinition(self.parse_enum_type_defination(None)),
                     "union" => Defination::UnionTypeDefinition(self.parse_union_type_defination(None)),
                     "directive" =>  panic!("TODO: implement parse directive, type"),
-                    "extend" => { panic!("TODO: implement extend") }
+                    "extend" => self.parse_extends(),
                     _ => parser_error!(format!("Unknow Name token with value ({:?})", self.get_value() ), self)
                 }
             }
-            _ =>  parser_error!("Unknow token", self)
+            TokenKind::StringValue => {
+                let description = StringValue{ 
+                    value: Cow::Borrowed(self.get_value()), 
+                    span: Span::new(self.get_start_pos(), self.get_end_pos()) 
+                };
+                self.next_token();
+                match self.get_token() {
+                    TokenKind::Name => {
+                        match self.get_value() {
+                            "schema" => Defination::SchemaTypeDefination(self.parse_schema_type_defination(Some(description))),
+                            "scalar" => Defination::ScalarTypeDefinition(self.parse_scaler_type_defination(Some(description))),
+                            "type" =>  Defination::ObjectTypeDefinition(self.parse_object_type_defination(Some(description))),
+                            "interface" => Defination::InterfaceTypeDefinition(self.parse_interface_type_defination(Some(description))),
+                            "input" => Defination::InputObjectTypeDefinition(self.parse_input_object_type_defination(Some(description))),
+                            "enum" => Defination::EnumTypeDefinition(self.parse_enum_type_defination(Some(description))),
+                            "union" => Defination::UnionTypeDefinition(self.parse_union_type_defination(Some(description))),
+                            "extend" => self.parse_extends(),
+                            _ => parser_error!(format!("Unknow Name token with value ({:?})", self.get_value() ), self)
+                        }
+                    }
+                    _ => parser_error!("description should be followed by TypeDefination.", self)
+                }
+            }
+            _ =>  parser_error!("Unknow token when parse top level", self)
         }
     }
     fn parse_fragement(&mut self) -> FragmentDefination<'a> {
@@ -441,6 +464,25 @@ impl<'a> Parser<'a> {
             _ => parser_error!("Unknow Value" ,self)
         }
     }
+    fn parse_extends(&mut self) -> Defination<'a> {
+        let start_pos = self.get_start_pos();
+        expect_keyword_name!("extend", self);
+        match self.get_token() {
+            TokenKind::Name => {
+                match self.get_value() {
+                    "schema" => Defination::SchemaTypeExtension(self.parse_schema_extension(start_pos)),
+                    "scalar" => Defination::ScalarTypeExtension(self.parse_scaler_type_extension(start_pos)),
+                    "type" =>  Defination::ObjectTypeExtension(self.parse_object_extension(start_pos)),
+                    "interface" => Defination::InterfaceTypeExtension(self.parse_interface_extension(start_pos)),
+                    "input" => Defination::InputObjectTypeExtension(self.parse_input_object_extension(start_pos)),
+                    "enum" => Defination::EnumTypeExtension(self.parse_enum_extension(start_pos)),
+                    "union" => Defination::UnionTypeExtension(self.parse_union_extension(start_pos)),
+                    _ => parser_error!("", self)
+                }
+            }
+            _ => parser_error!("", self)
+        }
+    }
     fn parse_schema_type_defination(&mut self, description: Option<StringValue<'a>>) -> SchmaTypeDefination<'a> {
         let start_pos = self.get_start_pos();
         expect_keyword_name!("schema", self);
@@ -451,6 +493,13 @@ impl<'a> Parser<'a> {
         let tuple = self.parse_operation_type_definations();
         let span = Span::new(start_pos, tuple.4);
         SchmaTypeDefination { description, directives, query: tuple.0, mutation: tuple.1, subscription: tuple.2, span }
+    }
+    fn parse_schema_extension(&mut self, start_pos: Position) -> SchemaTypeExtension<'a> {
+        let schema_def = self.parse_schema_type_defination(None);
+        SchemaTypeExtension { 
+            directives: schema_def.directives, span: Span::new(start_pos, schema_def.span.end),
+            query: schema_def.query, mutation: schema_def.mutation, subscription: schema_def.subscription 
+        }
     }
     fn parse_operation_type_definations(&mut self) -> (Vec<NameVarType<'a>>, Vec<NameVarType<'a>>, Vec<NameVarType<'a>>, Position, Position) {
         let start_pos = self.get_start_pos();
@@ -492,7 +541,7 @@ impl<'a> Parser<'a> {
             Some(descr) => descr.span.start.clone(),
             None =>  name.span.start.clone()
         };
-        let mut end_pos: Position = name.span.end.clone();;
+        let mut end_pos: Position = name.span.end.clone();
         let mut directives: Option<Vec<Directive<'a>>> = None;
         if let Some(tuple) = self.parse_maybe_directive() {
             directives = Some(tuple.0);
@@ -500,6 +549,13 @@ impl<'a> Parser<'a> {
         }
         let span = Span::new(start_pos, end_pos);
         ScalarTypeDefinition { description, name, directives, span }
+    }
+    fn parse_scaler_type_extension(&mut self, start_pos: Position) -> ScalarTypeExtension<'a> {
+        let scaler_type_def = self.parse_scaler_type_defination(None);
+        ScalarTypeExtension { 
+            name: scaler_type_def.name, directives: 
+            scaler_type_def.directives, span: Span::new(start_pos, scaler_type_def.span.end)
+        }
     }
     fn parse_object_type_defination(&mut self, description: Option<StringValue<'a>>) -> ObjectTypeDefinition<'a> {
         expect_keyword_name!("type", self);
@@ -541,6 +597,14 @@ impl<'a> Parser<'a> {
             implement_interfaces:  if implement_interfaces.is_empty() { None } else { Some(implement_interfaces) }, 
             field_definations, directives, 
             span: Span::new(start_pos, end_pos) 
+        }
+    }
+    fn parse_object_extension(&mut self, start_pos: Position) -> ObjectTypeExtension<'a> {
+        let object_type_def = self.parse_object_type_defination(None);
+        ObjectTypeExtension { 
+            name: object_type_def.name, implement_interfaces: object_type_def.implement_interfaces, 
+            field_definations: object_type_def.field_definations, directives: object_type_def.directives, 
+            span: Span::new(start_pos ,object_type_def.span.end),
         }
     }
     fn parse_field_definations(&mut self) -> (Vec<FieldDefination<'a>>, Position, Position ) {
@@ -665,6 +729,13 @@ impl<'a> Parser<'a> {
         }
         InterfaceTypeDefinition { description, name, directives, field_definations, span: Span::new(start_pos, end_pos) }
     }
+    fn parse_interface_extension(&mut self, start_pos: Position) -> InterfaceTypeExtension<'a> {
+        let interface_def = self.parse_interface_type_defination(None);
+        InterfaceTypeExtension { 
+            name: interface_def.name, span: Span::new(start_pos, interface_def.span.end),
+            directives: interface_def.directives, field_definations: interface_def.field_definations
+         }
+    }
     fn parse_input_object_type_defination(&mut self, description: Option<StringValue<'a>>) -> InputObjectTypeDefinition<'a> {
         expect_keyword_name!("input", self);
         let name = self.parse_name();
@@ -685,6 +756,13 @@ impl<'a> Parser<'a> {
             end_pos = tuple.2;
         }
         InputObjectTypeDefinition { description, name, directives, input_definations, span: Span::new(start_pos, end_pos) }
+    }
+    fn parse_input_object_extension(&mut self, start_pos: Position) -> InputObjectTypeExtension<'a> {
+        let input_object_def = self.parse_input_object_type_defination(None);
+        InputObjectTypeExtension { 
+            name: input_object_def.name, span: Span::new(start_pos, input_object_def.span.end),
+            directives: input_object_def.directives, input_definations: input_object_def.input_definations
+         }
     }
     fn parse_enum_type_defination(&mut self, description: Option<StringValue<'a>>) -> EnumTypeDefinition<'a> {
         expect_keyword_name!("enum", self);
@@ -748,6 +826,12 @@ impl<'a> Parser<'a> {
             value_definations: if value_definations.is_empty() { None } else { Some(value_definations) }
         }
     }
+    fn parse_enum_extension(&mut self, start_pos: Position) -> EnumTypeExtension<'a> {
+        let enum_def = self.parse_enum_type_defination(None);
+        EnumTypeExtension { 
+            name: enum_def.name, span: Span::new(start_pos, enum_def.span.end),
+            directives: enum_def.directives, value_definations: enum_def.value_definations }
+    }
     fn parse_union_type_defination(&mut self, description: Option<StringValue<'a>>) -> UnionTypeDefinition<'a> {
         expect_keyword_name!("union", self);
         let name = self.parse_name();
@@ -789,6 +873,13 @@ impl<'a> Parser<'a> {
             description, name, directives, 
             union_member_types: if union_member_types.is_empty() { None } else { Some(union_member_types) }, 
             span: Span::new(start_pos, end_pos)
+        }
+    }
+    fn parse_union_extension(&mut self, start_pos: Position)  -> UnionTypeExtension<'a>{
+        let union_def = self.parse_union_type_defination(None);
+        UnionTypeExtension { 
+            name: union_def.name, span: Span::new(start_pos, union_def.span.end),
+            directives: union_def.directives, union_member_types: union_def.union_member_types
         }
     }
 }
