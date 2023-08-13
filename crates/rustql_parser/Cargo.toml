@@ -9,6 +9,12 @@ edition = "2021"
 rustql_common = {path = "../rustql_common"}
 
 [dev-dependencies]
+criterion = { version = "0.4", features = ["html_reports"] }
 serde = "1.0.183"
 serde_derive = "1.0.183"
 serde_json = "1.0.104"
+graphql-parser = "0.4.0"
+
+[[bench]]
+name = "parser_benches"
+harness = false

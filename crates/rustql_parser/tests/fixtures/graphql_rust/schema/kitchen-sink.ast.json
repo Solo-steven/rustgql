@@ -1,0 +1,3976 @@
+{
+  "type": "Document",
+  "definations": [
+    {
+      "type": "SchemaTypeDefination",
+      "description": null,
+      "directives": null,
+      "query": [
+        {
+          "name": "QueryType",
+          "span": {
+            "start": {
+              "col": 9,
+              "row": 6,
+              "index": 190
+            },
+            "end": {
+              "col": 18,
+              "row": 6,
+              "index": 199
+            }
+          }
+        }
+      ],
+      "mutation": [
+        {
+          "name": "MutationType",
+          "span": {
+            "start": {
+              "col": 12,
+              "row": 7,
+              "index": 212
+            },
+            "end": {
+              "col": 24,
+              "row": 7,
+              "index": 224
+            }
+          }
+        }
+      ],
+      "subscription": [],
+      "span": {
+        "start": {
+          "col": 0,
+          "row": 5,
+          "index": 172
+        },
+        "end": {
+          "col": 1,
+          "row": 8,
+          "index": 226
+        }
+      }
+    },
+    {
+      "type": "ObjectTypeDefinition",
+      "description": {
+        "value": "\"\"\"\nThis is a description\nof the `Foo` type.\n\"\"\"",
+        "span": {
+          "start": {
+            "col": 0,
+            "row": 10,
+            "index": 228
+          },
+          "end": {
+            "col": 3,
+            "row": 13,
+            "index": 276
+          }
+        }
+      },
+      "name": {
+        "type": "Name",
+        "name": "Foo",
+        "span": {
+          "start": {
+            "col": 5,
+            "row": 14,
+            "index": 282
+          },
+          "end": {
+            "col": 8,
+            "row": 14,
+            "index": 285
+          }
+        }
+      },
+      "implement_interfaces": [
+        {
+          "name": "Bar",
+          "span": {
+            "start": {
+              "col": 20,
+              "row": 14,
+              "index": 297
+            },
+            "end": {
+              "col": 23,
+              "row": 14,
+              "index": 300
+            }
+          }
+        },
+        {
+          "name": "Baz",
+          "span": {
+            "start": {
+              "col": 26,
+              "row": 14,
+              "index": 303
+            },
+            "end": {
+              "col": 29,
+              "row": 14,
+              "index": 306
+            }
+          }
+        }
+      ],
+      "field_definations": [
+        {
+          "description": null,
+          "name": {
+            "type": "Name",
+            "name": "one",
+            "span": {
+              "start": {
+                "col": 2,
+                "row": 15,
+                "index": 311
+              },
+              "end": {
+                "col": 5,
+                "row": 15,
+                "index": 314
+              }
+            }
+          },
+          "argument_definations": null,
+          "directives": null,
+          "var_type": {
+            "type": "NameVarType",
+            "name": "Type",
+            "span": {
+              "start": {
+                "col": 7,
+                "row": 15,
+                "index": 316
+              },
+              "end": {
+                "col": 11,
+                "row": 15,
+                "index": 320
+              }
+            }
+          },
+          "span": {
+            "start": {
+              "col": 2,
+              "row": 15,
+              "index": 311
+            },
+            "end": {
+              "col": 11,
+              "row": 15,
+              "index": 320
+            }
+          }
+        },
+        {
+          "description": null,
+          "name": {
+            "type": "Name",
+            "name": "two",
+            "span": {
+              "start": {
+                "col": 2,
+                "row": 16,
+                "index": 323
+              },
+              "end": {
+                "col": 5,
+                "row": 16,
+                "index": 326
+              }
+            }
+          },
+          "argument_definations": [
+            {
+              "description": null,
+              "name": {
+                "type": "Name",
+                "name": "argument",
+                "span": {
+                  "start": {
+                    "col": 6,
+                    "row": 16,
+                    "index": 327
+                  },
+                  "end": {
+                    "col": 14,
+                    "row": 16,
+                    "index": 335
+                  }
+                }
+              },
+              "var_type": {
+                "type": "NonNullVarType",
+                "nonull_type": {
+                  "type": "NameVarType",
+                  "name": "InputType",
+                  "span": {
+                    "start": {
+                      "col": 16,
+                      "row": 16,
+                      "index": 337
+                    },
+                    "end": {
+                      "col": 25,
+                      "row": 16,
+                      "index": 346
+                    }
+                  }
+                }
+              },
+              "default_value": null,
+              "directives": null,
+              "span": {
+                "start": {
+                  "col": 6,
+                  "row": 16,
+                  "index": 327
+                },
+                "end": {
+                  "col": 25,
+                  "row": 16,
+                  "index": 346
+                }
+              }
+            }
+          ],
+          "directives": null,
+          "var_type": {
+            "type": "NameVarType",
+            "name": "Type",
+            "span": {
+              "start": {
+                "col": 29,
+                "row": 16,
+                "index": 350
+              },
+              "end": {
+                "col": 33,
+                "row": 16,
+                "index": 354
+              }
+            }
+          },
+          "span": {
+            "start": {
+              "col": 2,
+              "row": 16,
+              "index": 323
+            },
+            "end": {
+              "col": 33,
+              "row": 16,
+              "index": 354
+            }
+          }
+        },
+        {
+          "description": null,
+          "name": {
+            "type": "Name",
+            "name": "three",
+            "span": {
+              "start": {
+                "col": 2,
+                "row": 17,
+                "index": 357
+              },
+              "end": {
+                "col": 7,
+                "row": 17,
+                "index": 362
+              }
+            }
+          },
+          "argument_definations": [
+            {
+              "description": null,
+              "name": {
+                "type": "Name",
+                "name": "argument",
+                "span": {
+                  "start": {
+                    "col": 8,
+                    "row": 17,
+                    "index": 363
+                  },
+                  "end": {
+                    "col": 16,
+                    "row": 17,
+                    "index": 371
+                  }
+                }
+              },
+              "var_type": {
+                "type": "NameVarType",
+                "name": "InputType",
+                "span": {
+                  "start": {
+                    "col": 18,
+                    "row": 17,
+                    "index": 373
+                  },
+                  "end": {
+                    "col": 27,
+                    "row": 17,
+                    "index": 382
+                  }
+                }
+              },
+              "default_value": null,
+              "directives": null,
+              "span": {
+                "start": {
+                  "col": 8,
+                  "row": 17,
+                  "index": 363
+                },
+                "end": {
+                  "col": 27,
+                  "row": 17,
+                  "index": 382
+                }
+              }
+            },
+            {
+              "description": null,
+              "name": {
+                "type": "Name",
+                "name": "other",
+                "span": {
+                  "start": {
+                    "col": 29,
+                    "row": 17,
+                    "index": 384
+                  },
+                  "end": {
+                    "col": 34,
+                    "row": 17,
+                    "index": 389
+                  }
+                }
+              },
+              "var_type": {
+                "type": "NameVarType",
+                "name": "String",
+                "span": {
+                  "start": {
+                    "col": 36,
+                    "row": 17,
+                    "index": 391
+                  },
+                  "end": {
+                    "col": 42,
+                    "row": 17,
+                    "index": 397
+                  }
+                }
+              },
+              "default_value": null,
+              "directives": null,
+              "span": {
+                "start": {
+                  "col": 29,
+                  "row": 17,
+                  "index": 384
+                },
+                "end": {
+                  "col": 42,
+                  "row": 17,
+                  "index": 397
+                }
+              }
+            }
+          ],
+          "directives": null,
+          "var_type": {
+            "type": "NameVarType",
+            "name": "Int",
+            "span": {
+              "start": {
+                "col": 45,
+                "row": 17,
+                "index": 400
+              },
+              "end": {
+                "col": 48,
+                "row": 17,
+                "index": 403
+              }
+            }
+          },
+          "span": {
+            "start": {
+              "col": 2,
+              "row": 17,
+              "index": 357
+            },
+            "end": {
+              "col": 48,
+              "row": 17,
+              "index": 403
+            }
+          }
+        },
+        {
+          "description": null,
+          "name": {
+            "type": "Name",
+            "name": "four",
+            "span": {
+              "start": {
+                "col": 2,
+                "row": 18,
+                "index": 406
+              },
+              "end": {
+                "col": 6,
+                "row": 18,
+                "index": 410
+              }
+            }
+          },
+          "argument_definations": [
+            {
+              "description": null,
+              "name": {
+                "type": "Name",
+                "name": "argument",
+                "span": {
+                  "start": {
+                    "col": 7,
+                    "row": 18,
+                    "index": 411
+                  },
+                  "end": {
+                    "col": 15,
+                    "row": 18,
+                    "index": 419
+                  }
+                }
+              },
+              "var_type": {
+                "type": "NameVarType",
+                "name": "String",
+                "span": {
+                  "start": {
+                    "col": 17,
+                    "row": 18,
+                    "index": 421
+                  },
+                  "end": {
+                    "col": 23,
+                    "row": 18,
+                    "index": 427
+                  }
+                }
+              },
+              "default_value": {
+                "type": "StringValue",
+                "value": "\"string\"",
+                "span": {
+                  "start": {
+                    "col": 26,
+                    "row": 18,
+                    "index": 430
+                  },
+                  "end": {
+                    "col": 34,
+                    "row": 18,
+                    "index": 438
+                  }
+                }
+              },
+              "directives": null,
+              "span": {
+                "start": {
+                  "col": 7,
+                  "row": 18,
+                  "index": 411
+                },
+                "end": {
+                  "col": 34,
+                  "row": 18,
+                  "index": 438
+                }
+              }
+            }
+          ],
+          "directives": null,
+          "var_type": {
+            "type": "NameVarType",
+            "name": "String",
+            "span": {
+              "start": {
+                "col": 37,
+                "row": 18,
+                "index": 441
+              },
+              "end": {
+                "col": 43,
+                "row": 18,
+                "index": 447
+              }
+            }
+          },
+          "span": {
+            "start": {
+              "col": 2,
+              "row": 18,
+              "index": 406
+            },
+            "end": {
+              "col": 43,
+              "row": 18,
+              "index": 447
+            }
+          }
+        },
+        {
+          "description": null,
+          "name": {
+            "type": "Name",
+            "name": "five",
+            "span": {
+              "start": {
+                "col": 2,
+                "row": 19,
+                "index": 450
+              },
+              "end": {
+                "col": 6,
+                "row": 19,
+                "index": 454
+              }
+            }
+          },
+          "argument_definations": [
+            {
+              "description": null,
+              "name": {
+                "type": "Name",
+                "name": "argument",
+                "span": {
+                  "start": {
+                    "col": 7,
+                    "row": 19,
+                    "index": 455
+                  },
+                  "end": {
+                    "col": 15,
+                    "row": 19,
+                    "index": 463
+                  }
+                }
+              },
+              "var_type": {
+                "type": "ListVarType",
+                "list_type": {
+                  "type": "NameVarType",
+                  "name": "String",
+                  "span": {
+                    "start": {
+                      "col": 18,
+                      "row": 19,
+                      "index": 466
+                    },
+                    "end": {
+                      "col": 24,
+                      "row": 19,
+                      "index": 472
+                    }
+                  }
+                }
+              },
+              "default_value": {
+                "type": "ListValue",
+                "value": [
+                  {
+                    "type": "StringValue",
+                    "value": "\"string\"",
+                    "span": {
+                      "start": {
+                        "col": 29,
+                        "row": 19,
+                        "index": 477
+                      },
+                      "end": {
+                        "col": 37,
+                        "row": 19,
+                        "index": 485
+                      }
+                    }
+                  },
+                  {
+                    "type": "StringValue",
+                    "value": "\"string\"",
+                    "span": {
+                      "start": {
+                        "col": 39,
+                        "row": 19,
+                        "index": 487
+                      },
+                      "end": {
+                        "col": 47,
+                        "row": 19,
+                        "index": 495
+                      }
+                    }
+                  }
+                ],
+                "span": {
+                  "start": {
+                    "col": 28,
+                    "row": 19,
+                    "index": 476
+                  },
+                  "end": {
+                    "col": 48,
+                    "row": 19,
+                    "index": 496
+                  }
+                }
+              },
+              "directives": null,
+              "span": {
+                "start": {
+                  "col": 7,
+                  "row": 19,
+                  "index": 455
+                },
+                "end": {
+                  "col": 48,
+                  "row": 19,
+                  "index": 496
+                }
+              }
+            }
+          ],
+          "directives": null,
+          "var_type": {
+            "type": "NameVarType",
+            "name": "String",
+            "span": {
+              "start": {
+                "col": 51,
+                "row": 19,
+                "index": 499
+              },
+              "end": {
+                "col": 57,
+                "row": 19,
+                "index": 505
+              }
+            }
+          },
+          "span": {
+            "start": {
+              "col": 2,
+              "row": 19,
+              "index": 450
+            },
+            "end": {
+              "col": 57,
+              "row": 19,
+              "index": 505
+            }
+          }
+        },
+        {
+          "description": null,
+          "name": {
+            "type": "Name",
+            "name": "six",
+            "span": {
+              "start": {
+                "col": 2,
+                "row": 20,
+                "index": 508
+              },
+              "end": {
+                "col": 5,
+                "row": 20,
+                "index": 511
+              }
+            }
+          },
+          "argument_definations": [
+            {
+              "description": null,
+              "name": {
+                "type": "Name",
+                "name": "argument",
+                "span": {
+                  "start": {
+                    "col": 6,
+                    "row": 20,
+                    "index": 512
+                  },
+                  "end": {
+                    "col": 14,
+                    "row": 20,
+                    "index": 520
+                  }
+                }
+              },
+              "var_type": {
+                "type": "NameVarType",
+                "name": "InputType",
+                "span": {
+                  "start": {
+                    "col": 16,
+                    "row": 20,
+                    "index": 522
+                  },
+                  "end": {
+                    "col": 25,
+                    "row": 20,
+                    "index": 531
+                  }
+                }
+              },
+              "default_value": {
+                "type": "ObjectValue",
+                "value": [
+                  {
+                    "type": "ObjectField",
+                    "name": {
+                      "type": "Name",
+                      "name": "key",
+                      "span": {
+                        "start": {
+                          "col": 29,
+                          "row": 20,
+                          "index": 535
+                        },
+                        "end": {
+                          "col": 32,
+                          "row": 20,
+                          "index": 538
+                        }
+                      }
+                    },
+                    "value": {
+                      "type": "StringValue",
+                      "value": "\"value\"",
+                      "span": {
+                        "start": {
+                          "col": 34,
+                          "row": 20,
+                          "index": 540
+                        },
+                        "end": {
+                          "col": 41,
+                          "row": 20,
+                          "index": 547
+                        }
+                      }
+                    }
+                  }
+                ],
+                "span": {
+                  "start": {
+                    "col": 28,
+                    "row": 20,
+                    "index": 534
+                  },
+                  "end": {
+                    "col": 42,
+                    "row": 20,
+                    "index": 548
+                  }
+                }
+              },
+              "directives": null,
+              "span": {
+                "start": {
+                  "col": 6,
+                  "row": 20,
+                  "index": 512
+                },
+                "end": {
+                  "col": 42,
+                  "row": 20,
+                  "index": 548
+                }
+              }
+            }
+          ],
+          "directives": null,
+          "var_type": {
+            "type": "NameVarType",
+            "name": "Type",
+            "span": {
+              "start": {
+                "col": 45,
+                "row": 20,
+                "index": 551
+              },
+              "end": {
+                "col": 49,
+                "row": 20,
+                "index": 555
+              }
+            }
+          },
+          "span": {
+            "start": {
+              "col": 2,
+              "row": 20,
+              "index": 508
+            },
+            "end": {
+              "col": 49,
+              "row": 20,
+              "index": 555
+            }
+          }
+        },
+        {
+          "description": null,
+          "name": {
+            "type": "Name",
+            "name": "seven",
+            "span": {
+              "start": {
+                "col": 2,
+                "row": 21,
+                "index": 558
+              },
+              "end": {
+                "col": 7,
+                "row": 21,
+                "index": 563
+              }
+            }
+          },
+          "argument_definations": [
+            {
+              "description": null,
+              "name": {
+                "type": "Name",
+                "name": "argument",
+                "span": {
+                  "start": {
+                    "col": 8,
+                    "row": 21,
+                    "index": 564
+                  },
+                  "end": {
+                    "col": 16,
+                    "row": 21,
+                    "index": 572
+                  }
+                }
+              },
+              "var_type": {
+                "type": "NameVarType",
+                "name": "Int",
+                "span": {
+                  "start": {
+                    "col": 18,
+                    "row": 21,
+                    "index": 574
+                  },
+                  "end": {
+                    "col": 21,
+                    "row": 21,
+                    "index": 577
+                  }
+                }
+              },
+              "default_value": {
+                "type": "NullValue",
+                "span": {
+                  "start": {
+                    "col": 24,
+                    "row": 21,
+                    "index": 580
+                  },
+                  "end": {
+                    "col": 28,
+                    "row": 21,
+                    "index": 584
+                  }
+                }
+              },
+              "directives": null,
+              "span": {
+                "start": {
+                  "col": 8,
+                  "row": 21,
+                  "index": 564
+                },
+                "end": {
+                  "col": 28,
+                  "row": 21,
+                  "index": 584
+                }
+              }
+            }
+          ],
+          "directives": null,
+          "var_type": {
+            "type": "NameVarType",
+            "name": "Type",
+            "span": {
+              "start": {
+                "col": 31,
+                "row": 21,
+                "index": 587
+              },
+              "end": {
+                "col": 35,
+                "row": 21,
+                "index": 591
+              }
+            }
+          },
+          "span": {
+            "start": {
+              "col": 2,
+              "row": 21,
+              "index": 558
+            },
+            "end": {
+              "col": 35,
+              "row": 21,
+              "index": 591
+            }
+          }
+        }
+      ],
+      "directives": null,
+      "span": {
+        "start": {
+          "col": 5,
+          "row": 14,
+          "index": 282
+        },
+        "end": {
+          "col": 1,
+          "row": 22,
+          "index": 593
+        }
+      }
+    },
+    {
+      "type": "ObjectTypeDefinition",
+      "description": null,
+      "name": {
+        "type": "Name",
+        "name": "AnnotatedObject",
+        "span": {
+          "start": {
+            "col": 5,
+            "row": 24,
+            "index": 600
+          },
+          "end": {
+            "col": 20,
+            "row": 24,
+            "index": 615
+          }
+        }
+      },
+      "implement_interfaces": null,
+      "field_definations": [
+        {
+          "description": null,
+          "name": {
+            "type": "Name",
+            "name": "annotatedField",
+            "span": {
+              "start": {
+                "col": 2,
+                "row": 25,
+                "index": 644
+              },
+              "end": {
+                "col": 16,
+                "row": 25,
+                "index": 658
+              }
+            }
+          },
+          "argument_definations": [
+            {
+              "description": null,
+              "name": {
+                "type": "Name",
+                "name": "arg",
+                "span": {
+                  "start": {
+                    "col": 17,
+                    "row": 25,
+                    "index": 659
+                  },
+                  "end": {
+                    "col": 20,
+                    "row": 25,
+                    "index": 662
+                  }
+                }
+              },
+              "var_type": {
+                "type": "NameVarType",
+                "name": "Type",
+                "span": {
+                  "start": {
+                    "col": 22,
+                    "row": 25,
+                    "index": 664
+                  },
+                  "end": {
+                    "col": 26,
+                    "row": 25,
+                    "index": 668
+                  }
+                }
+              },
+              "default_value": {
+                "type": "StringValue",
+                "value": "\"default\"",
+                "span": {
+                  "start": {
+                    "col": 29,
+                    "row": 25,
+                    "index": 671
+                  },
+                  "end": {
+                    "col": 38,
+                    "row": 25,
+                    "index": 680
+                  }
+                }
+              },
+              "directives": [
+                {
+                  "type": "Directive",
+                  "name": {
+                    "type": "Name",
+                    "name": "onArg",
+                    "span": {
+                      "start": {
+                        "col": 40,
+                        "row": 25,
+                        "index": 682
+                      },
+                      "end": {
+                        "col": 45,
+                        "row": 25,
+                        "index": 687
+                      }
+                    }
+                  },
+                  "arguments": null,
+                  "span": {
+                    "start": {
+                      "col": 40,
+                      "row": 25,
+                      "index": 682
+                    },
+                    "end": {
+                      "col": 45,
+                      "row": 25,
+                      "index": 687
+                    }
+                  }
+                }
+              ],
+              "span": {
+                "start": {
+                  "col": 17,
+                  "row": 25,
+                  "index": 659
+                },
+                "end": {
+                  "col": 45,
+                  "row": 25,
+                  "index": 687
+                }
+              }
+            }
+          ],
+          "directives": [
+            {
+              "type": "Directive",
+              "name": {
+                "type": "Name",
+                "name": "onField",
+                "span": {
+                  "start": {
+                    "col": 54,
+                    "row": 25,
+                    "index": 696
+                  },
+                  "end": {
+                    "col": 61,
+                    "row": 25,
+                    "index": 703
+                  }
+                }
+              },
+              "arguments": null,
+              "span": {
+                "start": {
+                  "col": 54,
+                  "row": 25,
+                  "index": 696
+                },
+                "end": {
+                  "col": 61,
+                  "row": 25,
+                  "index": 703
+                }
+              }
+            }
+          ],
+          "var_type": {
+            "type": "NameVarType",
+            "name": "Type",
+            "span": {
+              "start": {
+                "col": 48,
+                "row": 25,
+                "index": 690
+              },
+              "end": {
+                "col": 52,
+                "row": 25,
+                "index": 694
+              }
+            }
+          },
+          "span": {
+            "start": {
+              "col": 2,
+              "row": 25,
+              "index": 644
+            },
+            "end": {
+              "col": 61,
+              "row": 25,
+              "index": 703
+            }
+          }
+        }
+      ],
+      "directives": [
+        {
+          "type": "Directive",
+          "name": {
+            "type": "Name",
+            "name": "onObject",
+            "span": {
+              "start": {
+                "col": 22,
+                "row": 24,
+                "index": 617
+              },
+              "end": {
+                "col": 30,
+                "row": 24,
+                "index": 625
+              }
+            }
+          },
+          "arguments": [
+            {
+              "type": "Argument",
+              "name": {
+                "type": "Name",
+                "name": "arg",
+                "span": {
+                  "start": {
+                    "col": 31,
+                    "row": 24,
+                    "index": 626
+                  },
+                  "end": {
+                    "col": 34,
+                    "row": 24,
+                    "index": 629
+                  }
+                }
+              },
+              "value": {
+                "type": "StringValue",
+                "value": "\"value\"",
+                "span": {
+                  "start": {
+                    "col": 36,
+                    "row": 24,
+                    "index": 631
+                  },
+                  "end": {
+                    "col": 43,
+                    "row": 24,
+                    "index": 638
+                  }
+                }
+              },
+              "span": {
+                "start": {
+                  "col": 31,
+                  "row": 24,
+                  "index": 626
+                },
+                "end": {
+                  "col": 43,
+                  "row": 24,
+                  "index": 638
+                }
+              }
+            }
+          ],
+          "span": {
+            "start": {
+              "col": 22,
+              "row": 24,
+              "index": 617
+            },
+            "end": {
+              "col": 44,
+              "row": 24,
+              "index": 639
+            }
+          }
+        }
+      ],
+      "span": {
+        "start": {
+          "col": 5,
+          "row": 24,
+          "index": 600
+        },
+        "end": {
+          "col": 1,
+          "row": 26,
+          "index": 705
+        }
+      }
+    },
+    {
+      "type": "ObjectTypeDefinition",
+      "description": null,
+      "name": {
+        "type": "Name",
+        "name": "UndefinedType",
+        "span": {
+          "start": {
+            "col": 5,
+            "row": 28,
+            "index": 712
+          },
+          "end": {
+            "col": 18,
+            "row": 28,
+            "index": 725
+          }
+        }
+      },
+      "implement_interfaces": null,
+      "field_definations": null,
+      "directives": null,
+      "span": {
+        "start": {
+          "col": 5,
+          "row": 28,
+          "index": 712
+        },
+        "end": {
+          "col": 18,
+          "row": 28,
+          "index": 725
+        }
+      }
+    },
+    {
+      "type": "ObjectTypeExtension",
+      "name": {
+        "type": "Name",
+        "name": "Foo",
+        "span": {
+          "start": {
+            "col": 12,
+            "row": 30,
+            "index": 739
+          },
+          "end": {
+            "col": 15,
+            "row": 30,
+            "index": 742
+          }
+        }
+      },
+      "implement_interfaces": null,
+      "field_definations": [
+        {
+          "description": null,
+          "name": {
+            "type": "Name",
+            "name": "seven",
+            "span": {
+              "start": {
+                "col": 2,
+                "row": 31,
+                "index": 747
+              },
+              "end": {
+                "col": 7,
+                "row": 31,
+                "index": 752
+              }
+            }
+          },
+          "argument_definations": [
+            {
+              "description": null,
+              "name": {
+                "type": "Name",
+                "name": "argument",
+                "span": {
+                  "start": {
+                    "col": 8,
+                    "row": 31,
+                    "index": 753
+                  },
+                  "end": {
+                    "col": 16,
+                    "row": 31,
+                    "index": 761
+                  }
+                }
+              },
+              "var_type": {
+                "type": "ListVarType",
+                "list_type": {
+                  "type": "NameVarType",
+                  "name": "String",
+                  "span": {
+                    "start": {
+                      "col": 19,
+                      "row": 31,
+                      "index": 764
+                    },
+                    "end": {
+                      "col": 25,
+                      "row": 31,
+                      "index": 770
+                    }
+                  }
+                }
+              },
+              "default_value": null,
+              "directives": null,
+              "span": {
+                "start": {
+                  "col": 8,
+                  "row": 31,
+                  "index": 753
+                },
+                "end": {
+                  "col": 25,
+                  "row": 31,
+                  "index": 770
+                }
+              }
+            }
+          ],
+          "directives": null,
+          "var_type": {
+            "type": "NameVarType",
+            "name": "Type",
+            "span": {
+              "start": {
+                "col": 29,
+                "row": 31,
+                "index": 774
+              },
+              "end": {
+                "col": 33,
+                "row": 31,
+                "index": 778
+              }
+            }
+          },
+          "span": {
+            "start": {
+              "col": 2,
+              "row": 31,
+              "index": 747
+            },
+            "end": {
+              "col": 33,
+              "row": 31,
+              "index": 778
+            }
+          }
+        }
+      ],
+      "directives": null,
+      "span": {
+        "start": {
+          "col": 0,
+          "row": 30,
+          "index": 727
+        },
+        "end": {
+          "col": 1,
+          "row": 32,
+          "index": 780
+        }
+      }
+    },
+    {
+      "type": "ObjectTypeExtension",
+      "name": {
+        "type": "Name",
+        "name": "Foo",
+        "span": {
+          "start": {
+            "col": 12,
+            "row": 34,
+            "index": 794
+          },
+          "end": {
+            "col": 15,
+            "row": 34,
+            "index": 797
+          }
+        }
+      },
+      "implement_interfaces": null,
+      "field_definations": null,
+      "directives": [
+        {
+          "type": "Directive",
+          "name": {
+            "type": "Name",
+            "name": "onType",
+            "span": {
+              "start": {
+                "col": 17,
+                "row": 34,
+                "index": 799
+              },
+              "end": {
+                "col": 23,
+                "row": 34,
+                "index": 805
+              }
+            }
+          },
+          "arguments": null,
+          "span": {
+            "start": {
+              "col": 17,
+              "row": 34,
+              "index": 799
+            },
+            "end": {
+              "col": 23,
+              "row": 34,
+              "index": 805
+            }
+          }
+        }
+      ],
+      "span": {
+        "start": {
+          "col": 0,
+          "row": 34,
+          "index": 782
+        },
+        "end": {
+          "col": 23,
+          "row": 34,
+          "index": 805
+        }
+      }
+    },
+    {
+      "type": "InterfaceTypeDefinition",
+      "description": null,
+      "implement_interfaces": null,
+      "name": {
+        "type": "Name",
+        "name": "Bar",
+        "span": {
+          "start": {
+            "col": 10,
+            "row": 36,
+            "index": 817
+          },
+          "end": {
+            "col": 13,
+            "row": 36,
+            "index": 820
+          }
+        }
+      },
+      "directives": null,
+      "field_definations": [
+        {
+          "description": null,
+          "name": {
+            "type": "Name",
+            "name": "one",
+            "span": {
+              "start": {
+                "col": 2,
+                "row": 37,
+                "index": 825
+              },
+              "end": {
+                "col": 5,
+                "row": 37,
+                "index": 828
+              }
+            }
+          },
+          "argument_definations": null,
+          "directives": null,
+          "var_type": {
+            "type": "NameVarType",
+            "name": "Type",
+            "span": {
+              "start": {
+                "col": 7,
+                "row": 37,
+                "index": 830
+              },
+              "end": {
+                "col": 11,
+                "row": 37,
+                "index": 834
+              }
+            }
+          },
+          "span": {
+            "start": {
+              "col": 2,
+              "row": 37,
+              "index": 825
+            },
+            "end": {
+              "col": 11,
+              "row": 37,
+              "index": 834
+            }
+          }
+        },
+        {
+          "description": null,
+          "name": {
+            "type": "Name",
+            "name": "four",
+            "span": {
+              "start": {
+                "col": 2,
+                "row": 38,
+                "index": 837
+              },
+              "end": {
+                "col": 6,
+                "row": 38,
+                "index": 841
+              }
+            }
+          },
+          "argument_definations": [
+            {
+              "description": null,
+              "name": {
+                "type": "Name",
+                "name": "argument",
+                "span": {
+                  "start": {
+                    "col": 7,
+                    "row": 38,
+                    "index": 842
+                  },
+                  "end": {
+                    "col": 15,
+                    "row": 38,
+                    "index": 850
+                  }
+                }
+              },
+              "var_type": {
+                "type": "NameVarType",
+                "name": "String",
+                "span": {
+                  "start": {
+                    "col": 17,
+                    "row": 38,
+                    "index": 852
+                  },
+                  "end": {
+                    "col": 23,
+                    "row": 38,
+                    "index": 858
+                  }
+                }
+              },
+              "default_value": {
+                "type": "StringValue",
+                "value": "\"string\"",
+                "span": {
+                  "start": {
+                    "col": 26,
+                    "row": 38,
+                    "index": 861
+                  },
+                  "end": {
+                    "col": 34,
+                    "row": 38,
+                    "index": 869
+                  }
+                }
+              },
+              "directives": null,
+              "span": {
+                "start": {
+                  "col": 7,
+                  "row": 38,
+                  "index": 842
+                },
+                "end": {
+                  "col": 34,
+                  "row": 38,
+                  "index": 869
+                }
+              }
+            }
+          ],
+          "directives": null,
+          "var_type": {
+            "type": "NameVarType",
+            "name": "String",
+            "span": {
+              "start": {
+                "col": 37,
+                "row": 38,
+                "index": 872
+              },
+              "end": {
+                "col": 43,
+                "row": 38,
+                "index": 878
+              }
+            }
+          },
+          "span": {
+            "start": {
+              "col": 2,
+              "row": 38,
+              "index": 837
+            },
+            "end": {
+              "col": 43,
+              "row": 38,
+              "index": 878
+            }
+          }
+        }
+      ],
+      "span": {
+        "start": {
+          "col": 10,
+          "row": 36,
+          "index": 817
+        },
+        "end": {
+          "col": 1,
+          "row": 39,
+          "index": 880
+        }
+      }
+    },
+    {
+      "type": "InterfaceTypeDefinition",
+      "description": null,
+      "implement_interfaces": null,
+      "name": {
+        "type": "Name",
+        "name": "AnnotatedInterface",
+        "span": {
+          "start": {
+            "col": 10,
+            "row": 41,
+            "index": 892
+          },
+          "end": {
+            "col": 28,
+            "row": 41,
+            "index": 910
+          }
+        }
+      },
+      "directives": [
+        {
+          "type": "Directive",
+          "name": {
+            "type": "Name",
+            "name": "onInterface",
+            "span": {
+              "start": {
+                "col": 30,
+                "row": 41,
+                "index": 912
+              },
+              "end": {
+                "col": 41,
+                "row": 41,
+                "index": 923
+              }
+            }
+          },
+          "arguments": null,
+          "span": {
+            "start": {
+              "col": 30,
+              "row": 41,
+              "index": 912
+            },
+            "end": {
+              "col": 41,
+              "row": 41,
+              "index": 923
+            }
+          }
+        }
+      ],
+      "field_definations": [
+        {
+          "description": null,
+          "name": {
+            "type": "Name",
+            "name": "annotatedField",
+            "span": {
+              "start": {
+                "col": 2,
+                "row": 42,
+                "index": 928
+              },
+              "end": {
+                "col": 16,
+                "row": 42,
+                "index": 942
+              }
+            }
+          },
+          "argument_definations": [
+            {
+              "description": null,
+              "name": {
+                "type": "Name",
+                "name": "arg",
+                "span": {
+                  "start": {
+                    "col": 17,
+                    "row": 42,
+                    "index": 943
+                  },
+                  "end": {
+                    "col": 20,
+                    "row": 42,
+                    "index": 946
+                  }
+                }
+              },
+              "var_type": {
+                "type": "NameVarType",
+                "name": "Type",
+                "span": {
+                  "start": {
+                    "col": 22,
+                    "row": 42,
+                    "index": 948
+                  },
+                  "end": {
+                    "col": 26,
+                    "row": 42,
+                    "index": 952
+                  }
+                }
+              },
+              "default_value": null,
+              "directives": [
+                {
+                  "type": "Directive",
+                  "name": {
+                    "type": "Name",
+                    "name": "onArg",
+                    "span": {
+                      "start": {
+                        "col": 28,
+                        "row": 42,
+                        "index": 954
+                      },
+                      "end": {
+                        "col": 33,
+                        "row": 42,
+                        "index": 959
+                      }
+                    }
+                  },
+                  "arguments": null,
+                  "span": {
+                    "start": {
+                      "col": 28,
+                      "row": 42,
+                      "index": 954
+                    },
+                    "end": {
+                      "col": 33,
+                      "row": 42,
+                      "index": 959
+                    }
+                  }
+                }
+              ],
+              "span": {
+                "start": {
+                  "col": 17,
+                  "row": 42,
+                  "index": 943
+                },
+                "end": {
+                  "col": 33,
+                  "row": 42,
+                  "index": 959
+                }
+              }
+            }
+          ],
+          "directives": [
+            {
+              "type": "Directive",
+              "name": {
+                "type": "Name",
+                "name": "onField",
+                "span": {
+                  "start": {
+                    "col": 42,
+                    "row": 42,
+                    "index": 968
+                  },
+                  "end": {
+                    "col": 49,
+                    "row": 42,
+                    "index": 975
+                  }
+                }
+              },
+              "arguments": null,
+              "span": {
+                "start": {
+                  "col": 42,
+                  "row": 42,
+                  "index": 968
+                },
+                "end": {
+                  "col": 49,
+                  "row": 42,
+                  "index": 975
+                }
+              }
+            }
+          ],
+          "var_type": {
+            "type": "NameVarType",
+            "name": "Type",
+            "span": {
+              "start": {
+                "col": 36,
+                "row": 42,
+                "index": 962
+              },
+              "end": {
+                "col": 40,
+                "row": 42,
+                "index": 966
+              }
+            }
+          },
+          "span": {
+            "start": {
+              "col": 2,
+              "row": 42,
+              "index": 928
+            },
+            "end": {
+              "col": 49,
+              "row": 42,
+              "index": 975
+            }
+          }
+        }
+      ],
+      "span": {
+        "start": {
+          "col": 10,
+          "row": 41,
+          "index": 892
+        },
+        "end": {
+          "col": 1,
+          "row": 43,
+          "index": 977
+        }
+      }
+    },
+    {
+      "type": "InterfaceTypeDefinition",
+      "description": null,
+      "implement_interfaces": null,
+      "name": {
+        "type": "Name",
+        "name": "UndefinedInterface",
+        "span": {
+          "start": {
+            "col": 10,
+            "row": 45,
+            "index": 989
+          },
+          "end": {
+            "col": 28,
+            "row": 45,
+            "index": 1007
+          }
+        }
+      },
+      "directives": null,
+      "field_definations": null,
+      "span": {
+        "start": {
+          "col": 10,
+          "row": 45,
+          "index": 989
+        },
+        "end": {
+          "col": 28,
+          "row": 45,
+          "index": 1007
+        }
+      }
+    },
+    {
+      "type": "InterfaceTypeExtension",
+      "name": {
+        "type": "Name",
+        "name": "Bar",
+        "span": {
+          "start": {
+            "col": 17,
+            "row": 47,
+            "index": 1026
+          },
+          "end": {
+            "col": 20,
+            "row": 47,
+            "index": 1029
+          }
+        }
+      },
+      "implement_interfaces": null,
+      "directives": null,
+      "field_definations": [
+        {
+          "description": null,
+          "name": {
+            "type": "Name",
+            "name": "two",
+            "span": {
+              "start": {
+                "col": 2,
+                "row": 48,
+                "index": 1034
+              },
+              "end": {
+                "col": 5,
+                "row": 48,
+                "index": 1037
+              }
+            }
+          },
+          "argument_definations": [
+            {
+              "description": null,
+              "name": {
+                "type": "Name",
+                "name": "argument",
+                "span": {
+                  "start": {
+                    "col": 6,
+                    "row": 48,
+                    "index": 1038
+                  },
+                  "end": {
+                    "col": 14,
+                    "row": 48,
+                    "index": 1046
+                  }
+                }
+              },
+              "var_type": {
+                "type": "NonNullVarType",
+                "nonull_type": {
+                  "type": "NameVarType",
+                  "name": "InputType",
+                  "span": {
+                    "start": {
+                      "col": 16,
+                      "row": 48,
+                      "index": 1048
+                    },
+                    "end": {
+                      "col": 25,
+                      "row": 48,
+                      "index": 1057
+                    }
+                  }
+                }
+              },
+              "default_value": null,
+              "directives": null,
+              "span": {
+                "start": {
+                  "col": 6,
+                  "row": 48,
+                  "index": 1038
+                },
+                "end": {
+                  "col": 25,
+                  "row": 48,
+                  "index": 1057
+                }
+              }
+            }
+          ],
+          "directives": null,
+          "var_type": {
+            "type": "NameVarType",
+            "name": "Type",
+            "span": {
+              "start": {
+                "col": 29,
+                "row": 48,
+                "index": 1061
+              },
+              "end": {
+                "col": 33,
+                "row": 48,
+                "index": 1065
+              }
+            }
+          },
+          "span": {
+            "start": {
+              "col": 2,
+              "row": 48,
+              "index": 1034
+            },
+            "end": {
+              "col": 33,
+              "row": 48,
+              "index": 1065
+            }
+          }
+        }
+      ],
+      "span": {
+        "start": {
+          "col": 0,
+          "row": 47,
+          "index": 1009
+        },
+        "end": {
+          "col": 1,
+          "row": 49,
+          "index": 1067
+        }
+      }
+    },
+    {
+      "type": "InterfaceTypeExtension",
+      "name": {
+        "type": "Name",
+        "name": "Bar",
+        "span": {
+          "start": {
+            "col": 17,
+            "row": 51,
+            "index": 1086
+          },
+          "end": {
+            "col": 20,
+            "row": 51,
+            "index": 1089
+          }
+        }
+      },
+      "implement_interfaces": null,
+      "directives": [
+        {
+          "type": "Directive",
+          "name": {
+            "type": "Name",
+            "name": "onInterface",
+            "span": {
+              "start": {
+                "col": 22,
+                "row": 51,
+                "index": 1091
+              },
+              "end": {
+                "col": 33,
+                "row": 51,
+                "index": 1102
+              }
+            }
+          },
+          "arguments": null,
+          "span": {
+            "start": {
+              "col": 22,
+              "row": 51,
+              "index": 1091
+            },
+            "end": {
+              "col": 33,
+              "row": 51,
+              "index": 1102
+            }
+          }
+        }
+      ],
+      "field_definations": null,
+      "span": {
+        "start": {
+          "col": 0,
+          "row": 51,
+          "index": 1069
+        },
+        "end": {
+          "col": 33,
+          "row": 51,
+          "index": 1102
+        }
+      }
+    },
+    {
+      "type": "UnionTypeDefinition",
+      "description": null,
+      "name": {
+        "type": "Name",
+        "name": "Feed",
+        "span": {
+          "start": {
+            "col": 6,
+            "row": 53,
+            "index": 1110
+          },
+          "end": {
+            "col": 10,
+            "row": 53,
+            "index": 1114
+          }
+        }
+      },
+      "directives": null,
+      "union_member_types": [
+        {
+          "name": "Story",
+          "span": {
+            "start": {
+              "col": 13,
+              "row": 53,
+              "index": 1117
+            },
+            "end": {
+              "col": 18,
+              "row": 53,
+              "index": 1122
+            }
+          }
+        },
+        {
+          "name": "Article",
+          "span": {
+            "start": {
+              "col": 21,
+              "row": 53,
+              "index": 1125
+            },
+            "end": {
+              "col": 28,
+              "row": 53,
+              "index": 1132
+            }
+          }
+        },
+        {
+          "name": "Advert",
+          "span": {
+            "start": {
+              "col": 31,
+              "row": 53,
+              "index": 1135
+            },
+            "end": {
+              "col": 37,
+              "row": 53,
+              "index": 1141
+            }
+          }
+        }
+      ],
+      "span": {
+        "start": {
+          "col": 6,
+          "row": 53,
+          "index": 1110
+        },
+        "end": {
+          "col": 37,
+          "row": 53,
+          "index": 1141
+        }
+      }
+    },
+    {
+      "type": "UnionTypeDefinition",
+      "description": null,
+      "name": {
+        "type": "Name",
+        "name": "AnnotatedUnion",
+        "span": {
+          "start": {
+            "col": 6,
+            "row": 55,
+            "index": 1149
+          },
+          "end": {
+            "col": 20,
+            "row": 55,
+            "index": 1163
+          }
+        }
+      },
+      "directives": [
+        {
+          "type": "Directive",
+          "name": {
+            "type": "Name",
+            "name": "onUnion",
+            "span": {
+              "start": {
+                "col": 22,
+                "row": 55,
+                "index": 1165
+              },
+              "end": {
+                "col": 29,
+                "row": 55,
+                "index": 1172
+              }
+            }
+          },
+          "arguments": null,
+          "span": {
+            "start": {
+              "col": 22,
+              "row": 55,
+              "index": 1165
+            },
+            "end": {
+              "col": 29,
+              "row": 55,
+              "index": 1172
+            }
+          }
+        }
+      ],
+      "union_member_types": [
+        {
+          "name": "A",
+          "span": {
+            "start": {
+              "col": 32,
+              "row": 55,
+              "index": 1175
+            },
+            "end": {
+              "col": 33,
+              "row": 55,
+              "index": 1176
+            }
+          }
+        },
+        {
+          "name": "B",
+          "span": {
+            "start": {
+              "col": 36,
+              "row": 55,
+              "index": 1179
+            },
+            "end": {
+              "col": 37,
+              "row": 55,
+              "index": 1180
+            }
+          }
+        }
+      ],
+      "span": {
+        "start": {
+          "col": 6,
+          "row": 55,
+          "index": 1149
+        },
+        "end": {
+          "col": 37,
+          "row": 55,
+          "index": 1180
+        }
+      }
+    },
+    {
+      "type": "UnionTypeDefinition",
+      "description": null,
+      "name": {
+        "type": "Name",
+        "name": "AnnotatedUnionTwo",
+        "span": {
+          "start": {
+            "col": 6,
+            "row": 57,
+            "index": 1188
+          },
+          "end": {
+            "col": 23,
+            "row": 57,
+            "index": 1205
+          }
+        }
+      },
+      "directives": [
+        {
+          "type": "Directive",
+          "name": {
+            "type": "Name",
+            "name": "onUnion",
+            "span": {
+              "start": {
+                "col": 25,
+                "row": 57,
+                "index": 1207
+              },
+              "end": {
+                "col": 32,
+                "row": 57,
+                "index": 1214
+              }
+            }
+          },
+          "arguments": null,
+          "span": {
+            "start": {
+              "col": 25,
+              "row": 57,
+              "index": 1207
+            },
+            "end": {
+              "col": 32,
+              "row": 57,
+              "index": 1214
+            }
+          }
+        }
+      ],
+      "union_member_types": [
+        {
+          "name": "A",
+          "span": {
+            "start": {
+              "col": 37,
+              "row": 57,
+              "index": 1219
+            },
+            "end": {
+              "col": 38,
+              "row": 57,
+              "index": 1220
+            }
+          }
+        },
+        {
+          "name": "B",
+          "span": {
+            "start": {
+              "col": 41,
+              "row": 57,
+              "index": 1223
+            },
+            "end": {
+              "col": 42,
+              "row": 57,
+              "index": 1224
+            }
+          }
+        }
+      ],
+      "span": {
+        "start": {
+          "col": 6,
+          "row": 57,
+          "index": 1188
+        },
+        "end": {
+          "col": 42,
+          "row": 57,
+          "index": 1224
+        }
+      }
+    },
+    {
+      "type": "UnionTypeDefinition",
+      "description": null,
+      "name": {
+        "type": "Name",
+        "name": "UndefinedUnion",
+        "span": {
+          "start": {
+            "col": 6,
+            "row": 59,
+            "index": 1232
+          },
+          "end": {
+            "col": 20,
+            "row": 59,
+            "index": 1246
+          }
+        }
+      },
+      "directives": null,
+      "union_member_types": null,
+      "span": {
+        "start": {
+          "col": 6,
+          "row": 59,
+          "index": 1232
+        },
+        "end": {
+          "col": 20,
+          "row": 59,
+          "index": 1246
+        }
+      }
+    },
+    {
+      "type": "UnionTypeExtension",
+      "name": {
+        "type": "Name",
+        "name": "Feed",
+        "span": {
+          "start": {
+            "col": 13,
+            "row": 61,
+            "index": 1261
+          },
+          "end": {
+            "col": 17,
+            "row": 61,
+            "index": 1265
+          }
+        }
+      },
+      "directives": null,
+      "union_member_types": [
+        {
+          "name": "Photo",
+          "span": {
+            "start": {
+              "col": 20,
+              "row": 61,
+              "index": 1268
+            },
+            "end": {
+              "col": 25,
+              "row": 61,
+              "index": 1273
+            }
+          }
+        },
+        {
+          "name": "Video",
+          "span": {
+            "start": {
+              "col": 28,
+              "row": 61,
+              "index": 1276
+            },
+            "end": {
+              "col": 33,
+              "row": 61,
+              "index": 1281
+            }
+          }
+        }
+      ],
+      "span": {
+        "start": {
+          "col": 0,
+          "row": 61,
+          "index": 1248
+        },
+        "end": {
+          "col": 33,
+          "row": 61,
+          "index": 1281
+        }
+      }
+    },
+    {
+      "type": "UnionTypeExtension",
+      "name": {
+        "type": "Name",
+        "name": "Feed",
+        "span": {
+          "start": {
+            "col": 13,
+            "row": 63,
+            "index": 1296
+          },
+          "end": {
+            "col": 17,
+            "row": 63,
+            "index": 1300
+          }
+        }
+      },
+      "directives": [
+        {
+          "type": "Directive",
+          "name": {
+            "type": "Name",
+            "name": "onUnion",
+            "span": {
+              "start": {
+                "col": 19,
+                "row": 63,
+                "index": 1302
+              },
+              "end": {
+                "col": 26,
+                "row": 63,
+                "index": 1309
+              }
+            }
+          },
+          "arguments": null,
+          "span": {
+            "start": {
+              "col": 19,
+              "row": 63,
+              "index": 1302
+            },
+            "end": {
+              "col": 26,
+              "row": 63,
+              "index": 1309
+            }
+          }
+        }
+      ],
+      "union_member_types": null,
+      "span": {
+        "start": {
+          "col": 0,
+          "row": 63,
+          "index": 1283
+        },
+        "end": {
+          "col": 26,
+          "row": 63,
+          "index": 1309
+        }
+      }
+    },
+    {
+      "type": "ScalarTypeDefinition",
+      "description": null,
+      "name": {
+        "type": "Name",
+        "name": "CustomScalar",
+        "span": {
+          "start": {
+            "col": 7,
+            "row": 65,
+            "index": 1318
+          },
+          "end": {
+            "col": 19,
+            "row": 65,
+            "index": 1330
+          }
+        }
+      },
+      "directives": null,
+      "span": {
+        "start": {
+          "col": 7,
+          "row": 65,
+          "index": 1318
+        },
+        "end": {
+          "col": 19,
+          "row": 65,
+          "index": 1330
+        }
+      }
+    },
+    {
+      "type": "ScalarTypeDefinition",
+      "description": null,
+      "name": {
+        "type": "Name",
+        "name": "AnnotatedScalar",
+        "span": {
+          "start": {
+            "col": 7,
+            "row": 67,
+            "index": 1339
+          },
+          "end": {
+            "col": 22,
+            "row": 67,
+            "index": 1354
+          }
+        }
+      },
+      "directives": [
+        {
+          "type": "Directive",
+          "name": {
+            "type": "Name",
+            "name": "onScalar",
+            "span": {
+              "start": {
+                "col": 24,
+                "row": 67,
+                "index": 1356
+              },
+              "end": {
+                "col": 32,
+                "row": 67,
+                "index": 1364
+              }
+            }
+          },
+          "arguments": null,
+          "span": {
+            "start": {
+              "col": 24,
+              "row": 67,
+              "index": 1356
+            },
+            "end": {
+              "col": 32,
+              "row": 67,
+              "index": 1364
+            }
+          }
+        }
+      ],
+      "span": {
+        "start": {
+          "col": 7,
+          "row": 67,
+          "index": 1339
+        },
+        "end": {
+          "col": 32,
+          "row": 67,
+          "index": 1364
+        }
+      }
+    },
+    {
+      "type": "ScalarTypeExtension",
+      "name": {
+        "type": "Name",
+        "name": "CustomScalar",
+        "span": {
+          "start": {
+            "col": 14,
+            "row": 69,
+            "index": 1380
+          },
+          "end": {
+            "col": 26,
+            "row": 69,
+            "index": 1392
+          }
+        }
+      },
+      "directives": [
+        {
+          "type": "Directive",
+          "name": {
+            "type": "Name",
+            "name": "onScalar",
+            "span": {
+              "start": {
+                "col": 28,
+                "row": 69,
+                "index": 1394
+              },
+              "end": {
+                "col": 36,
+                "row": 69,
+                "index": 1402
+              }
+            }
+          },
+          "arguments": null,
+          "span": {
+            "start": {
+              "col": 28,
+              "row": 69,
+              "index": 1394
+            },
+            "end": {
+              "col": 36,
+              "row": 69,
+              "index": 1402
+            }
+          }
+        }
+      ],
+      "span": {
+        "start": {
+          "col": 0,
+          "row": 69,
+          "index": 1366
+        },
+        "end": {
+          "col": 36,
+          "row": 69,
+          "index": 1402
+        }
+      }
+    },
+    {
+      "type": "EnumTypeDefinition",
+      "description": null,
+      "name": {
+        "type": "Name",
+        "name": "Site",
+        "span": {
+          "start": {
+            "col": 5,
+            "row": 71,
+            "index": 1409
+          },
+          "end": {
+            "col": 9,
+            "row": 71,
+            "index": 1413
+          }
+        }
+      },
+      "directives": null,
+      "value_definations": [
+        {
+          "description": null,
+          "value": {
+            "value": "DESKTOP",
+            "span": {
+              "start": {
+                "col": 2,
+                "row": 72,
+                "index": 1418
+              },
+              "end": {
+                "col": 9,
+                "row": 72,
+                "index": 1425
+              }
+            }
+          },
+          "directives": null,
+          "span": {
+            "start": {
+              "col": 2,
+              "row": 72,
+              "index": 1418
+            },
+            "end": {
+              "col": 9,
+              "row": 72,
+              "index": 1425
+            }
+          }
+        },
+        {
+          "description": null,
+          "value": {
+            "value": "MOBILE",
+            "span": {
+              "start": {
+                "col": 2,
+                "row": 73,
+                "index": 1428
+              },
+              "end": {
+                "col": 8,
+                "row": 73,
+                "index": 1434
+              }
+            }
+          },
+          "directives": null,
+          "span": {
+            "start": {
+              "col": 2,
+              "row": 73,
+              "index": 1428
+            },
+            "end": {
+              "col": 8,
+              "row": 73,
+              "index": 1434
+            }
+          }
+        }
+      ],
+      "span": {
+        "start": {
+          "col": 5,
+          "row": 71,
+          "index": 1409
+        },
+        "end": {
+          "col": 9,
+          "row": 71,
+          "index": 1413
+        }
+      }
+    },
+    {
+      "type": "EnumTypeDefinition",
+      "description": null,
+      "name": {
+        "type": "Name",
+        "name": "AnnotatedEnum",
+        "span": {
+          "start": {
+            "col": 5,
+            "row": 76,
+            "index": 1443
+          },
+          "end": {
+            "col": 18,
+            "row": 76,
+            "index": 1456
+          }
+        }
+      },
+      "directives": [
+        {
+          "type": "Directive",
+          "name": {
+            "type": "Name",
+            "name": "onEnum",
+            "span": {
+              "start": {
+                "col": 20,
+                "row": 76,
+                "index": 1458
+              },
+              "end": {
+                "col": 26,
+                "row": 76,
+                "index": 1464
+              }
+            }
+          },
+          "arguments": null,
+          "span": {
+            "start": {
+              "col": 20,
+              "row": 76,
+              "index": 1458
+            },
+            "end": {
+              "col": 26,
+              "row": 76,
+              "index": 1464
+            }
+          }
+        }
+      ],
+      "value_definations": [
+        {
+          "description": null,
+          "value": {
+            "value": "ANNOTATED_VALUE",
+            "span": {
+              "start": {
+                "col": 2,
+                "row": 77,
+                "index": 1469
+              },
+              "end": {
+                "col": 17,
+                "row": 77,
+                "index": 1484
+              }
+            }
+          },
+          "directives": [
+            {
+              "type": "Directive",
+              "name": {
+                "type": "Name",
+                "name": "onEnumValue",
+                "span": {
+                  "start": {
+                    "col": 19,
+                    "row": 77,
+                    "index": 1486
+                  },
+                  "end": {
+                    "col": 30,
+                    "row": 77,
+                    "index": 1497
+                  }
+                }
+              },
+              "arguments": null,
+              "span": {
+                "start": {
+                  "col": 19,
+                  "row": 77,
+                  "index": 1486
+                },
+                "end": {
+                  "col": 30,
+                  "row": 77,
+                  "index": 1497
+                }
+              }
+            }
+          ],
+          "span": {
+            "start": {
+              "col": 2,
+              "row": 77,
+              "index": 1469
+            },
+            "end": {
+              "col": 30,
+              "row": 77,
+              "index": 1497
+            }
+          }
+        },
+        {
+          "description": null,
+          "value": {
+            "value": "OTHER_VALUE",
+            "span": {
+              "start": {
+                "col": 2,
+                "row": 78,
+                "index": 1500
+              },
+              "end": {
+                "col": 13,
+                "row": 78,
+                "index": 1511
+              }
+            }
+          },
+          "directives": null,
+          "span": {
+            "start": {
+              "col": 2,
+              "row": 78,
+              "index": 1500
+            },
+            "end": {
+              "col": 13,
+              "row": 78,
+              "index": 1511
+            }
+          }
+        }
+      ],
+      "span": {
+        "start": {
+          "col": 5,
+          "row": 76,
+          "index": 1443
+        },
+        "end": {
+          "col": 26,
+          "row": 76,
+          "index": 1464
+        }
+      }
+    },
+    {
+      "type": "EnumTypeDefinition",
+      "description": null,
+      "name": {
+        "type": "Name",
+        "name": "UndefinedEnum",
+        "span": {
+          "start": {
+            "col": 5,
+            "row": 81,
+            "index": 1520
+          },
+          "end": {
+            "col": 18,
+            "row": 81,
+            "index": 1533
+          }
+        }
+      },
+      "directives": null,
+      "value_definations": null,
+      "span": {
+        "start": {
+          "col": 5,
+          "row": 81,
+          "index": 1520
+        },
+        "end": {
+          "col": 18,
+          "row": 81,
+          "index": 1533
+        }
+      }
+    },
+    {
+      "type": "EnumTypeExtension",
+      "name": {
+        "type": "Name",
+        "name": "Site",
+        "span": {
+          "start": {
+            "col": 12,
+            "row": 83,
+            "index": 1547
+          },
+          "end": {
+            "col": 16,
+            "row": 83,
+            "index": 1551
+          }
+        }
+      },
+      "directives": null,
+      "value_definations": [
+        {
+          "description": null,
+          "value": {
+            "value": "VR",
+            "span": {
+              "start": {
+                "col": 2,
+                "row": 84,
+                "index": 1556
+              },
+              "end": {
+                "col": 4,
+                "row": 84,
+                "index": 1558
+              }
+            }
+          },
+          "directives": null,
+          "span": {
+            "start": {
+              "col": 2,
+              "row": 84,
+              "index": 1556
+            },
+            "end": {
+              "col": 4,
+              "row": 84,
+              "index": 1558
+            }
+          }
+        }
+      ],
+      "span": {
+        "start": {
+          "col": 0,
+          "row": 83,
+          "index": 1535
+        },
+        "end": {
+          "col": 16,
+          "row": 83,
+          "index": 1551
+        }
+      }
+    },
+    {
+      "type": "EnumTypeExtension",
+      "name": {
+        "type": "Name",
+        "name": "Site",
+        "span": {
+          "start": {
+            "col": 12,
+            "row": 87,
+            "index": 1574
+          },
+          "end": {
+            "col": 16,
+            "row": 87,
+            "index": 1578
+          }
+        }
+      },
+      "directives": [
+        {
+          "type": "Directive",
+          "name": {
+            "type": "Name",
+            "name": "onEnum",
+            "span": {
+              "start": {
+                "col": 18,
+                "row": 87,
+                "index": 1580
+              },
+              "end": {
+                "col": 24,
+                "row": 87,
+                "index": 1586
+              }
+            }
+          },
+          "arguments": null,
+          "span": {
+            "start": {
+              "col": 18,
+              "row": 87,
+              "index": 1580
+            },
+            "end": {
+              "col": 24,
+              "row": 87,
+              "index": 1586
+            }
+          }
+        }
+      ],
+      "value_definations": null,
+      "span": {
+        "start": {
+          "col": 0,
+          "row": 87,
+          "index": 1562
+        },
+        "end": {
+          "col": 24,
+          "row": 87,
+          "index": 1586
+        }
+      }
+    },
+    {
+      "type": "InputObjectTypeDefinition",
+      "description": null,
+      "name": {
+        "type": "Name",
+        "name": "InputType",
+        "span": {
+          "start": {
+            "col": 6,
+            "row": 89,
+            "index": 1594
+          },
+          "end": {
+            "col": 15,
+            "row": 89,
+            "index": 1603
+          }
+        }
+      },
+      "directives": null,
+      "input_definations": [
+        {
+          "description": null,
+          "name": {
+            "type": "Name",
+            "name": "key",
+            "span": {
+              "start": {
+                "col": 2,
+                "row": 90,
+                "index": 1608
+              },
+              "end": {
+                "col": 5,
+                "row": 90,
+                "index": 1611
+              }
+            }
+          },
+          "var_type": {
+            "type": "NonNullVarType",
+            "nonull_type": {
+              "type": "NameVarType",
+              "name": "String",
+              "span": {
+                "start": {
+                  "col": 7,
+                  "row": 90,
+                  "index": 1613
+                },
+                "end": {
+                  "col": 13,
+                  "row": 90,
+                  "index": 1619
+                }
+              }
+            }
+          },
+          "default_value": null,
+          "directives": null,
+          "span": {
+            "start": {
+              "col": 2,
+              "row": 90,
+              "index": 1608
+            },
+            "end": {
+              "col": 13,
+              "row": 90,
+              "index": 1619
+            }
+          }
+        },
+        {
+          "description": null,
+          "name": {
+            "type": "Name",
+            "name": "answer",
+            "span": {
+              "start": {
+                "col": 2,
+                "row": 91,
+                "index": 1623
+              },
+              "end": {
+                "col": 8,
+                "row": 91,
+                "index": 1629
+              }
+            }
+          },
+          "var_type": {
+            "type": "NameVarType",
+            "name": "Int",
+            "span": {
+              "start": {
+                "col": 10,
+                "row": 91,
+                "index": 1631
+              },
+              "end": {
+                "col": 13,
+                "row": 91,
+                "index": 1634
+              }
+            }
+          },
+          "default_value": {
+            "type": "IntValue",
+            "value": "42",
+            "span": {
+              "start": {
+                "col": 16,
+                "row": 91,
+                "index": 1637
+              },
+              "end": {
+                "col": 18,
+                "row": 91,
+                "index": 1639
+              }
+            }
+          },
+          "directives": null,
+          "span": {
+            "start": {
+              "col": 2,
+              "row": 91,
+              "index": 1623
+            },
+            "end": {
+              "col": 18,
+              "row": 91,
+              "index": 1639
+            }
+          }
+        }
+      ],
+      "span": {
+        "start": {
+          "col": 6,
+          "row": 89,
+          "index": 1594
+        },
+        "end": {
+          "col": 1,
+          "row": 92,
+          "index": 1641
+        }
+      }
+    },
+    {
+      "type": "InputObjectTypeDefinition",
+      "description": null,
+      "name": {
+        "type": "Name",
+        "name": "AnnotatedInput",
+        "span": {
+          "start": {
+            "col": 6,
+            "row": 94,
+            "index": 1649
+          },
+          "end": {
+            "col": 20,
+            "row": 94,
+            "index": 1663
+          }
+        }
+      },
+      "directives": [
+        {
+          "type": "Directive",
+          "name": {
+            "type": "Name",
+            "name": "onInputObject",
+            "span": {
+              "start": {
+                "col": 22,
+                "row": 94,
+                "index": 1665
+              },
+              "end": {
+                "col": 35,
+                "row": 94,
+                "index": 1678
+              }
+            }
+          },
+          "arguments": null,
+          "span": {
+            "start": {
+              "col": 22,
+              "row": 94,
+              "index": 1665
+            },
+            "end": {
+              "col": 35,
+              "row": 94,
+              "index": 1678
+            }
+          }
+        }
+      ],
+      "input_definations": [
+        {
+          "description": null,
+          "name": {
+            "type": "Name",
+            "name": "annotatedField",
+            "span": {
+              "start": {
+                "col": 2,
+                "row": 95,
+                "index": 1683
+              },
+              "end": {
+                "col": 16,
+                "row": 95,
+                "index": 1697
+              }
+            }
+          },
+          "var_type": {
+            "type": "NameVarType",
+            "name": "Type",
+            "span": {
+              "start": {
+                "col": 18,
+                "row": 95,
+                "index": 1699
+              },
+              "end": {
+                "col": 22,
+                "row": 95,
+                "index": 1703
+              }
+            }
+          },
+          "default_value": null,
+          "directives": [
+            {
+              "type": "Directive",
+              "name": {
+                "type": "Name",
+                "name": "onField",
+                "span": {
+                  "start": {
+                    "col": 24,
+                    "row": 95,
+                    "index": 1705
+                  },
+                  "end": {
+                    "col": 31,
+                    "row": 95,
+                    "index": 1712
+                  }
+                }
+              },
+              "arguments": null,
+              "span": {
+                "start": {
+                  "col": 24,
+                  "row": 95,
+                  "index": 1705
+                },
+                "end": {
+                  "col": 31,
+                  "row": 95,
+                  "index": 1712
+                }
+              }
+            }
+          ],
+          "span": {
+            "start": {
+              "col": 2,
+              "row": 95,
+              "index": 1683
+            },
+            "end": {
+              "col": 31,
+              "row": 95,
+              "index": 1712
+            }
+          }
+        }
+      ],
+      "span": {
+        "start": {
+          "col": 6,
+          "row": 94,
+          "index": 1649
+        },
+        "end": {
+          "col": 1,
+          "row": 96,
+          "index": 1714
+        }
+      }
+    },
+    {
+      "type": "InputObjectTypeDefinition",
+      "description": null,
+      "name": {
+        "type": "Name",
+        "name": "UndefinedInput",
+        "span": {
+          "start": {
+            "col": 6,
+            "row": 98,
+            "index": 1722
+          },
+          "end": {
+            "col": 20,
+            "row": 98,
+            "index": 1736
+          }
+        }
+      },
+      "directives": null,
+      "input_definations": null,
+      "span": {
+        "start": {
+          "col": 6,
+          "row": 98,
+          "index": 1722
+        },
+        "end": {
+          "col": 20,
+          "row": 98,
+          "index": 1736
+        }
+      }
+    },
+    {
+      "type": "InputObjectTypeExtension",
+      "name": {
+        "type": "Name",
+        "name": "InputType",
+        "span": {
+          "start": {
+            "col": 13,
+            "row": 100,
+            "index": 1751
+          },
+          "end": {
+            "col": 22,
+            "row": 100,
+            "index": 1760
+          }
+        }
+      },
+      "directives": null,
+      "input_definations": [
+        {
+          "description": null,
+          "name": {
+            "type": "Name",
+            "name": "other",
+            "span": {
+              "start": {
+                "col": 2,
+                "row": 101,
+                "index": 1765
+              },
+              "end": {
+                "col": 7,
+                "row": 101,
+                "index": 1770
+              }
+            }
+          },
+          "var_type": {
+            "type": "NameVarType",
+            "name": "Float",
+            "span": {
+              "start": {
+                "col": 9,
+                "row": 101,
+                "index": 1772
+              },
+              "end": {
+                "col": 14,
+                "row": 101,
+                "index": 1777
+              }
+            }
+          },
+          "default_value": {
+            "type": "FloatValue",
+            "value": "1.23e4",
+            "span": {
+              "start": {
+                "col": 17,
+                "row": 101,
+                "index": 1780
+              },
+              "end": {
+                "col": 23,
+                "row": 101,
+                "index": 1786
+              }
+            }
+          },
+          "directives": null,
+          "span": {
+            "start": {
+              "col": 2,
+              "row": 101,
+              "index": 1765
+            },
+            "end": {
+              "col": 23,
+              "row": 101,
+              "index": 1786
+            }
+          }
+        }
+      ],
+      "span": {
+        "start": {
+          "col": 0,
+          "row": 100,
+          "index": 1738
+        },
+        "end": {
+          "col": 1,
+          "row": 102,
+          "index": 1788
+        }
+      }
+    },
+    {
+      "type": "InputObjectTypeExtension",
+      "name": {
+        "type": "Name",
+        "name": "InputType",
+        "span": {
+          "start": {
+            "col": 13,
+            "row": 104,
+            "index": 1803
+          },
+          "end": {
+            "col": 22,
+            "row": 104,
+            "index": 1812
+          }
+        }
+      },
+      "directives": [
+        {
+          "type": "Directive",
+          "name": {
+            "type": "Name",
+            "name": "onInputObject",
+            "span": {
+              "start": {
+                "col": 24,
+                "row": 104,
+                "index": 1814
+              },
+              "end": {
+                "col": 37,
+                "row": 104,
+                "index": 1827
+              }
+            }
+          },
+          "arguments": null,
+          "span": {
+            "start": {
+              "col": 24,
+              "row": 104,
+              "index": 1814
+            },
+            "end": {
+              "col": 37,
+              "row": 104,
+              "index": 1827
+            }
+          }
+        }
+      ],
+      "input_definations": null,
+      "span": {
+        "start": {
+          "col": 0,
+          "row": 104,
+          "index": 1790
+        },
+        "end": {
+          "col": 37,
+          "row": 104,
+          "index": 1827
+        }
+      }
+    },
+    {
+      "type": "DirectiveDefination",
+      "description": null,
+      "name": {
+        "type": "Name",
+        "name": "skip",
+        "span": {
+          "start": {
+            "col": 11,
+            "row": 106,
+            "index": 1840
+          },
+          "end": {
+            "col": 15,
+            "row": 106,
+            "index": 1844
+          }
+        }
+      },
+      "argument_definations": [
+        {
+          "description": null,
+          "name": {
+            "type": "Name",
+            "name": "if",
+            "span": {
+              "start": {
+                "col": 16,
+                "row": 106,
+                "index": 1845
+              },
+              "end": {
+                "col": 18,
+                "row": 106,
+                "index": 1847
+              }
+            }
+          },
+          "var_type": {
+            "type": "NonNullVarType",
+            "nonull_type": {
+              "type": "NameVarType",
+              "name": "Boolean",
+              "span": {
+                "start": {
+                  "col": 20,
+                  "row": 106,
+                  "index": 1849
+                },
+                "end": {
+                  "col": 27,
+                  "row": 106,
+                  "index": 1856
+                }
+              }
+            }
+          },
+          "default_value": null,
+          "directives": null,
+          "span": {
+            "start": {
+              "col": 16,
+              "row": 106,
+              "index": 1845
+            },
+            "end": {
+              "col": 27,
+              "row": 106,
+              "index": 1856
+            }
+          }
+        }
+      ],
+      "directive_locations": [
+        "Field",
+        "FragmentSpread",
+        "InlineFragment"
+      ],
+      "is_repeatable": false,
+      "span": {
+        "start": {
+          "col": 11,
+          "row": 106,
+          "index": 1840
+        },
+        "end": {
+          "col": 74,
+          "row": 106,
+          "index": 1903
+        }
+      }
+    },
+    {
+      "type": "DirectiveDefination",
+      "description": null,
+      "name": {
+        "type": "Name",
+        "name": "include",
+        "span": {
+          "start": {
+            "col": 11,
+            "row": 108,
+            "index": 1916
+          },
+          "end": {
+            "col": 18,
+            "row": 108,
+            "index": 1923
+          }
+        }
+      },
+      "argument_definations": [
+        {
+          "description": null,
+          "name": {
+            "type": "Name",
+            "name": "if",
+            "span": {
+              "start": {
+                "col": 19,
+                "row": 108,
+                "index": 1924
+              },
+              "end": {
+                "col": 21,
+                "row": 108,
+                "index": 1926
+              }
+            }
+          },
+          "var_type": {
+            "type": "NonNullVarType",
+            "nonull_type": {
+              "type": "NameVarType",
+              "name": "Boolean",
+              "span": {
+                "start": {
+                  "col": 23,
+                  "row": 108,
+                  "index": 1928
+                },
+                "end": {
+                  "col": 30,
+                  "row": 108,
+                  "index": 1935
+                }
+              }
+            }
+          },
+          "default_value": null,
+          "directives": null,
+          "span": {
+            "start": {
+              "col": 19,
+              "row": 108,
+              "index": 1924
+            },
+            "end": {
+              "col": 30,
+              "row": 108,
+              "index": 1935
+            }
+          }
+        }
+      ],
+      "directive_locations": [
+        "Field",
+        "FragmentSpread",
+        "InlineFragment"
+      ],
+      "is_repeatable": false,
+      "span": {
+        "start": {
+          "col": 11,
+          "row": 108,
+          "index": 1916
+        },
+        "end": {
+          "col": 20,
+          "row": 111,
+          "index": 1990
+        }
+      }
+    },
+    {
+      "type": "DirectiveDefination",
+      "description": null,
+      "name": {
+        "type": "Name",
+        "name": "include2",
+        "span": {
+          "start": {
+            "col": 11,
+            "row": 113,
+            "index": 2003
+          },
+          "end": {
+            "col": 19,
+            "row": 113,
+            "index": 2011
+          }
+        }
+      },
+      "argument_definations": [
+        {
+          "description": null,
+          "name": {
+            "type": "Name",
+            "name": "if",
+            "span": {
+              "start": {
+                "col": 20,
+                "row": 113,
+                "index": 2012
+              },
+              "end": {
+                "col": 22,
+                "row": 113,
+                "index": 2014
+              }
+            }
+          },
+          "var_type": {
+            "type": "NonNullVarType",
+            "nonull_type": {
+              "type": "NameVarType",
+              "name": "Boolean",
+              "span": {
+                "start": {
+                  "col": 24,
+                  "row": 113,
+                  "index": 2016
+                },
+                "end": {
+                  "col": 31,
+                  "row": 113,
+                  "index": 2023
+                }
+              }
+            }
+          },
+          "default_value": null,
+          "directives": null,
+          "span": {
+            "start": {
+              "col": 20,
+              "row": 113,
+              "index": 2012
+            },
+            "end": {
+              "col": 31,
+              "row": 113,
+              "index": 2023
+            }
+          }
+        }
+      ],
+      "directive_locations": [
+        "Field",
+        "FragmentSpread",
+        "InlineFragment"
+      ],
+      "is_repeatable": false,
+      "span": {
+        "start": {
+          "col": 11,
+          "row": 113,
+          "index": 2003
+        },
+        "end": {
+          "col": 19,
+          "row": 116,
+          "index": 2078
+        }
+      }
+    }
+  ]
+}

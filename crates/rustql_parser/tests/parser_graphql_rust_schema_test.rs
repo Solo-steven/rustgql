@@ -62,7 +62,7 @@ mod test {
     }
     #[test]
     fn test_extend_input() {
-        // test_case_for_parser!("./tests/fixtures/graphql_rust/schema/extend_input");
+        test_case_for_parser!("./tests/fixtures/graphql_rust/schema/extend_input");
     }
     #[test]
     fn test_extend_interface() {
@@ -106,7 +106,7 @@ mod test {
     }
     #[test]
     fn test_kitchen_sink() {
-        //test_case_for_parser!("./tests/fixtures/graphql_rust/schema/kitchen-sink");
+        test_case_for_parser!("./tests/fixtures/graphql_rust/schema/kitchen-sink");
     }
     #[test]
     fn test_minimal_type() {

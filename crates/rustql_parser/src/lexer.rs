@@ -282,11 +282,11 @@ impl<'a> Lexer<'a> {
     }
     fn read_number(&mut self) -> TokenKind {
         let mut is_float = false;
-        /*  read nagaive */
+        // Read nagaive
         if self.is_char('-') {
             self.eat_char(1);
         }
-        /* read int part */
+        // Read int part
         // if not start with 0, caume util not digital
         // if start with 0, must not start with digial next.
         if !self.is_char('0') {
@@ -299,14 +299,22 @@ impl<'a> Lexer<'a> {
                 }
             }
         }
-        /* read dot and if start with dot */ 
+        // Read dot and if start with dot
         if self.is_char('.') {
             self.eat_char(1);
             is_float = true;
             self.helper_read_digital();
         }
+        if self.is_char('e') || self.is_char('E') {
+            self.eat_char(1);
+            is_float = true;
+            if self.is_char('+') || self.is_char('-') {
+                self.eat_char(1);
+            }
+            self.helper_read_digital();
+        }
         self.finish_token();
-        /*  next char can not be any char belong to start with name */
+        // next char can not be any char belong to start with name 
         if let Some(ch) = self.get_char() {
             if is_name_start(ch) {
                 lexer_error!("number can not be followed by this char", self);
