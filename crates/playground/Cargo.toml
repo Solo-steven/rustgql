@@ -1,5 +1,5 @@
 [package]
-name = "rustql_parser"
+name = "playground"
 version = "0.1.0"
 edition = "2021"
 
@@ -7,8 +7,7 @@ edition = "2021"
 
 [dependencies]
 rustql_common = {path = "../rustql_common"}
-
-[dev-dependencies]
+rustql_parser = { path = "../rustql_parser"}
 serde = "1.0.183"
 serde_derive = "1.0.183"
 serde_json = "1.0.104"

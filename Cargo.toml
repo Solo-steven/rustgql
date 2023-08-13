@@ -1,5 +1,6 @@
 [workspace]
 members = [
     "crates/rustql_common",
-    "crates/rustql_parser"
+    "crates/rustql_parser",
+    "crates/playground",
 ]

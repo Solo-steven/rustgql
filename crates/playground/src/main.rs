@@ -1,9 +1,6 @@
-pub mod lexer;
-pub mod parser;
-pub mod marco;
 use rustql_common::token::TokenKind;
-use crate::lexer::Lexer;
-use crate::parser::Parser;
+use rustql_parser::lexer::Lexer;
+use rustql_parser::parser::Parser;
 use std::fs;
 use std::io::Write;
 use serde_json::to_string_pretty;
