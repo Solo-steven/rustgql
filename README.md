@@ -5,6 +5,7 @@ a tool for graqhql , written in rust for better performance. pass all test case 
 install rustql_parser and rustql_common.
 - rustql_parser: lexer and parser for graphql.
 - rustql_common: ast and token for graphql.
+- rustql_typegen: generate typescript `.d.ts` file from your schema.
 ```rust
 use rustql_parser::parser::Parser;
 fn main() {

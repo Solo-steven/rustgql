@@ -1,7 +1,6 @@
 use rustql_common::ast::common::*;
 use rustql_common::ast::schema::*;
 
-
 pub struct ArgumentWithName<'a> {
     pub argument_definition: &'a  Vec<InputValueDefinition<'a>>,
     pub object_name: &'a str,
