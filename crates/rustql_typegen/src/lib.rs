@@ -34,26 +34,6 @@ impl<'a,> TsTypeGenerator <'a>{
         for def in &root.definations{
             self.accept_definition(def);
         }
-        let arguments_with_names = std::mem::take(&mut self.args_auffer);
-        for arguments_with_name in arguments_with_names {
-            self.write("export interface ");
-            self.write(format!(
-                "{}{}{}{}Args", 
-                arguments_with_name.object_name.chars().next().unwrap().to_ascii_uppercase(),
-                &arguments_with_name.object_name[1..],
-                arguments_with_name.field_name.chars().next().unwrap().to_ascii_uppercase(),
-                &arguments_with_name.field_name[1..],
-            ).as_ref());
-            self.write("{\n");
-            for input_value in arguments_with_name.argument_definition {
-                self.write("  ");
-                self.write(input_value.name.name.as_ref());
-                self.write(": ");
-                self.accept_var_type(&input_value.var_type, false);
-                self.write(";\n");
-            }
-            self.write("}\n");
-        };
     }
     fn accept_definition(&mut self, defination: &'a Defination<'a>) {
         match *defination {
@@ -113,7 +93,27 @@ impl<'a,> TsTypeGenerator <'a>{
                 self.accept_field_definition(field_def, definition.name.name.as_ref());
             }
         }
-        self.write("}\n")
+        self.write("}\n");
+        let arguments_with_names = std::mem::take(&mut self.args_auffer);
+        for arguments_with_name in arguments_with_names {
+            self.write("export interface ");
+            self.write(format!(
+                "{}{}{}{}Args", 
+                arguments_with_name.object_name.chars().next().unwrap().to_ascii_uppercase(),
+                &arguments_with_name.object_name[1..],
+                arguments_with_name.field_name.chars().next().unwrap().to_ascii_uppercase(),
+                &arguments_with_name.field_name[1..],
+            ).as_ref());
+            self.write("{\n");
+            for input_value in arguments_with_name.argument_definition {
+                self.write("  ");
+                self.write(input_value.name.name.as_ref());
+                self.write(": ");
+                self.accept_var_type(&input_value.var_type, false);
+                self.write(";\n");
+            }
+            self.write("}\n");
+        };
     }
     fn accept_field_definition(&mut self, definition: &'a FieldDefination<'a>, object_name: &'a str) {
         let mut is_top_level_non_null = false;
