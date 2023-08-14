@@ -3,5 +3,6 @@ resolver = "2"
 members = [
     "crates/rustql_common",
     "crates/rustql_parser",
+    "crates/rustql_typegen",
     "crates/playground",
 ]

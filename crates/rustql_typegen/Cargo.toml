@@ -1,0 +1,19 @@
+[package]
+name = "rustql_typegen"
+authors = ["Solo-steven"]
+description = "generate typescript file from graphql schma"
+version = "0.1.0"
+edition = "2021"
+license-file = "../../LICENSE"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+rustql_common = { version = "0.1.0", path = "../rustql_common"}
+
+[dev-dependencies]
+criterion = { version = "0.4", features = ["html_reports"] }
+serde = "1.0.183"
+serde_derive = "1.0.183"
+serde_json = "1.0.104"
+graphql-parser = "0.4.0"

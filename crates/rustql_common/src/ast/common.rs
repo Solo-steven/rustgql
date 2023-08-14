@@ -155,7 +155,6 @@ pub enum Defination<'a> {
     UnionTypeExtension(UnionTypeExtension<'a>),
     EnumTypeExtension(EnumTypeExtension<'a>),
     InputObjectTypeExtension(InputObjectTypeExtension<'a>),
-    /* TODO */
     // operation defination
     SelectSet(SelectSet<'a>),
     Query(Query<'a>),

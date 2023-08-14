@@ -363,6 +363,7 @@ version = "0.1.0"
 dependencies = [
  "rustql_common",
  "rustql_parser",
+ "rustql_typegen",
  "serde",
  "serde_derive",
  "serde_json",
@@ -476,6 +477,18 @@ dependencies = [
 
 [[package]]
 name = "rustql_parser"
+version = "0.1.0"
+dependencies = [
+ "criterion",
+ "graphql-parser",
+ "rustql_common",
+ "serde",
+ "serde_derive",
+ "serde_json",
+]
+
+[[package]]
+name = "rustql_typegen"
 version = "0.1.0"
 dependencies = [
  "criterion",
