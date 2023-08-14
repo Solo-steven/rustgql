@@ -57,11 +57,10 @@ fn main() {
     }
     
     let mut parser = Parser::new(code);
-    let mut root = parser.parse();
+    let root = parser.parse();
     let mut gen = TsTypeGenerator::new();
-    gen.accept_document(&mut root);
+    gen.accept_document(&root);
     let mut output = fs::File::create("./test.d.ts").unwrap();
-    println!("{:?}", root);
     write!(output, "{}", gen.output.as_str()).unwrap();
 
 }
