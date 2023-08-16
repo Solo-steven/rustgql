@@ -513,6 +513,19 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "4d5d9eb14b174ee9aa2ef96dc2b94637a2d4b6e7cb873c7e171f0c20c6cf3eac"
 
 [[package]]
+name = "playground"
+version = "0.1.0"
+dependencies = [
+ "criterion",
+ "rustql_common",
+ "rustql_parser",
+ "rustql_typegen",
+ "serde",
+ "serde_derive",
+ "serde_json",
+]
+
+[[package]]
 name = "plotters"
 version = "0.3.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"

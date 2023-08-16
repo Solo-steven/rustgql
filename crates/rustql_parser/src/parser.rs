@@ -83,7 +83,7 @@ impl<'a> Parser<'a> {
             }
             TokenKind::StringValue => {
                 let description = StringValue{ 
-                    value: Cow::Borrowed(self.get_value()), 
+                    code: Cow::Borrowed(self.get_value()), 
                     span: Span::new(self.get_start_pos(), self.get_end_pos()) 
                 };
                 self.next_token();
@@ -362,10 +362,10 @@ impl<'a> Parser<'a> {
     fn parse_name(&mut self) -> Name<'a> {
         match self.get_token() {
             TokenKind::Name => {
-                let name =Cow::Borrowed(self.get_value());
+                let value =Cow::Borrowed(self.get_value());
                 let span = Span::new(self.get_start_pos(), self.get_end_pos());
                 self.next_token();
-                Name { name, span }
+                Name { value, span }
             },
             _ => parser_error!("Unknow token when parse name", self)
         }
@@ -374,31 +374,31 @@ impl<'a> Parser<'a> {
         match self.get_token() {
             TokenKind::FloatValue => {
                 let span = Span::new(self.get_start_pos(), self.get_end_pos());
-                let value = self.get_value();
+                let code = self.get_value();
                 self.next_token();
-                Value::FloatValue(FloatValue { value: Cow::Borrowed(value), span })
+                Value::FloatValue(FloatValue { code: Cow::Borrowed(code), span })
             },
             TokenKind::IntValue =>{
                 let span = Span::new(self.get_start_pos(), self.get_end_pos());
-                let value = self.get_value();
+                let code = self.get_value();
                 self.next_token();
-                Value::IntValue(IntValue { value: Cow::Borrowed(value), span })
+                Value::IntValue(IntValue { code: Cow::Borrowed(code), span })
             },
             TokenKind::StringValue => {
                 let span = Span::new(self.get_start_pos(), self.get_end_pos());
-                let value = self.get_value();
+                let code = self.get_value();
                 self.next_token();
-                Value::StringValue(StringValue { value: Cow::Borrowed(value), span })
+                Value::StringValue(StringValue { code: Cow::Borrowed(code), span })
             },
             TokenKind::DollarSign => {
                 let start_pos = self.get_start_pos();
                 self.next_token();
                 match self.get_token() {
                     TokenKind::Name => {
-                        let name = Cow::Borrowed(self.get_value());
+                        let code = Cow::Borrowed(self.get_value());
                         let span = Span::new(start_pos, self.get_end_pos());
                         self.next_token();
-                        Value::Variable(Variable { value: name, span })
+                        Value::Variable(Variable { code, span })
                     }
                     _ => {
                         panic!()
@@ -407,12 +407,12 @@ impl<'a> Parser<'a> {
             },
             TokenKind::Name => {
                 let span = Span::new(self.get_start_pos(), self.get_end_pos());
-                let value = self.get_value();
+                let code = self.get_value();
                 self.next_token();
-                match value {
-                    "true" | "false" => Value::BooleanValue(BoolValue { value: Cow::Borrowed(value), span }),
+                match code {
+                    "true" | "false" => Value::BooleanValue(BoolValue { code: Cow::Borrowed(code), span }),
                     "null" => Value::NullValue(NullValue { span }),
-                    _ => Value::EnumValue(EnumValue { value: Cow::Borrowed(value), span }),
+                    _ => Value::EnumValue(EnumValue { code: Cow::Borrowed(code), span }),
                 }
             }
             TokenKind::BracesLeft => { 
@@ -436,7 +436,7 @@ impl<'a> Parser<'a> {
                 }
                 let span = Span::new(start_pos, self.get_end_pos());
                 self.expect_token(TokenKind::BracesRight);
-                Value::ObjectValue(ObjectValue { value: object_fields, span })
+                Value::ObjectValue(ObjectValue { fields: object_fields, span })
             },
             TokenKind::BracketLeft => {
                 let start_pos = self.get_start_pos();
@@ -454,7 +454,7 @@ impl<'a> Parser<'a> {
                 }
                 let span = Span::new(start_pos, self.get_end_pos());
                 self.expect_token(TokenKind::BracketRight);
-                Value::ListValue(ListValue { value: values, span })
+                Value::ListValue(ListValue { values, span })
              },
             _ => parser_error!("Unknow Value" ,self)
         }
@@ -683,9 +683,9 @@ impl<'a> Parser<'a> {
                     let field_description = match self.get_token() {
                         TokenKind::StringValue => {
                             let span = Span::new(self.get_start_pos(), self.get_end_pos());
-                            let value = Cow::Borrowed(self.get_value());
+                            let code = Cow::Borrowed(self.get_value());
                             self.next_token();
-                            Some(StringValue{ value, span })
+                            Some(StringValue{ code, span })
                         },
                         _ => None
                     };
@@ -732,9 +732,9 @@ impl<'a> Parser<'a> {
             let argument_description = match self.get_token() {
                 TokenKind::StringValue => {
                     let span = Span::new(self.get_start_pos(), self.get_end_pos());
-                    let value = Cow::Borrowed(self.get_value());
+                    let code = Cow::Borrowed(self.get_value());
                     self.next_token();
-                    Some(StringValue{ value, span })
+                    Some(StringValue{ code, span })
                 },
                 _ => None
             };
@@ -874,9 +874,9 @@ impl<'a> Parser<'a> {
                         let enum_description = match self.get_token() {
                             TokenKind::StringValue => {
                                 let span = Span::new(self.get_start_pos(), self.get_end_pos());
-                                let value = Cow::Borrowed(self.get_value());
+                                let code = Cow::Borrowed(self.get_value());
                                 self.next_token();
-                                Some(StringValue{ value, span })
+                                Some(StringValue{ code, span })
                             },
                             _ => None
                         };

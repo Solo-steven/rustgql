@@ -35,27 +35,27 @@ pub fn get_value_span(value: &Value) -> Span {
 }
 #[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
 pub struct  Variable<'a> {
-    pub value: Cow<'a, str>,
+    pub code: Cow<'a, str>,
     pub span: Span
 }
 #[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
 pub struct IntValue<'a> {
-    pub value: Cow<'a, str>,
+    pub code: Cow<'a, str>,
     pub span: Span,
 }
 #[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
 pub struct FloatValue<'a> {
-    pub value: Cow<'a, str>,
+    pub code: Cow<'a, str>,
     pub span: Span,
 }
 #[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
 pub struct StringValue<'a> {
-    pub value: Cow<'a, str>,
+    pub code: Cow<'a, str>,
     pub span: Span,
 }
 #[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
 pub struct BoolValue<'a> {
-    pub value: Cow<'a, str>,
+    pub code: Cow<'a, str>,
     pub span: Span,
 }
 #[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
@@ -64,23 +64,23 @@ pub struct NullValue {
 }
 #[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
 pub struct EnumValue<'a> {
-    pub value: Cow<'a, str>,
+    pub code: Cow<'a, str>,
     pub span: Span,
 }
 #[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
 pub struct ListValue<'a> {
-    pub value: Vec<Value<'a>>,
+    pub values: Vec<Value<'a>>,
     pub span: Span,
 }
 #[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
 pub struct ObjectValue<'a> {
-    pub value: Vec<ObjectField<'a>>,
+    pub fields: Vec<ObjectField<'a>>,
     pub span: Span,
 }
 #[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
 #[serde(tag="type")]
 pub struct  Name<'a> {
-    pub name: Cow<'a, str>,
+    pub value: Cow<'a, str>,
     pub span: Span,
 }
 #[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]

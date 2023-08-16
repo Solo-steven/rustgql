@@ -49,12 +49,12 @@ impl<'a,> TsTypeGenerator <'a>{
     }
     fn accept_enum_definition(&mut self, definition: &'a EnumTypeDefinition<'a>) {
         self.write("export enum ");
-        self.write(definition.name.name.as_ref());
+        self.write(definition.name.value.as_ref());
         self.write(" {\n");
         if let Some(enum_values) = definition.value_definations.as_ref() {
             for enum_value in enum_values {
                 self.write("  ");
-                self.write(enum_value.value.value.as_ref());
+                self.write(enum_value.value.code.as_ref());
                 self.write(",\n")
             }
         }
@@ -62,11 +62,11 @@ impl<'a,> TsTypeGenerator <'a>{
     }
     fn accept_interface_definition(&mut self, definition: &'a InterfaceTypeDefinition<'a>) {
         self.write("export interface ");
-        self.write(definition.name.name.as_ref());
+        self.write(definition.name.value.as_ref());
         self.write(" {\n");
         if let Some(fields) = & definition.field_definations {
             for field_def in fields {
-                self.accept_field_definition(field_def, definition.name.name.as_ref());
+                self.accept_field_definition(field_def, definition.name.value.as_ref());
             }
         }
         self.write("}\n");
@@ -74,11 +74,11 @@ impl<'a,> TsTypeGenerator <'a>{
     fn accept_oaject_definition(&mut self, definition: &'a ObjectTypeDefinition<'a>) {
         if let Some(_implements) = &definition.implement_interfaces {
             self.write("export type ");
-            self.write(definition.name.name.as_ref());
+            self.write(definition.name.value.as_ref());
             self.write(" = ");
         }else {
             self.write("export interface ");
-            self.write(definition.name.name.as_ref());
+            self.write(definition.name.value.as_ref());
         }
         if let Some(implements) = &definition.implement_interfaces {
             for implement_interface in implements {
@@ -89,7 +89,7 @@ impl<'a,> TsTypeGenerator <'a>{
         self.write(" {\n");
         if let Some(fields) = &definition.field_definations {
             for field_def in fields {
-                self.accept_field_definition(field_def, definition.name.name.as_ref());
+                self.accept_field_definition(field_def, definition.name.value.as_ref());
             }
         }
         self.write("}\n");
@@ -106,7 +106,7 @@ impl<'a,> TsTypeGenerator <'a>{
             self.write("{\n");
             for input_value in arguments_with_name.argument_definition {
                 self.write("  ");
-                self.write(input_value.name.name.as_ref());
+                self.write(input_value.name.value.as_ref());
                 self.write(": ");
                 self.accept_var_type(&input_value.var_type, false);
                 self.write(";\n");
@@ -126,12 +126,12 @@ impl<'a,> TsTypeGenerator <'a>{
         if let Some(argument_definition) = &definition.argument_definations {
             self.args_auffer.push(ArgumentWithName { 
                 argument_definition, 
-                field_name: definition.name.name.as_ref(),
+                field_name: definition.name.value.as_ref(),
                 object_name,
             });
         }
         self.write("  ");
-        self.write(definition.name.name.as_ref());
+        self.write(definition.name.value.as_ref());
         if !is_top_level_non_null { self.write("?") }
         self.write(": ");
         self.accept_var_type(unwind_type, false);
@@ -166,7 +166,7 @@ impl<'a,> TsTypeGenerator <'a>{
     }
     fn accept_union_definition(&mut self, definition: &'a UnionTypeDefinition<'a>) {
         self.write("export type ");
-        self.write(definition.name.name.as_ref());
+        self.write(definition.name.value.as_ref());
         self.write(" = ");
         if let Some(nodes) = &definition.union_member_types {
             let mut is_frist = true;
