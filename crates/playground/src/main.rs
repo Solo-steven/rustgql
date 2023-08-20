@@ -11,6 +11,17 @@ fn main(){
       query GetTrack {
         tracksForHome {
           ...Test,
+          variant {
+            ...on PossibleA {
+              name,
+            }
+            ... on PossibleB {
+              age
+              node {
+                id
+              }
+            }
+          }
         }
       }
       fragment Test on Track {
@@ -26,7 +37,8 @@ fn main(){
          tumbnail: String,
          length: Int,
          modulesCount: Int,
-         node: [Node]
+         node: [Node],
+         variant: VariantType
       }
       type Author {
         id: ID!,
@@ -40,6 +52,16 @@ fn main(){
         id: ID!,
         data: String,
       }
+      union VariantType = PossibleA | PossibleB
+
+      type PossibleA {
+          name: String,
+          node: [Node]
+      }
+      type PossibleB {
+          age: Int,
+          node: [Node]
+      }
     "#;
     let mut parser = Parser::new(query_code);
     let query_document = parser.parse();
@@ -49,8 +71,7 @@ fn main(){
     let schema_doucment = parser.parse();
     let mut table = GrahpQLTable::new();
     table.build_table(&schema_doucment);
-    println!("{:?}", table.look_up_property(&Cow::Borrowed("Track"), &Cow::Borrowed("title")));
-
+    println!("{:?}", table);
     let mut query_generator = QueryGenerator::new(table);
     let output = query_generator.generate(&query_document);
     println!("{:?}", output);

@@ -45,19 +45,15 @@ impl <'a> QueryGenerator<'a> {
     fn unwind_selections_fragment(&self, selections: &Vec<Selection<'a>>) -> Vec<Selection<'a>> {
         let mut next_selections = Vec::new();
         for selection in selections {
-            match *selection {
-                Selection::Field(ref field) => {
-                    next_selections.push(Selection::Field(field.clone()));
-                },
-                Selection::FragmentSpread(ref fragment_spread) => {
-                    match self.find_fragment(&fragment_spread.name.value) {
-                        Some(mut fragment_selections) => {
-                            next_selections.append(&mut fragment_selections);
-                        }
-                        None => panic!("")
+            if let Selection::FragmentSpread(ref fragment_spread) = *selection {
+                match self.find_fragment(&fragment_spread.name.value) {
+                    Some(mut fragment_selections) => {
+                        next_selections.append(&mut fragment_selections);
                     }
-                },
-                Selection::InlineFragment(ref inline_fragment) => {},
+                    None => panic!("[Fragment Not existed]")
+                }
+            }else {
+                next_selections.push(selection.clone())
             }
         }
         next_selections
@@ -117,9 +113,13 @@ impl <'a> QueryGenerator<'a> {
             if is_nonnull_type {
                 self.write("Maybe<");
             }
-            self.write("{");
+            if self.table.look_up_union(&final_name_type.name).is_none() {
+                self.write("{");
+            }
             self.accept_selectionset(field_selectionset, &final_name_type.name);
-            self.write("}");
+            if self.table.look_up_union(&final_name_type.name).is_none() {
+                self.write("}");
+            }
             if is_nonnull_type {
                 self.write(">");
             }
@@ -169,17 +169,31 @@ impl <'a> QueryGenerator<'a> {
         }
     }
     fn accept_selectionset(&mut self, selectionset:&SelectSet<'a>, parent_type: &Cow<'a, str>) {
+        let mut is_next_inline_fragment = false;
         for selection in self.unwind_selections_fragment(&selectionset.selections) {
             match selection {
                 Selection::Field(ref child_field) => {
-                    let var_type_of_child_field = match self.table.look_up_property(parent_type, &child_field.name.value) {
-                        Some(var_type) => var_type.clone(),
+                    is_next_inline_fragment = false;
+                    match self.table.look_up_property(parent_type, &child_field.name.value) {
+                        Some(var_type) => self.accept_field(child_field, &var_type.clone()),
                         None => panic!("Unexised field {:?}", child_field.name.value.as_ref())
-                    };
-                    self.accept_field(child_field, &var_type_of_child_field);
+                    }
                 },
-                Selection::FragmentSpread(ref fragment_spread) => {},
-                Selection::InlineFragment(ref inline_fragment) => {},
+                Selection::FragmentSpread(ref fragment_spread) => {
+                    // should error, unwind_selection_fragment function should already move fragment into field
+                },
+                Selection::InlineFragment(ref inline_fragment) => {
+                    if is_next_inline_fragment {
+                        self.write("|");
+                    }
+                    self.write("{");
+                    if let Some(type_condition) = &inline_fragment.type_condition {
+                        self.write(format!("__typename: '{}';",type_condition.name.as_ref()).as_str());
+                        self.accept_selectionset(&inline_fragment.selectionset, &type_condition.name);
+                    }
+                    self.write("}");
+                    is_next_inline_fragment = true;
+                },
             }
         }
     }
