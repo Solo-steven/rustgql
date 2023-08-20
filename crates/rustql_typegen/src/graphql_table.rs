@@ -1,24 +1,27 @@
 use rustql_common::ast::common::*;
+use rustql_common::ast::query::*;
 use rustql_common::ast::schema::*;
 use std::collections::HashMap;
 use std::borrow::Cow;
 
 #[derive(Debug, Clone, PartialEq)]
-pub struct  GrahpQLTypeTable<'a> {
-   table: HashMap<Cow<'a, str>, HashMap<Cow<'a, str>, VarType<'a>>>,
+pub struct  GrahpQLTable<'a> {
+   type_table: HashMap<Cow<'a, str>, HashMap<Cow<'a, str>, VarType<'a>>>,
+   fragment_table: HashMap<Cow<'a, str>, Vec<Selection<'a>>>,
    interface_table: HashMap<Cow<'a, str>, HashMap<Cow<'a, str>, VarType<'a>>>,
 }
 
-impl<'a> Default for GrahpQLTypeTable<'a> {
+impl<'a> Default for GrahpQLTable<'a> {
     fn default() -> Self {
         Self::new()
     }
 }
 
-impl<'a> GrahpQLTypeTable<'a> {
+impl<'a> GrahpQLTable<'a> {
     pub fn new() -> Self {
         Self {
-            table: HashMap::new(),
+            type_table: HashMap::new(),
+            fragment_table: HashMap::new(),
             interface_table: HashMap::new(),
         }
     }
@@ -26,13 +29,21 @@ impl<'a> GrahpQLTypeTable<'a> {
         self.accept_document(document);
     }
     pub fn look_up_property(&self,type_name: &Cow<'a, str>, property_name: &Cow<'a, str>) -> Option<&VarType<'a>> {
-        if let Some(table_of_type) = self.table.get(type_name) {
+        if let Some(table_of_type) = self.type_table.get(type_name) {
             table_of_type.get(property_name)
         }else {
             None
         }
     }
+    pub fn look_up_fragment(&self, fragment_name: &Cow<'a, str>) -> Option<&Vec<Selection<'a>>> {
+        self.fragment_table.get(fragment_name)
+    }
     fn accept_document(&mut self, document: &Document<'a>) {
+        for definition in &document.definations {
+            if let Defination::FragmentDefination(ref fragment_def) = *definition {
+                self.accept_fragment(fragment_def);
+            }
+        }
         for definition in &document.definations {
             if let Defination::InterfaceTypeDefinition(ref interface_def) = *definition {
                 self.accept_interface_definition(interface_def);
@@ -44,8 +55,11 @@ impl<'a> GrahpQLTypeTable<'a> {
             }
         }
     }
+    fn accept_fragment(&mut self, definition: &FragmentDefination<'a>) {
+        self.fragment_table.insert(definition.name.value.clone(), definition.selectionset.selections.clone());
+    }
     fn accept_object_definition(&mut self, definition: &ObjectTypeDefinition<'a>) {
-        let mut property_table = HashMap::<Cow<'a, str>, VarType>::new();
+        let mut property_table = HashMap::new();
         if let Some(implement_interfaces) = &definition.implement_interfaces {
             for interface in implement_interfaces {
                 if let Some(interface_hash_table) = self.interface_table.get(&interface.name) {
@@ -61,12 +75,12 @@ impl<'a> GrahpQLTypeTable<'a> {
                 let property_type = object_field.var_type.clone();
                 property_table.insert(property_name, property_type);
             }
-            self.table.insert(definition.name.value.clone(), property_table);
+            self.type_table.insert(definition.name.value.clone(), property_table);
         }
     }
     fn accept_interface_definition(&mut self, definition: &InterfaceTypeDefinition<'a>) {
         if let Some(object_fields) = &definition.field_definations {
-            let mut property_table = HashMap::<Cow<'a, str>, VarType>::new();
+            let mut property_table = HashMap::new();
             for object_field in object_fields {
                 let property_name = object_field.name.value.clone();
                 let property_type = object_field.var_type.clone();

@@ -1,19 +1,22 @@
 use rustql_common::ast::common::*;
 use rustql_common::ast::query::*;
-use crate::type_table::GrahpQLTypeTable;
+use crate::graphql_table::GrahpQLTable;
+use std::collections::HashMap;
 use std::mem::take;
 use std::borrow::Cow; 
 
 pub struct QueryGenerator<'a>{
     output: String,
-    table: GrahpQLTypeTable<'a>,
+    table: GrahpQLTable<'a>,
+    fragments_table: HashMap<Cow<'a, str>, Vec<Selection<'a>>>,
 }
 
 impl <'a> QueryGenerator<'a> {
-    pub fn new(table: GrahpQLTypeTable<'a>) -> Self {
+    pub fn new(table: GrahpQLTable<'a>) -> Self {
         Self {
             output: String::new(),
-            table
+            table,
+            fragments_table: HashMap::new(),
         }
     }
     fn write(&mut self, pat: &str) {
@@ -24,7 +27,43 @@ impl <'a> QueryGenerator<'a> {
         self.accept_document(document);
         take(&mut self.output)
     }
+    fn build_inner_fragment_table(&mut self, document: &Document<'a>) {
+        for definition in &document.definations {
+            if let Defination::FragmentDefination(ref fragment_def)  = *definition {
+                self.fragments_table.insert(fragment_def.name.value.clone(), fragment_def.selectionset.selections.clone());
+            }
+        }
+    }
+    fn find_fragment(&self, fragment_name: &Cow<'a, str>) -> Option<Vec<Selection<'a>>> {
+        match self.table.look_up_fragment(fragment_name) {
+            Some(fragment_selections) => Some(fragment_selections.clone()),
+            None => {
+                self.fragments_table.get(fragment_name).cloned()
+            }
+        }
+    }
+    fn unwind_selections_fragment(&self, selections: &Vec<Selection<'a>>) -> Vec<Selection<'a>> {
+        let mut next_selections = Vec::new();
+        for selection in selections {
+            match *selection {
+                Selection::Field(ref field) => {
+                    next_selections.push(Selection::Field(field.clone()));
+                },
+                Selection::FragmentSpread(ref fragment_spread) => {
+                    match self.find_fragment(&fragment_spread.name.value) {
+                        Some(mut fragment_selections) => {
+                            next_selections.append(&mut fragment_selections);
+                        }
+                        None => panic!("")
+                    }
+                },
+                Selection::InlineFragment(ref inline_fragment) => {},
+            }
+        }
+        next_selections
+    }
     fn accept_document(&mut self, document: &Document<'a>) {
+        self.build_inner_fragment_table(document);
         for definition in &document.definations {
             match *definition {
                 Defination::Query(ref query) => self.accept_query(query),
@@ -37,19 +76,7 @@ impl <'a> QueryGenerator<'a> {
     // query's top level selection must have at least a selection of subfield. 
     fn accept_query(&mut self, query: &Query<'a>) {
         self.write("type ExampleQuery = {");
-        for selection in &query.selectionset.selections {
-            match *selection {
-                Selection::Field(ref field) => {
-                    let var_type_of_field = match self.table.look_up_property(&Cow::Borrowed("Query"), &field.name.value) {
-                        Some(var_type) => var_type.clone(),
-                        None => panic!("Unexised Query {:?}", field.name.value.as_ref())
-                    };
-                    self.accept_field(field, &var_type_of_field);
-                },
-                Selection::FragmentSpread(ref fragment_spread) => {},
-                Selection::InlineFragment(ref inline_fragment) => {},
-            }
-        }
+        self.accept_selectionset(&query.selectionset, &Cow::Borrowed("Query"));
         self.write("}");
     }
     fn accept_field(&mut self, field: &Field<'a>, mut var_type_of_field: &VarType<'a>) {
@@ -91,19 +118,7 @@ impl <'a> QueryGenerator<'a> {
                 self.write("Maybe<");
             }
             self.write("{");
-            for selection in &field_selectionset.selections {
-                match *selection {
-                    Selection::Field(ref child_field) => {
-                        let var_type_of_child_field = match self.table.look_up_property(&final_name_type.name, &child_field.name.value) {
-                            Some(var_type) => var_type.clone(),
-                            None => panic!("Unexised field {:?}", child_field.name.value.as_ref())
-                        };
-                        self.accept_field(child_field, &var_type_of_child_field);
-                    },
-                    Selection::FragmentSpread(ref fragment_spread) => {},
-                    Selection::InlineFragment(ref inline_fragment) => {},
-                }
-            }
+            self.accept_selectionset(field_selectionset, &final_name_type.name);
             self.write("}");
             if is_nonnull_type {
                 self.write(">");
@@ -151,6 +166,21 @@ impl <'a> QueryGenerator<'a> {
         }
         for type_tail in type_tail_stings {
             self.write(type_tail);
+        }
+    }
+    fn accept_selectionset(&mut self, selectionset:&SelectSet<'a>, parent_type: &Cow<'a, str>) {
+        for selection in self.unwind_selections_fragment(&selectionset.selections) {
+            match selection {
+                Selection::Field(ref child_field) => {
+                    let var_type_of_child_field = match self.table.look_up_property(parent_type, &child_field.name.value) {
+                        Some(var_type) => var_type.clone(),
+                        None => panic!("Unexised field {:?}", child_field.name.value.as_ref())
+                    };
+                    self.accept_field(child_field, &var_type_of_child_field);
+                },
+                Selection::FragmentSpread(ref fragment_spread) => {},
+                Selection::InlineFragment(ref inline_fragment) => {},
+            }
         }
     }
 }

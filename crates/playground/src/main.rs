@@ -2,7 +2,7 @@ use std::fs::File;
 use std::io::Write;
 use std::borrow::Cow;
 use rustql_parser::parser::Parser;
-use rustql_typegen::type_table::GrahpQLTypeTable;
+use rustql_typegen::graphql_table::GrahpQLTable;
 use rustql_typegen::query_generator::QueryGenerator;
 use serde_json::to_string_pretty;
 
@@ -10,13 +10,12 @@ fn main(){
     let query_code = r#"
       query GetTrack {
         tracksForHome {
-          id,
-          title,
-          length,
-          node {
-            id
-          }
+          ...Test,
         }
+      }
+      fragment Test on Track {
+        id,
+        title,
       }
     "#;
     let schema_code = r#"
@@ -48,7 +47,7 @@ fn main(){
     let mut query_file = File::create("./query.json").unwrap();
     write!(query_file, "{}", to_string_pretty(&query_document).unwrap()).unwrap();
     let schema_doucment = parser.parse();
-    let mut table = GrahpQLTypeTable::new();
+    let mut table = GrahpQLTable::new();
     table.build_table(&schema_doucment);
     println!("{:?}", table.look_up_property(&Cow::Borrowed("Track"), &Cow::Borrowed("title")));
 
