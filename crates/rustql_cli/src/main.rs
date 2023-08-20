@@ -14,14 +14,20 @@ struct Application {
     #[arg(long, short)]
     input: PathBuf,
     #[arg(long, short)]
-    output: Option<PathBuf>
+    output: Option<PathBuf>,
+    #[arg(long, short)]
+    name: Option<String>
 }
 
 fn main() {
     let app = Application::parse();
+    let file_name = match app.name {
+        Some(name) => name,
+        None => String::from("type.d.ts")
+    };
     let output_file_path = match app.output {
         Some(file_path ) => file_path,
-        None => PathBuf::from("./type.d.ts"),
+        None => PathBuf::from(format!("./{}", file_name)),
     };
     let input_file_string = match read_to_string(&app.input) {
         Ok(file_path) => file_path,

@@ -1,69 +1,61 @@
 use std::fs::File;
 use std::io::Write;
+use std::borrow::Cow;
 use rustql_parser::parser::Parser;
+use rustql_typegen::type_table::GrahpQLTypeTable;
+use rustql_typegen::query_generator::QueryGenerator;
 use serde_json::to_string_pretty;
 
 fn main(){
-    let code = r#"
-    scalar Date
-
-    schema {
-      query: Query
-    }
-    
-    type Query {
-      me: User!
-      user(id: ID!): User
-      allUsers: [User]
-      search(term: String!): [SearchResult!]!
-      myChats: [Chat!]!
-    }
-    
-    enum Role {
-      USER
-      ADMIN
-    }
-    
-    interface Node {
-      id: ID!
-    }
-    
-    union SearchResult = User | Chat | ChatMessage
-    
-    type User implements Node {
-      id: ID!
-      username: String!
-      email: String!
-      role: Role!
-    }
-    
-    type Chat implements Node {
-      id: ID!
-      users: [User!]!
-      messages: [ChatMessage!]!
-    }
-    
-    type ChatMessage implements Node {
-      id: ID!
-      content: String!
-      time: Date!
-      user: User!
-    }
-    query findUser($userId: ID!) {
-      user(id: $userId) {
-        ...UserFields
+    let query_code = r#"
+      query GetTrack {
+        tracksForHome {
+          id,
+          title,
+          length,
+          node {
+            id
+          }
+        }
       }
-    }
-    
-    fragment UserFields on User {
-      id
-      username
-      role
-    }
     "#;
-    let mut parser = Parser::new(code);
-    let root = parser.parse();
-    println!("{:?}", root);
-    let mut output_file = File::create("./test.json").unwrap();
-    write!(output_file, "{}", to_string_pretty(&root).unwrap().as_str()).unwrap();
+    let schema_code = r#"
+      type Track {
+         id: ID!,
+         title: String!,
+         author: Author!,
+         tumbnail: String,
+         length: Int,
+         modulesCount: Int,
+         node: [Node]
+      }
+      type Author {
+        id: ID!,
+        name: String!,
+        photo: String
+      }
+      type Query {
+        tracksForHome: [Track]
+      }
+      type Node {
+        id: ID!,
+        data: String,
+      }
+    "#;
+    let mut parser = Parser::new(query_code);
+    let query_document = parser.parse();
+    parser = Parser::new(schema_code);
+    let mut query_file = File::create("./query.json").unwrap();
+    write!(query_file, "{}", to_string_pretty(&query_document).unwrap()).unwrap();
+    let schema_doucment = parser.parse();
+    let mut table = GrahpQLTypeTable::new();
+    table.build_table(&schema_doucment);
+    println!("{:?}", table.look_up_property(&Cow::Borrowed("Track"), &Cow::Borrowed("title")));
+
+    let mut query_generator = QueryGenerator::new(table);
+    let output = query_generator.generate(&query_document);
+    println!("{:?}", output);
+    let mut query_type_file = File::create("./type.d.ts").unwrap();
+    write!(query_type_file, "{}", output.as_str()).unwrap();
+
 }
