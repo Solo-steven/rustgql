@@ -128,8 +128,19 @@ impl<'a,> SchemaGenerator <'a>{
         }
         self.write("  ");
         self.write(definition.name.value.as_ref());
+        let mut is_top_level_nonnull = false;
+        let unwind_type =  match definition.var_type {
+            VarType::NonNullVarType(ref nonull_type) => {
+                is_top_level_nonnull = true;
+                nonull_type.nonull_type.as_ref()
+            }
+            _ => &definition.var_type,
+        };
+        if is_top_level_nonnull {
+            self.write("?");
+        }
         self.write(": ");
-        self.accept_var_type(&definition.var_type);
+        self.accept_var_type(unwind_type);
         self.write(";");
         self.write("\n")
     }

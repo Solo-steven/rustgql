@@ -5,7 +5,7 @@ use rustql_common::ast::query::*;
 use rustql_common::ast::schema::*;
 use rustql_common::position::{Position, Span};
 use crate::lexer::Lexer;
-use crate::{is_keyword_name, expect_keyword_name, parser_error, internal_error};
+use crate::{is_keyword_name, expect_keyword_name, parser_error, sematic_error, internal_error};
 
 pub struct Parser<'a> {
     lexer: Lexer<'a>
@@ -57,7 +57,7 @@ impl<'a> Parser<'a> {
     }
     fn parse_document(&mut self) -> Document<'a> {
         let mut definations: Vec<Defination> = Vec::new();
-        while self.get_token() != TokenKind::EOFToken {
+        while !self.is_match_token(TokenKind::EOFToken) {
             definations.push(self.parse_defination())
         }  
         Document { definations }
@@ -221,6 +221,9 @@ impl<'a> Parser<'a> {
                 TokenKind::EOFToken | TokenKind::BracesRight => break,
                 _ => selections.push(self.parse_selection())
             }
+        }
+        if selections.is_empty() {
+            sematic_error!("selection set must have at least one subfield", self);
         }
         let end_pos = self.get_end_pos();
         self.expect_token(TokenKind::BracesRight);
@@ -487,6 +490,9 @@ impl<'a> Parser<'a> {
         }
         let tuple = self.parse_operation_type_definations();
         let span = Span::new(start_pos, tuple.4);
+        if tuple.0.is_empty() && tuple.1.is_empty() && tuple.2.is_empty() {
+            sematic_error!("Schema Defination must have at least one operation", self);
+        }
         SchmaTypeDefination { description, directives, query: tuple.0, mutation: tuple.1, subscription: tuple.2, span }
     }
     fn parse_schema_extension(&mut self, start_pos: Position) -> SchemaTypeExtension<'a> {

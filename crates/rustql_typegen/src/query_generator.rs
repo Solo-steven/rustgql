@@ -8,7 +8,7 @@ use std::borrow::Cow;
 pub struct QueryGenerator<'a>{
     output: String,
     table: GrahpQLTable<'a>,
-    fragments_table: HashMap<Cow<'a, str>, Vec<Selection<'a>>>,
+    fragments_table: HashMap<Cow<'a, str>, SelectSet<'a>>,
 }
 
 impl <'a> QueryGenerator<'a> {
@@ -30,33 +30,20 @@ impl <'a> QueryGenerator<'a> {
     fn build_inner_fragment_table(&mut self, document: &Document<'a>) {
         for definition in &document.definations {
             if let Defination::FragmentDefination(ref fragment_def)  = *definition {
-                self.fragments_table.insert(fragment_def.name.value.clone(), fragment_def.selectionset.selections.clone());
+                self.fragments_table.insert(fragment_def.name.value.clone(), fragment_def.selectionset.clone());
             }
         }
     }
-    fn find_fragment(&self, fragment_name: &Cow<'a, str>) -> Option<Vec<Selection<'a>>> {
-        match self.table.look_up_fragment(fragment_name) {
-            Some(fragment_selections) => Some(fragment_selections.clone()),
+    fn find_fragment(&self, fragment_name: &Cow<'a, str>) -> Option<&SelectSet<'a>> {
+       match self.table.look_up_fragment(fragment_name) {
+            Some(fragment_selectionset) => {
+                Some(fragment_selectionset)
+            }
             None => {
-                self.fragments_table.get(fragment_name).cloned()
+                self.fragments_table.get(fragment_name)
             }
-        }
-    }
-    fn unwind_selections_fragment(&self, selections: &Vec<Selection<'a>>) -> Vec<Selection<'a>> {
-        let mut next_selections = Vec::new();
-        for selection in selections {
-            if let Selection::FragmentSpread(ref fragment_spread) = *selection {
-                match self.find_fragment(&fragment_spread.name.value) {
-                    Some(mut fragment_selections) => {
-                        next_selections.append(&mut fragment_selections);
-                    }
-                    None => panic!("[Fragment Not existed]")
-                }
-            }else {
-                next_selections.push(selection.clone())
-            }
-        }
-        next_selections
+            
+       }
     }
     fn accept_document(&mut self, document: &Document<'a>) {
         self.build_inner_fragment_table(document);
@@ -170,7 +157,7 @@ impl <'a> QueryGenerator<'a> {
     }
     fn accept_selectionset(&mut self, selectionset:&SelectSet<'a>, parent_type: &Cow<'a, str>) {
         let mut is_next_inline_fragment = false;
-        for selection in self.unwind_selections_fragment(&selectionset.selections) {
+        for selection in &selectionset.selections {
             match selection {
                 Selection::Field(ref child_field) => {
                     is_next_inline_fragment = false;
@@ -180,7 +167,12 @@ impl <'a> QueryGenerator<'a> {
                     }
                 },
                 Selection::FragmentSpread(ref fragment_spread) => {
-                    // should error, unwind_selection_fragment function should already move fragment into field
+                    match self.find_fragment(&fragment_spread.name.value) {
+                        Some(fragment_selections) => {
+                            self.accept_selectionset(&fragment_selections.clone(), parent_type);
+                        }
+                        None => panic!("[Fragment {:?} Not exisetd]", fragment_spread.name.value.as_ref())
+                    }
                 },
                 Selection::InlineFragment(ref inline_fragment) => {
                     if is_next_inline_fragment {

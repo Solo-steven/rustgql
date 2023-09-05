@@ -55,3 +55,10 @@ macro_rules! parser_error {
         panic!("[Syntax Error]: Unexpect Token {:?}, {} at ({:?}, {:?}).", $parser.get_token(), $msg, pos.row, pos.col);
     }};
 }
+#[macro_export]
+macro_rules! sematic_error {
+    ($msg: expr, $parser: expr) => {{
+        let pos = $parser.get_start_pos();
+        panic!("[Syntax Error]: {} at ({:?}, {:?}).", $msg, pos.row, pos.col);
+    }};
+}

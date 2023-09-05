@@ -9,7 +9,7 @@ use std::borrow::Cow;
 pub struct  GrahpQLTable<'a> {
    type_table: HashMap<Cow<'a, str>, HashMap<Cow<'a, str>, VarType<'a>>>,
    union_table: HashMap<Cow<'a, str>, HashSet<Cow<'a, str>>>,
-   fragment_table: HashMap<Cow<'a, str>, Vec<Selection<'a>>>,
+   fragment_table: HashMap<Cow<'a, str>, SelectSet<'a>>,
    interface_table: HashMap<Cow<'a, str>, HashMap<Cow<'a, str>, VarType<'a>>>,
 }
 
@@ -38,7 +38,7 @@ impl<'a> GrahpQLTable<'a> {
             None
         }
     }
-    pub fn look_up_fragment(&self, fragment_name: &Cow<'a, str>) -> Option<&Vec<Selection<'a>>> {
+    pub fn look_up_fragment(&self, fragment_name: &Cow<'a, str>) -> Option<&SelectSet<'a>> {
         self.fragment_table.get(fragment_name)
     }
     pub fn look_up_union(&self, union_name: &Cow<'a, str>) -> Option<&HashSet<Cow<'a , str>>> {
@@ -46,28 +46,21 @@ impl<'a> GrahpQLTable<'a> {
     }
     fn accept_document(&mut self, document: &Document<'a>) {
         for definition in &document.definations {
-            if let Defination::FragmentDefination(ref fragment_def) = *definition {
-                self.accept_fragment(fragment_def);
-            }
-        }
-        for definition in &document.definations {
             if let Defination::InterfaceTypeDefinition(ref interface_def) = *definition {
                 self.accept_interface_definition(interface_def);
             }
         }
         for definition in &document.definations {
-            if let Defination::ObjectTypeDefinition(ref object_def) = *definition {
-                self.accept_object_definition(object_def);
-            }
             match *definition {
                 Defination::ObjectTypeDefinition(ref object_def) => self.accept_object_definition(object_def),
                 Defination::UnionTypeDefinition(ref union_ref) => self.accept_union_definition(union_ref),
+                Defination::FragmentDefination(ref fragment_def) => self.accept_fragment(fragment_def),
                 _ => {}
             }
         }
     }
     fn accept_fragment(&mut self, definition: &FragmentDefination<'a>) {
-        self.fragment_table.insert(definition.name.value.clone(), definition.selectionset.selections.clone());
+        self.fragment_table.insert(definition.name.value.clone(), definition.selectionset.clone());
     }
     fn accept_union_definition(&mut self, definition: &UnionTypeDefinition<'a>) {
         let set = match definition.union_member_types {
