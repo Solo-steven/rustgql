@@ -1,9 +1,9 @@
 [workspace]
 resolver = "2"
 members = [
-    "crates/rustql_common",
-    "crates/rustql_parser",
-    "crates/rustql_typegen",
-    "crates/rustql_cli",
+    "crates/rustgql_common",
+    "crates/rustgql_parser",
+    "crates/rustgql_typegen",
+    "crates/rustgql_cli",
     "crates/playground"
 ]

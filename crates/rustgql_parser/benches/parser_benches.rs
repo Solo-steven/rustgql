@@ -1,5 +1,5 @@
 use criterion::{criterion_group, criterion_main, Criterion, BenchmarkId};
-use rustql_parser::parser::Parser;
+use rustgql_parser::parser::Parser;
 use graphql_parser::parse_query;
 
 const TINT_FILE_STR: &str = include_str!("../tests/fixtures/graphql_rust/query/kitchen-sink_canonical.graphql");

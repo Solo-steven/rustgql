@@ -1,5 +1,5 @@
 [package]
-name = "rustql_common"
+name = "rustgql_common"
 description = "ast and common type for rustql packages"
 authors = ["Solo-steven"]
 version = "0.1.0"

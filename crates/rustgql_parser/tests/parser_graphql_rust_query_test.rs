@@ -1,6 +1,6 @@
 #[cfg(test)]
 mod test {
-    use rustql_parser::parser::Parser;
+    use rustgql_parser::parser::Parser;
     use std::fs::{File, read_to_string};
     use std::io::Write;
     use serde_json::to_string_pretty;

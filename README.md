@@ -1,13 +1,13 @@
-# RustQL
+# RustGQL
 a tool for graqhql , written in rust for better performance. pass all test case in graphql-rust ([link](https://github.com/graphql-rust/graphql-parser/tree/master/tests))
 
 ## Quick Start
 install rustql_parser and rustql_common.
-- rustql_parser: lexer and parser for graphql.
-- rustql_common: ast and token for graphql.
-- rustql_typegen: generate typescript `.d.ts` file from your schema.
+- rustgql_parser: lexer and parser for graphql.
+- rustgql_common: ast and token for graphql.
+- rustgql_typegen: generate typescript `.d.ts` file from your schema.
 ```rust
-use rustql_parser::parser::Parser;
+use rustgql_parser::parser::Parser;
 fn main() {
     let code = "
         query {

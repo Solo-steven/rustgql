@@ -1,5 +1,5 @@
-use rustql_common::ast::common::*;
-use rustql_common::ast::query::*;
+use rustgql_common::ast::common::*;
+use rustgql_common::ast::query::*;
 use crate::graphql_table::GrahpQLTable;
 use std::collections::HashMap;
 use std::mem::take;

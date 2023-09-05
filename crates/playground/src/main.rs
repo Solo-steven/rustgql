@@ -1,9 +1,9 @@
 use std::fs::File;
 use std::io::Write;
 use std::borrow::Cow;
-use rustql_parser::parser::Parser;
-use rustql_typegen::graphql_table::GrahpQLTable;
-use rustql_typegen::query_generator::QueryGenerator;
+use rustgql_parser::parser::Parser;
+use rustgql_typegen::graphql_table::GrahpQLTable;
+use rustgql_typegen::query_generator::QueryGenerator;
 use serde_json::to_string_pretty;
 
 fn main(){

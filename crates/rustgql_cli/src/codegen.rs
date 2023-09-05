@@ -1,5 +1,5 @@
-use rustql_parser::parser::Parser;
-use rustql_typegen::schema_generator::SchemaGenerator;
+use rustgql_parser::parser::Parser;
+use rustgql_typegen::schema_generator::SchemaGenerator;
 
 pub fn generate_type_string_from_input(input: &str) -> String {
     let mut parser  = Parser::new(input);

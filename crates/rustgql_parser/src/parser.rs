@@ -1,9 +1,9 @@
 use std::borrow::Cow;
-use rustql_common::token::TokenKind;
-use rustql_common::ast::common::*;
-use rustql_common::ast::query::*;
-use rustql_common::ast::schema::*;
-use rustql_common::position::{Position, Span};
+use rustgql_common::token::TokenKind;
+use rustgql_common::ast::common::*;
+use rustgql_common::ast::query::*;
+use rustgql_common::ast::schema::*;
+use rustgql_common::position::{Position, Span};
 use crate::lexer::Lexer;
 use crate::{is_keyword_name, expect_keyword_name, parser_error, sematic_error, internal_error};
 

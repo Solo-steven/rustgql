@@ -1,5 +1,5 @@
-use rustql_common::ast::common::*;
-use rustql_common::ast::schema::*;
+use rustgql_common::ast::common::*;
+use rustgql_common::ast::schema::*;
 use std::mem::take;
 struct ArgumentWithName<'a> {
     pub argument_definition: &'a  Vec<InputValueDefinition<'a>>,

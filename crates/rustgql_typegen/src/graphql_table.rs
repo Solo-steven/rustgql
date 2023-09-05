@@ -1,6 +1,6 @@
-use rustql_common::ast::common::*;
-use rustql_common::ast::query::*;
-use rustql_common::ast::schema::*;
+use rustgql_common::ast::common::*;
+use rustgql_common::ast::query::*;
+use rustgql_common::ast::schema::*;
 use std::collections::HashMap;
 use std::collections::HashSet;
 use std::borrow::Cow;
