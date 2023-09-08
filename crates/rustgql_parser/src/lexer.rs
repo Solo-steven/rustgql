@@ -384,15 +384,16 @@ impl<'a> Lexer<'a> {
                 }
             }
         }
-        self.eat_char(3);
         self.finish_token();
+        self.eat_char(3);
         TokenKind::StringValue
     }
 }
-
+#[inline]
 fn is_digital(ch: char) -> bool {
     matches!(ch, '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9')
 }
+#[inline]
 fn is_name_start(ch: char) -> bool {
     matches!(ch, 'a' | 'b' | 'c' | 'd' | 'e' | 'f' | 'g' | 'h' | 'i' | 'j' | 'k' | 'l' | 'm' |
         'n' | 'o' | 'p' | 'q' | 'r' | 's' | 't' | 'u' | 'v' | 'w' | 'x' | 'y' | 'z' |
@@ -400,6 +401,7 @@ fn is_name_start(ch: char) -> bool {
         'N' | 'O' | 'P' | 'Q' | 'R' | 'S' | 'T' | 'U' | 'V' | 'W' | 'X' | 'Y' | 'Z' |
         '_')
 }
+#[inline]
 fn is_name_body(ch: char) -> bool {
     if is_digital(ch) || is_name_start(ch) {
         return true

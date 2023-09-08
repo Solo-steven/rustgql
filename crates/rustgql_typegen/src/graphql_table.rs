@@ -18,7 +18,8 @@ impl<'a> Default for GrahpQLTable<'a> {
         Self::new()
     }
 }
-
+/// GraphQL table is generate by schema AST, it is design for query generator to look up
+/// table to find the correct type for generate type definition for query generator.
 impl<'a> GrahpQLTable<'a> {
     pub fn new() -> Self {
         Self {

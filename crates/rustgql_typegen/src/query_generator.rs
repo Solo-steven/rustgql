@@ -22,8 +22,10 @@ impl <'a> QueryGenerator<'a> {
     fn write(&mut self, pat: &str) {
         self.output.push_str(pat);
     }
+    pub fn generate_default() -> &'static str {
+        "export type Maybe<T> = T | null;"
+    }
     pub fn generate(&mut self, document: &Document<'a>) -> String {
-        self.write("export type Maybe<T> = T | null | undefined;\n");
         self.accept_document(document);
         take(&mut self.output)
     }
@@ -58,13 +60,17 @@ impl <'a> QueryGenerator<'a> {
     }
     // query's top level selection must have at least a selection of subfield. 
     fn accept_query(&mut self, query: &Query<'a>) {
-        self.write("type ExampleQuery = {");
+        self.write("type  = {");
         self.accept_selectionset(&query.selectionset, &Cow::Borrowed("Query"));
         self.write("}");
     }
     fn accept_field(&mut self, field: &Field<'a>, mut var_type_of_field: &VarType<'a>) {
         self.write(field.name.value.as_ref());
-        self.write(":");
+        if let VarType::NonNullVarType(_ref) = var_type_of_field {
+            self.write(":");
+        }else {
+            self.write("?:");
+        }
         if field.selectionset.is_none() {
             self.accept_var_type(var_type_of_field);
             self.write(";");
@@ -97,7 +103,7 @@ impl <'a> QueryGenerator<'a> {
                     }
                 }
             }
-            if is_nonnull_type {
+            if !is_nonnull_type {
                 self.write("Maybe<");
             }
             if self.table.look_up_union(&final_name_type.name).is_none() {
@@ -107,7 +113,7 @@ impl <'a> QueryGenerator<'a> {
             if self.table.look_up_union(&final_name_type.name).is_none() {
                 self.write("}");
             }
-            if is_nonnull_type {
+            if !is_nonnull_type {
                 self.write(">");
             }
             for type_tail in tail_type_string {
