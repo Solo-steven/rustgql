@@ -518,6 +518,7 @@ version = "0.1.0"
 dependencies = [
  "criterion",
  "rustgql_common",
+ "rustgql_minifier",
  "rustgql_parser",
  "rustgql_typegen",
  "serde",
@@ -646,6 +647,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "rustgql_minifier"
+version = "0.1.0"
+dependencies = [
+ "criterion",
+ "rustgql_common",
+ "serde",
+ "serde_derive",
+ "serde_json",
+]
+
+[[package]]
 name = "rustgql_parser"
 version = "0.1.0"
 dependencies = [
@@ -660,7 +672,6 @@ name = "rustgql_typegen"
 version = "0.1.0"
 dependencies = [
  "criterion",
- "graphql-parser",
  "rustgql_common",
  "serde",
  "serde_derive",
