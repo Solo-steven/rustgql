@@ -37,12 +37,23 @@ impl QueryMinifier {
         for definition in &document.definations {
             match *definition {
                 Defination::Query(ref query) => self.accept_query(query),
-                Defination::Mutation(ref mutation_def) => {},
-                Defination::Subscription(ref subscription_ref) => {},
+                Defination::Mutation(ref mutation) => self.accept_mutation(mutation),
+                Defination::Subscription(ref subscription) => self.accept_subscription(subscription),
                 Defination::SelectSet(ref selection_set) => self.accept_selection_set(selection_set),
+                Defination::FragmentDefination(ref fragment) => self.accept_fragment(fragment),
                 _ => {}
             }
         }
+    }
+    fn accept_fragment(&mut self, fragment_definition: &FragmentDefination) {
+        self.write("fragement ");
+        self.write(fragment_definition.name.value.as_ref());
+        self.write(" on ");
+        self.accept_var_type(&fragment_definition.type_condition);
+        if let Some(directives) = &fragment_definition.directives {
+            self.accept_directives(directives);
+        }
+        self.accept_selection_set(&fragment_definition.selectionset);
     }
     fn accept_query(&mut self, query: &Query) {
         self.write("query ");
@@ -56,6 +67,32 @@ impl QueryMinifier {
             self.accept_variable_definitions(variable_definitions);
         }
         self.accept_selection_set(&query.selectionset);
+    }
+    fn accept_mutation(&mut self, mutation: &Mutation) {
+        self.write("mutation ");
+        if let Some(name) = &mutation.name {
+            self.write(name.value.as_ref());
+        }
+        if let Some(directives) = &mutation.directives {
+            self.accept_directives(directives);
+        }
+        if let Some(variable_definitions) = &mutation.variable_definations {
+            self.accept_variable_definitions(variable_definitions);
+        }
+        self.accept_selection_set(&mutation.selectionset);
+    }
+    fn accept_subscription(&mut self, subscription: &Subscription) {
+        self.write("subscription ");
+        if let Some(name) = &subscription.name {
+            self.write(name.value.as_ref());
+        }
+        if let Some(directives) = &subscription.directives {
+            self.accept_directives(directives);
+        }
+        if let Some(variable_definitions) = &subscription.variable_definations {
+            self.accept_variable_definitions(variable_definitions);
+        }
+        self.accept_selection_set(&subscription.selectionset);
     }
     fn accept_variable_definitions(&mut self, variable_definitions: &Vec<VariableDefination>) {
         self.write_char('(');

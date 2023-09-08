@@ -647,6 +647,21 @@ dependencies = [
 ]
 
 [[package]]
+name = "rustgql_core"
+version = "0.1.0"
+dependencies = [
+ "criterion",
+ "rustgql_common",
+ "rustgql_minifier",
+ "rustgql_parser",
+ "rustgql_typegen",
+ "serde",
+ "serde_derive",
+ "serde_json",
+ "wasm-bindgen",
+]
+
+[[package]]
 name = "rustgql_minifier"
 version = "0.1.0"
 dependencies = [
