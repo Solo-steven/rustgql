@@ -28,5 +28,5 @@ using criterion for benchmark, compare to graphql-rust is 4 time faster.
 |      **file**      |  kitchen-sink_canonical |  
 | -----------------: | ----------------------: | 
 |   **graphql-rust** |               28.016 us | 
-|      **rustql**    |                6.1192us |
+|      **rustgql**    |                6.1192us |
 |        **~**       |                 4.5783x |
