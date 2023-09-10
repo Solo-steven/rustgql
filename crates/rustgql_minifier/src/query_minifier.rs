@@ -27,9 +27,9 @@ impl QueryMinifier {
         self.output.push(ch);
     }
     fn pop_if_space(&mut self) {
-        if let Some(maybe_comma) = self.output.pop() {
-            if maybe_comma != ',' {
-                self.output.push(maybe_comma);
+        if let Some(maybe_comma_or_space) = self.output.pop() {
+            if maybe_comma_or_space != ',' && maybe_comma_or_space != ' ' {
+                self.output.push(maybe_comma_or_space);
             }
         }
     }
@@ -95,6 +95,7 @@ impl QueryMinifier {
         self.accept_selection_set(&subscription.selectionset);
     }
     fn accept_variable_definitions(&mut self, variable_definitions: &Vec<VariableDefination>) {
+        self.pop_if_space();
         self.write_char('(');
         for variable_definition in variable_definitions {
             self.write_char('$');
@@ -109,6 +110,7 @@ impl QueryMinifier {
         self.write_char(')');
     }
     fn accept_selection_set(&mut self, selection_set:&SelectSet) {
+        self.pop_if_space();
         self.write("{");
         let mut is_start = true;
         for selection in &selection_set.selections {
@@ -146,6 +148,7 @@ impl QueryMinifier {
         }
     }
     fn accept_arguments(&mut self, arguments: &Vec<Argument>) {
+        self.pop_if_space();
         self.write_char('(');
         let mut is_start = true;
         let mut need_space = false;
@@ -162,6 +165,7 @@ impl QueryMinifier {
         self.write_char(')');
     }
     fn accept_directives(&mut self, directives: &Vec<Directive>) {
+        self.pop_if_space();
         for directive in directives {
             self.write_char('@');
             self.write(directive.name.value.as_ref());
@@ -195,11 +199,11 @@ impl QueryMinifier {
             },
             Value::StringValue(ref string_value) => {
                 self.pop_if_space();
-                self.write_char('"');
+                if string_value.is_block { self.write("\"\"\""); } else { self.write_char('"'); }
                 self.write(string_value.code.as_ref());
-                self.write_char('"');
+                if string_value.is_block { self.write("\"\"\""); } else { self.write_char('"'); }
                 false
-            }
+            },
             Value::ListValue(ref list_value) => {
                 self.write_char('[');
                 let mut need_space = false;

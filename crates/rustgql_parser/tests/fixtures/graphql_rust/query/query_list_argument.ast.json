@@ -13,7 +13,7 @@
             "alias": null,
             "name": {
               "type": "Name",
-              "name": "node",
+              "value": "node",
               "span": {
                 "start": {
                   "col": 2,
@@ -32,7 +32,7 @@
                 "type": "Argument",
                 "name": {
                   "type": "Name",
-                  "name": "id",
+                  "value": "id",
                   "span": {
                     "start": {
                       "col": 7,
@@ -48,7 +48,7 @@
                 },
                 "value": {
                   "type": "IntValue",
-                  "value": "1",
+                  "code": "1",
                   "span": {
                     "start": {
                       "col": 11,
@@ -79,7 +79,7 @@
                 "type": "Argument",
                 "name": {
                   "type": "Name",
-                  "name": "list",
+                  "value": "list",
                   "span": {
                     "start": {
                       "col": 14,
@@ -95,10 +95,10 @@
                 },
                 "value": {
                   "type": "ListValue",
-                  "value": [
+                  "values": [
                     {
                       "type": "IntValue",
-                      "value": "123",
+                      "code": "123",
                       "span": {
                         "start": {
                           "col": 21,
@@ -114,7 +114,7 @@
                     },
                     {
                       "type": "IntValue",
-                      "value": "456",
+                      "code": "456",
                       "span": {
                         "start": {
                           "col": 26,

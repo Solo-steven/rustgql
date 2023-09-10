@@ -13,7 +13,7 @@
             "alias": null,
             "name": {
               "type": "Name",
-              "name": "notify",
+              "value": "notify",
               "span": {
                 "start": {
                   "col": 2,

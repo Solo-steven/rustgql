@@ -9,7 +9,7 @@
           "alias": null,
           "name": {
             "type": "Name",
-            "name": "a",
+            "value": "a",
             "span": {
               "start": {
                 "col": 2,

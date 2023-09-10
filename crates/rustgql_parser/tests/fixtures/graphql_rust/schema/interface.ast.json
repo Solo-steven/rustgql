@@ -7,7 +7,7 @@
       "implement_interfaces": null,
       "name": {
         "type": "Name",
-        "name": "Bar",
+        "value": "Bar",
         "span": {
           "start": {
             "col": 10,
@@ -27,7 +27,7 @@
           "description": null,
           "name": {
             "type": "Name",
-            "name": "one",
+            "value": "one",
             "span": {
               "start": {
                 "col": 2,

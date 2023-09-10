@@ -6,7 +6,7 @@
       "description": null,
       "name": {
         "type": "Name",
-        "name": "Foo",
+        "value": "Foo",
         "span": {
           "start": {
             "col": 5,
@@ -26,7 +26,7 @@
           "description": null,
           "name": {
             "type": "Name",
-            "name": "bar",
+            "value": "bar",
             "span": {
               "start": {
                 "col": 2,

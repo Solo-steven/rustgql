@@ -4,7 +4,7 @@
     {
       "type": "DirectiveDefination",
       "description": {
-        "value": "\"\"\"\nDirects the executor to include this field or fragment only when the `if` argument is true.\n\"\"\"",
+        "code": "\nDirects the executor to include this field or fragment only when the `if` argument is true.\n",
         "span": {
           "start": {
             "col": 0,
@@ -16,11 +16,12 @@
             "row": 2,
             "index": 99
           }
-        }
+        },
+        "is_block": true
       },
       "name": {
         "type": "Name",
-        "name": "include",
+        "value": "include",
         "span": {
           "start": {
             "col": 11,
@@ -37,7 +38,7 @@
       "argument_definations": [
         {
           "description": {
-            "value": "\"\"\"\n  Included when true.\n  \"\"\"",
+            "code": "\n  Included when true.\n  ",
             "span": {
               "start": {
                 "col": 2,
@@ -49,11 +50,12 @@
                 "row": 6,
                 "index": 153
               }
-            }
+            },
+            "is_block": true
           },
           "name": {
             "type": "Name",
-            "name": "if",
+            "value": "if",
             "span": {
               "start": {
                 "col": 2,
@@ -124,7 +126,7 @@
     {
       "type": "DirectiveDefination",
       "description": {
-        "value": "\"\"\"\nDirects the executor to skip this field or fragment when the `if` argument is true.\n\"\"\"",
+        "code": "\nDirects the executor to skip this field or fragment when the `if` argument is true.\n",
         "span": {
           "start": {
             "col": 0,
@@ -136,11 +138,12 @@
             "row": 12,
             "index": 308
           }
-        }
+        },
+        "is_block": true
       },
       "name": {
         "type": "Name",
-        "name": "skip",
+        "value": "skip",
         "span": {
           "start": {
             "col": 11,
@@ -157,7 +160,7 @@
       "argument_definations": [
         {
           "description": {
-            "value": "\"\"\"\n  Skipped when true.\n  \"\"\"",
+            "code": "\n  Skipped when true.\n  ",
             "span": {
               "start": {
                 "col": 2,
@@ -169,11 +172,12 @@
                 "row": 16,
                 "index": 358
               }
-            }
+            },
+            "is_block": true
           },
           "name": {
             "type": "Name",
-            "name": "if",
+            "value": "if",
             "span": {
               "start": {
                 "col": 2,

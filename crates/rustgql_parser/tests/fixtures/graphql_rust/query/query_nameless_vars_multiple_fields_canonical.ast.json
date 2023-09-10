@@ -9,7 +9,7 @@
           "type": "VariableDefination",
           "name": {
             "type": "Name",
-            "name": "houseId",
+            "value": "houseId",
             "span": {
               "start": {
                 "col": 7,
@@ -60,7 +60,7 @@
           "type": "VariableDefination",
           "name": {
             "type": "Name",
-            "name": "streetNumber",
+            "value": "streetNumber",
             "span": {
               "start": {
                 "col": 26,
@@ -116,7 +116,7 @@
             "alias": null,
             "name": {
               "type": "Name",
-              "name": "house",
+              "value": "house",
               "span": {
                 "start": {
                   "col": 2,
@@ -135,7 +135,7 @@
                 "type": "Argument",
                 "name": {
                   "type": "Name",
-                  "name": "id",
+                  "value": "id",
                   "span": {
                     "start": {
                       "col": 8,
@@ -151,7 +151,7 @@
                 },
                 "value": {
                   "type": "Variable",
-                  "value": "houseId",
+                  "code": "houseId",
                   "span": {
                     "start": {
                       "col": 12,
@@ -187,7 +187,7 @@
                   "alias": null,
                   "name": {
                     "type": "Name",
-                    "name": "id",
+                    "value": "id",
                     "span": {
                       "start": {
                         "col": 4,
@@ -222,7 +222,7 @@
                   "alias": null,
                   "name": {
                     "type": "Name",
-                    "name": "name",
+                    "value": "name",
                     "span": {
                       "start": {
                         "col": 4,
@@ -257,7 +257,7 @@
                   "alias": null,
                   "name": {
                     "type": "Name",
-                    "name": "lat",
+                    "value": "lat",
                     "span": {
                       "start": {
                         "col": 4,
@@ -292,7 +292,7 @@
                   "alias": null,
                   "name": {
                     "type": "Name",
-                    "name": "lng",
+                    "value": "lng",
                     "span": {
                       "start": {
                         "col": 4,
@@ -354,7 +354,7 @@
             "alias": null,
             "name": {
               "type": "Name",
-              "name": "street",
+              "value": "street",
               "span": {
                 "start": {
                   "col": 2,
@@ -373,7 +373,7 @@
                 "type": "Argument",
                 "name": {
                   "type": "Name",
-                  "name": "number",
+                  "value": "number",
                   "span": {
                     "start": {
                       "col": 9,
@@ -389,7 +389,7 @@
                 },
                 "value": {
                   "type": "Variable",
-                  "value": "streetNumber",
+                  "code": "streetNumber",
                   "span": {
                     "start": {
                       "col": 17,
@@ -425,7 +425,7 @@
                   "alias": null,
                   "name": {
                     "type": "Name",
-                    "name": "id",
+                    "value": "id",
                     "span": {
                       "start": {
                         "col": 4,
@@ -487,7 +487,7 @@
             "alias": null,
             "name": {
               "type": "Name",
-              "name": "houseStreet",
+              "value": "houseStreet",
               "span": {
                 "start": {
                   "col": 2,
@@ -506,7 +506,7 @@
                 "type": "Argument",
                 "name": {
                   "type": "Name",
-                  "name": "id",
+                  "value": "id",
                   "span": {
                     "start": {
                       "col": 14,
@@ -522,7 +522,7 @@
                 },
                 "value": {
                   "type": "Variable",
-                  "value": "houseId",
+                  "code": "houseId",
                   "span": {
                     "start": {
                       "col": 18,
@@ -553,7 +553,7 @@
                 "type": "Argument",
                 "name": {
                   "type": "Name",
-                  "name": "number",
+                  "value": "number",
                   "span": {
                     "start": {
                       "col": 28,
@@ -569,7 +569,7 @@
                 },
                 "value": {
                   "type": "Variable",
-                  "value": "streetNumber",
+                  "code": "streetNumber",
                   "span": {
                     "start": {
                       "col": 36,
@@ -605,7 +605,7 @@
                   "alias": null,
                   "name": {
                     "type": "Name",
-                    "name": "id",
+                    "value": "id",
                     "span": {
                       "start": {
                         "col": 4,

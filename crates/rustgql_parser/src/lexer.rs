@@ -369,7 +369,6 @@ impl<'a> Lexer<'a> {
             internal_error!("unreach code, read_block_string must be call when start with '...'");
         }
         self.eat_char(3);
-
         while !self.start_with("\"\"\"")  {
             if self.start_with("\\\"\"\"") {
                 self.eat_char(4);
@@ -384,9 +383,9 @@ impl<'a> Lexer<'a> {
                 }
             }
         }
-        self.finish_token();
         self.eat_char(3);
-        TokenKind::StringValue
+        self.finish_token();
+        TokenKind::BlockString
     }
 }
 #[inline]

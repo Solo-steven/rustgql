@@ -5,7 +5,7 @@
       "type": "UnionTypeExtension",
       "name": {
         "type": "Name",
-        "name": "Feed",
+        "value": "Feed",
         "span": {
           "start": {
             "col": 13,

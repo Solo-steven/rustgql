@@ -13,7 +13,7 @@
             "alias": null,
             "name": {
               "type": "Name",
-              "name": "node",
+              "value": "node",
               "span": {
                 "start": {
                   "col": 2,
@@ -32,7 +32,7 @@
                 "type": "Argument",
                 "name": {
                   "type": "Name",
-                  "name": "id",
+                  "value": "id",
                   "span": {
                     "start": {
                       "col": 4,
@@ -48,10 +48,10 @@
                 },
                 "value": {
                   "type": "ListValue",
-                  "value": [
+                  "values": [
                     {
                       "type": "IntValue",
-                      "value": "5",
+                      "code": "5",
                       "span": {
                         "start": {
                           "col": 6,
@@ -67,7 +67,7 @@
                     },
                     {
                       "type": "IntValue",
-                      "value": "6",
+                      "code": "6",
                       "span": {
                         "start": {
                           "col": 6,
@@ -83,7 +83,7 @@
                     },
                     {
                       "type": "IntValue",
-                      "value": "7",
+                      "code": "7",
                       "span": {
                         "start": {
                           "col": 6,

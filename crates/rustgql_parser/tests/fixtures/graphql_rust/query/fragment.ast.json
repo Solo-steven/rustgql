@@ -5,7 +5,7 @@
       "type": "FragmentDefination",
       "name": {
         "type": "Name",
-        "name": "frag",
+        "value": "frag",
         "span": {
           "start": {
             "col": 9,
@@ -43,7 +43,7 @@
             "alias": null,
             "name": {
               "type": "Name",
-              "name": "node",
+              "value": "node",
               "span": {
                 "start": {
                   "col": 2,

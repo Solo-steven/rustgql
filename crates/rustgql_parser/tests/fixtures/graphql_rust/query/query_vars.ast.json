@@ -5,7 +5,7 @@
       "type": "Query",
       "name": {
         "type": "Name",
-        "name": "Foo",
+        "value": "Foo",
         "span": {
           "start": {
             "col": 6,
@@ -24,7 +24,7 @@
           "type": "VariableDefination",
           "name": {
             "type": "Name",
-            "name": "arg",
+            "value": "arg",
             "span": {
               "start": {
                 "col": 11,
@@ -77,7 +77,7 @@
             "alias": null,
             "name": {
               "type": "Name",
-              "name": "field",
+              "value": "field",
               "span": {
                 "start": {
                   "col": 2,

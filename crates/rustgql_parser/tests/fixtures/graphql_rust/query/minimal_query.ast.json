@@ -13,7 +13,7 @@
             "alias": null,
             "name": {
               "type": "Name",
-              "name": "node",
+              "value": "node",
               "span": {
                 "start": {
                   "col": 2,

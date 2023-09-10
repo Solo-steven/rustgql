@@ -12,7 +12,7 @@
             "type": "Field",
             "alias": {
               "type": "Name",
-              "name": "an_alias",
+              "value": "an_alias",
               "span": {
                 "start": {
                   "col": 2,
@@ -28,7 +28,7 @@
             },
             "name": {
               "type": "Name",
-              "name": "node",
+              "value": "node",
               "span": {
                 "start": {
                   "col": 12,

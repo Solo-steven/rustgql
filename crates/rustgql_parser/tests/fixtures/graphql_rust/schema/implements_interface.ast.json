@@ -23,7 +23,7 @@
       ],
       "name": {
         "type": "Name",
-        "name": "IOne",
+        "value": "IOne",
         "span": {
           "start": {
             "col": 10,
@@ -89,7 +89,7 @@
       ],
       "name": {
         "type": "Name",
-        "name": "IThree",
+        "value": "IThree",
         "span": {
           "start": {
             "col": 10,

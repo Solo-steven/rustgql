@@ -9,7 +9,7 @@
           "type": "VariableDefination",
           "name": {
             "type": "Name",
-            "name": "first",
+            "value": "first",
             "span": {
               "start": {
                 "col": 10,
@@ -57,7 +57,7 @@
           "type": "VariableDefination",
           "name": {
             "type": "Name",
-            "name": "second",
+            "value": "second",
             "span": {
               "start": {
                 "col": 23,
@@ -110,7 +110,7 @@
             "alias": null,
             "name": {
               "type": "Name",
-              "name": "field1",
+              "value": "field1",
               "span": {
                 "start": {
                   "col": 2,
@@ -129,7 +129,7 @@
                 "type": "Argument",
                 "name": {
                   "type": "Name",
-                  "name": "first",
+                  "value": "first",
                   "span": {
                     "start": {
                       "col": 9,
@@ -145,7 +145,7 @@
                 },
                 "value": {
                   "type": "Variable",
-                  "value": "first",
+                  "code": "first",
                   "span": {
                     "start": {
                       "col": 16,
@@ -193,7 +193,7 @@
             "alias": null,
             "name": {
               "type": "Name",
-              "name": "field2",
+              "value": "field2",
               "span": {
                 "start": {
                   "col": 2,
@@ -212,7 +212,7 @@
                 "type": "Argument",
                 "name": {
                   "type": "Name",
-                  "name": "second",
+                  "value": "second",
                   "span": {
                     "start": {
                       "col": 9,
@@ -228,7 +228,7 @@
                 },
                 "value": {
                   "type": "Variable",
-                  "value": "second",
+                  "code": "second",
                   "span": {
                     "start": {
                       "col": 17,

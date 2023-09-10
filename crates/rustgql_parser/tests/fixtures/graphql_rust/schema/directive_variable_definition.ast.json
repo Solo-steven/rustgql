@@ -6,7 +6,7 @@
       "description": null,
       "name": {
         "type": "Name",
-        "name": "configurable",
+        "value": "configurable",
         "span": {
           "start": {
             "col": 11,

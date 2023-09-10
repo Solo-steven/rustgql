@@ -5,7 +5,7 @@
       "type": "InterfaceTypeExtension",
       "name": {
         "type": "Name",
-        "name": "Bar",
+        "value": "Bar",
         "span": {
           "start": {
             "col": 17,
@@ -26,7 +26,7 @@
           "description": null,
           "name": {
             "type": "Name",
-            "name": "two",
+            "value": "two",
             "span": {
               "start": {
                 "col": 2,
@@ -45,7 +45,7 @@
               "description": null,
               "name": {
                 "type": "Name",
-                "name": "argument",
+                "value": "argument",
                 "span": {
                   "start": {
                     "col": 6,
@@ -142,7 +142,7 @@
       "type": "InterfaceTypeExtension",
       "name": {
         "type": "Name",
-        "name": "Foo",
+        "value": "Foo",
         "span": {
           "start": {
             "col": 17,
@@ -194,7 +194,7 @@
           "description": null,
           "name": {
             "type": "Name",
-            "name": "three",
+            "value": "three",
             "span": {
               "start": {
                 "col": 2,
@@ -213,7 +213,7 @@
               "description": null,
               "name": {
                 "type": "Name",
-                "name": "argument",
+                "value": "argument",
                 "span": {
                   "start": {
                     "col": 8,

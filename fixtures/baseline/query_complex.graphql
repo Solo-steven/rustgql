@@ -1,0 +1,17 @@
+query test(
+    $devicePicSize: SomeObjectType = { name: 4, size: ENUM }
+    $devicePicSiz1e: SomeListType = ["test", 4, ENUMvalu, true, ""]
+) {
+    user(id: 4, name: { value: $size })
+    @include(if: $expandedInfo)
+    @include(if: $expandedInfo) {
+        id
+        name
+        smallPic: profilePic(size: 64)
+        bigPic: profilePic(size: 1024)
+        ...inline
+        ... on Test {
+            some
+        }
+    }
+}

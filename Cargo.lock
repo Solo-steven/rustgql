@@ -648,7 +648,7 @@ dependencies = [
 
 [[package]]
 name = "rustgql_core"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "criterion",
  "rustgql_common",
@@ -667,6 +667,7 @@ version = "0.1.0"
 dependencies = [
  "criterion",
  "rustgql_common",
+ "rustgql_parser",
  "serde",
  "serde_derive",
  "serde_json",

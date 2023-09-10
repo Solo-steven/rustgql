@@ -5,7 +5,7 @@
       "type": "ObjectTypeExtension",
       "name": {
         "type": "Name",
-        "name": "Foo",
+        "value": "Foo",
         "span": {
           "start": {
             "col": 12,
@@ -25,7 +25,7 @@
           "description": null,
           "name": {
             "type": "Name",
-            "name": "seven",
+            "value": "seven",
             "span": {
               "start": {
                 "col": 2,
@@ -44,7 +44,7 @@
               "description": null,
               "name": {
                 "type": "Name",
-                "name": "argument",
+                "value": "argument",
                 "span": {
                   "start": {
                     "col": 8,
@@ -142,7 +142,7 @@
       "type": "ObjectTypeExtension",
       "name": {
         "type": "Name",
-        "name": "Bar",
+        "value": "Bar",
         "span": {
           "start": {
             "col": 12,
@@ -193,7 +193,7 @@
           "description": null,
           "name": {
             "type": "Name",
-            "name": "five",
+            "value": "five",
             "span": {
               "start": {
                 "col": 2,
@@ -212,7 +212,7 @@
               "description": null,
               "name": {
                 "type": "Name",
-                "name": "argument",
+                "value": "argument",
                 "span": {
                   "start": {
                     "col": 7,

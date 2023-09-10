@@ -52,6 +52,7 @@ pub struct FloatValue<'a> {
 pub struct StringValue<'a> {
     pub code: Cow<'a, str>,
     pub span: Span,
+    pub is_block: bool
 }
 #[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
 pub struct BoolValue<'a> {

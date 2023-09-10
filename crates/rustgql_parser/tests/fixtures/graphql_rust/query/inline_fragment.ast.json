@@ -13,7 +13,7 @@
             "alias": null,
             "name": {
               "type": "Name",
-              "name": "node",
+              "value": "node",
               "span": {
                 "start": {
                   "col": 2,
@@ -36,7 +36,7 @@
                   "alias": null,
                   "name": {
                     "type": "Name",
-                    "name": "id",
+                    "value": "id",
                     "span": {
                       "start": {
                         "col": 4,
@@ -91,7 +91,7 @@
                         "alias": null,
                         "name": {
                           "type": "Name",
-                          "name": "name",
+                          "value": "name",
                           "span": {
                             "start": {
                               "col": 6,

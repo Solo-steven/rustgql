@@ -6,7 +6,7 @@
       "description": null,
       "name": {
         "type": "Name",
-        "name": "InputType",
+        "value": "InputType",
         "span": {
           "start": {
             "col": 6,
@@ -26,7 +26,7 @@
           "description": null,
           "name": {
             "type": "Name",
-            "name": "key",
+            "value": "key",
             "span": {
               "start": {
                 "col": 2,
@@ -78,7 +78,7 @@
           "description": null,
           "name": {
             "type": "Name",
-            "name": "answer",
+            "value": "answer",
             "span": {
               "start": {
                 "col": 2,
@@ -110,7 +110,7 @@
           },
           "default_value": {
             "type": "IntValue",
-            "value": "42",
+            "code": "42",
             "span": {
               "start": {
                 "col": 16,

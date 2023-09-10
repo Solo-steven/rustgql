@@ -6,7 +6,7 @@
       "description": null,
       "name": {
         "type": "Name",
-        "name": "UndefinedUnion",
+        "value": "UndefinedUnion",
         "span": {
           "start": {
             "col": 6,

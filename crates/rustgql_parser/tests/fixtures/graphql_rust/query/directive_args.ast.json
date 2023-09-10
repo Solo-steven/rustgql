@@ -13,7 +13,7 @@
             "alias": null,
             "name": {
               "type": "Name",
-              "name": "node",
+              "value": "node",
               "span": {
                 "start": {
                   "col": 2,
@@ -33,7 +33,7 @@
                 "type": "Directive",
                 "name": {
                   "type": "Name",
-                  "name": "dir",
+                  "value": "dir",
                   "span": {
                     "start": {
                       "col": 8,
@@ -52,7 +52,7 @@
                     "type": "Argument",
                     "name": {
                       "type": "Name",
-                      "name": "a",
+                      "value": "a",
                       "span": {
                         "start": {
                           "col": 12,
@@ -68,7 +68,7 @@
                     },
                     "value": {
                       "type": "IntValue",
-                      "value": "1",
+                      "code": "1",
                       "span": {
                         "start": {
                           "col": 15,
@@ -99,7 +99,7 @@
                     "type": "Argument",
                     "name": {
                       "type": "Name",
-                      "name": "b",
+                      "value": "b",
                       "span": {
                         "start": {
                           "col": 18,
@@ -115,7 +115,7 @@
                     },
                     "value": {
                       "type": "StringValue",
-                      "value": "\"2\"",
+                      "code": "2",
                       "span": {
                         "start": {
                           "col": 21,
@@ -127,7 +127,8 @@
                           "row": 1,
                           "index": 32
                         }
-                      }
+                      },
+                      "is_block": false
                     },
                     "span": {
                       "start": {
@@ -146,7 +147,7 @@
                     "type": "Argument",
                     "name": {
                       "type": "Name",
-                      "name": "c",
+                      "value": "c",
                       "span": {
                         "start": {
                           "col": 26,
@@ -162,7 +163,7 @@
                     },
                     "value": {
                       "type": "BooleanValue",
-                      "value": "true",
+                      "code": "true",
                       "span": {
                         "start": {
                           "col": 29,
@@ -193,7 +194,7 @@
                     "type": "Argument",
                     "name": {
                       "type": "Name",
-                      "name": "d",
+                      "value": "d",
                       "span": {
                         "start": {
                           "col": 35,
@@ -209,7 +210,7 @@
                     },
                     "value": {
                       "type": "BooleanValue",
-                      "value": "false",
+                      "code": "false",
                       "span": {
                         "start": {
                           "col": 38,
@@ -240,7 +241,7 @@
                     "type": "Argument",
                     "name": {
                       "type": "Name",
-                      "name": "e",
+                      "value": "e",
                       "span": {
                         "start": {
                           "col": 45,

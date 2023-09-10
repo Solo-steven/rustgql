@@ -5,7 +5,7 @@
       "type": "InputObjectTypeExtension",
       "name": {
         "type": "Name",
-        "name": "InputType",
+        "value": "InputType",
         "span": {
           "start": {
             "col": 13,
@@ -25,7 +25,7 @@
           "description": null,
           "name": {
             "type": "Name",
-            "name": "other",
+            "value": "other",
             "span": {
               "start": {
                 "col": 2,
@@ -57,7 +57,7 @@
           },
           "default_value": {
             "type": "FloatValue",
-            "value": "1.23e4",
+            "code": "1.23e4",
             "span": {
               "start": {
                 "col": 17,

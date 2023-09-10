@@ -56,7 +56,7 @@
     {
       "type": "ObjectTypeDefinition",
       "description": {
-        "value": "\"\"\"\n  This is a description\n  of the `Foo` type.\n\"\"\"",
+        "code": "\n  This is a description\n  of the `Foo` type.\n",
         "span": {
           "start": {
             "col": 0,
@@ -68,11 +68,12 @@
             "row": 8,
             "index": 108
           }
-        }
+        },
+        "is_block": true
       },
       "name": {
         "type": "Name",
-        "name": "Foo",
+        "value": "Foo",
         "span": {
           "start": {
             "col": 5,
@@ -123,7 +124,7 @@
           "description": null,
           "name": {
             "type": "Name",
-            "name": "one",
+            "value": "one",
             "span": {
               "start": {
                 "col": 2,
@@ -172,7 +173,7 @@
           "description": null,
           "name": {
             "type": "Name",
-            "name": "two",
+            "value": "two",
             "span": {
               "start": {
                 "col": 2,
@@ -191,7 +192,7 @@
               "description": null,
               "name": {
                 "type": "Name",
-                "name": "argument",
+                "value": "argument",
                 "span": {
                   "start": {
                     "col": 6,
@@ -274,7 +275,7 @@
           "description": null,
           "name": {
             "type": "Name",
-            "name": "three",
+            "value": "three",
             "span": {
               "start": {
                 "col": 2,
@@ -293,7 +294,7 @@
               "description": null,
               "name": {
                 "type": "Name",
-                "name": "argument",
+                "value": "argument",
                 "span": {
                   "start": {
                     "col": 8,
@@ -342,7 +343,7 @@
               "description": null,
               "name": {
                 "type": "Name",
-                "name": "other",
+                "value": "other",
                 "span": {
                   "start": {
                     "col": 29,
@@ -422,7 +423,7 @@
           "description": null,
           "name": {
             "type": "Name",
-            "name": "four",
+            "value": "four",
             "span": {
               "start": {
                 "col": 2,
@@ -441,7 +442,7 @@
               "description": null,
               "name": {
                 "type": "Name",
-                "name": "argument",
+                "value": "argument",
                 "span": {
                   "start": {
                     "col": 7,
@@ -473,7 +474,7 @@
               },
               "default_value": {
                 "type": "StringValue",
-                "value": "\"string\"",
+                "code": "string",
                 "span": {
                   "start": {
                     "col": 26,
@@ -485,7 +486,8 @@
                     "row": 13,
                     "index": 270
                   }
-                }
+                },
+                "is_block": false
               },
               "directives": null,
               "span": {
@@ -536,7 +538,7 @@
           "description": null,
           "name": {
             "type": "Name",
-            "name": "five",
+            "value": "five",
             "span": {
               "start": {
                 "col": 2,
@@ -555,7 +557,7 @@
               "description": null,
               "name": {
                 "type": "Name",
-                "name": "argument",
+                "value": "argument",
                 "span": {
                   "start": {
                     "col": 7,
@@ -590,10 +592,10 @@
               },
               "default_value": {
                 "type": "ListValue",
-                "value": [
+                "values": [
                   {
                     "type": "StringValue",
-                    "value": "\"string\"",
+                    "code": "string",
                     "span": {
                       "start": {
                         "col": 29,
@@ -605,11 +607,12 @@
                         "row": 14,
                         "index": 317
                       }
-                    }
+                    },
+                    "is_block": false
                   },
                   {
                     "type": "StringValue",
-                    "value": "\"string\"",
+                    "code": "string",
                     "span": {
                       "start": {
                         "col": 39,
@@ -621,7 +624,8 @@
                         "row": 14,
                         "index": 327
                       }
-                    }
+                    },
+                    "is_block": false
                   }
                 ],
                 "span": {
@@ -686,7 +690,7 @@
           "description": null,
           "name": {
             "type": "Name",
-            "name": "six",
+            "value": "six",
             "span": {
               "start": {
                 "col": 2,
@@ -705,7 +709,7 @@
               "description": null,
               "name": {
                 "type": "Name",
-                "name": "argument",
+                "value": "argument",
                 "span": {
                   "start": {
                     "col": 6,
@@ -737,12 +741,12 @@
               },
               "default_value": {
                 "type": "ObjectValue",
-                "value": [
+                "fields": [
                   {
                     "type": "ObjectField",
                     "name": {
                       "type": "Name",
-                      "name": "key",
+                      "value": "key",
                       "span": {
                         "start": {
                           "col": 29,
@@ -758,7 +762,7 @@
                     },
                     "value": {
                       "type": "StringValue",
-                      "value": "\"value\"",
+                      "code": "value",
                       "span": {
                         "start": {
                           "col": 34,
@@ -770,7 +774,8 @@
                           "row": 15,
                           "index": 379
                         }
-                      }
+                      },
+                      "is_block": false
                     }
                   }
                 ],
@@ -836,7 +841,7 @@
           "description": null,
           "name": {
             "type": "Name",
-            "name": "seven",
+            "value": "seven",
             "span": {
               "start": {
                 "col": 2,
@@ -855,7 +860,7 @@
               "description": null,
               "name": {
                 "type": "Name",
-                "name": "argument",
+                "value": "argument",
                 "span": {
                   "start": {
                     "col": 8,
@@ -965,7 +970,7 @@
       "description": null,
       "name": {
         "type": "Name",
-        "name": "AnnotatedObject",
+        "value": "AnnotatedObject",
         "span": {
           "start": {
             "col": 5,
@@ -985,7 +990,7 @@
           "description": null,
           "name": {
             "type": "Name",
-            "name": "annotatedField",
+            "value": "annotatedField",
             "span": {
               "start": {
                 "col": 2,
@@ -1004,7 +1009,7 @@
               "description": null,
               "name": {
                 "type": "Name",
-                "name": "arg",
+                "value": "arg",
                 "span": {
                   "start": {
                     "col": 17,
@@ -1036,7 +1041,7 @@
               },
               "default_value": {
                 "type": "StringValue",
-                "value": "\"default\"",
+                "code": "default",
                 "span": {
                   "start": {
                     "col": 29,
@@ -1048,14 +1053,15 @@
                     "row": 20,
                     "index": 512
                   }
-                }
+                },
+                "is_block": false
               },
               "directives": [
                 {
                   "type": "Directive",
                   "name": {
                     "type": "Name",
-                    "name": "onArg",
+                    "value": "onArg",
                     "span": {
                       "start": {
                         "col": 40,
@@ -1103,7 +1109,7 @@
               "type": "Directive",
               "name": {
                 "type": "Name",
-                "name": "onField",
+                "value": "onField",
                 "span": {
                   "start": {
                     "col": 54,
@@ -1167,7 +1173,7 @@
           "type": "Directive",
           "name": {
             "type": "Name",
-            "name": "onObject",
+            "value": "onObject",
             "span": {
               "start": {
                 "col": 22,
@@ -1186,7 +1192,7 @@
               "type": "Argument",
               "name": {
                 "type": "Name",
-                "name": "arg",
+                "value": "arg",
                 "span": {
                   "start": {
                     "col": 31,
@@ -1202,7 +1208,7 @@
               },
               "value": {
                 "type": "StringValue",
-                "value": "\"value\"",
+                "code": "value",
                 "span": {
                   "start": {
                     "col": 36,
@@ -1214,7 +1220,8 @@
                     "row": 19,
                     "index": 470
                   }
-                }
+                },
+                "is_block": false
               },
               "span": {
                 "start": {
@@ -1262,7 +1269,7 @@
       "description": null,
       "name": {
         "type": "Name",
-        "name": "UndefinedType",
+        "value": "UndefinedType",
         "span": {
           "start": {
             "col": 5,
@@ -1296,7 +1303,7 @@
       "type": "ObjectTypeExtension",
       "name": {
         "type": "Name",
-        "name": "Foo",
+        "value": "Foo",
         "span": {
           "start": {
             "col": 12,
@@ -1316,7 +1323,7 @@
           "description": null,
           "name": {
             "type": "Name",
-            "name": "seven",
+            "value": "seven",
             "span": {
               "start": {
                 "col": 2,
@@ -1335,7 +1342,7 @@
               "description": null,
               "name": {
                 "type": "Name",
-                "name": "argument",
+                "value": "argument",
                 "span": {
                   "start": {
                     "col": 8,
@@ -1433,7 +1440,7 @@
       "type": "ObjectTypeExtension",
       "name": {
         "type": "Name",
-        "name": "Foo",
+        "value": "Foo",
         "span": {
           "start": {
             "col": 12,
@@ -1454,7 +1461,7 @@
           "type": "Directive",
           "name": {
             "type": "Name",
-            "name": "onType",
+            "value": "onType",
             "span": {
               "start": {
                 "col": 17,
@@ -1502,7 +1509,7 @@
       "implement_interfaces": null,
       "name": {
         "type": "Name",
-        "name": "Bar",
+        "value": "Bar",
         "span": {
           "start": {
             "col": 10,
@@ -1522,7 +1529,7 @@
           "description": null,
           "name": {
             "type": "Name",
-            "name": "one",
+            "value": "one",
             "span": {
               "start": {
                 "col": 2,
@@ -1571,7 +1578,7 @@
           "description": null,
           "name": {
             "type": "Name",
-            "name": "four",
+            "value": "four",
             "span": {
               "start": {
                 "col": 2,
@@ -1590,7 +1597,7 @@
               "description": null,
               "name": {
                 "type": "Name",
-                "name": "argument",
+                "value": "argument",
                 "span": {
                   "start": {
                     "col": 7,
@@ -1622,7 +1629,7 @@
               },
               "default_value": {
                 "type": "StringValue",
-                "value": "\"string\"",
+                "code": "string",
                 "span": {
                   "start": {
                     "col": 26,
@@ -1634,7 +1641,8 @@
                     "row": 33,
                     "index": 701
                   }
-                }
+                },
+                "is_block": false
               },
               "directives": null,
               "span": {
@@ -1701,7 +1709,7 @@
       "implement_interfaces": null,
       "name": {
         "type": "Name",
-        "name": "AnnotatedInterface",
+        "value": "AnnotatedInterface",
         "span": {
           "start": {
             "col": 10,
@@ -1720,7 +1728,7 @@
           "type": "Directive",
           "name": {
             "type": "Name",
-            "name": "onInterface",
+            "value": "onInterface",
             "span": {
               "start": {
                 "col": 30,
@@ -1754,7 +1762,7 @@
           "description": null,
           "name": {
             "type": "Name",
-            "name": "annotatedField",
+            "value": "annotatedField",
             "span": {
               "start": {
                 "col": 2,
@@ -1773,7 +1781,7 @@
               "description": null,
               "name": {
                 "type": "Name",
-                "name": "arg",
+                "value": "arg",
                 "span": {
                   "start": {
                     "col": 17,
@@ -1809,7 +1817,7 @@
                   "type": "Directive",
                   "name": {
                     "type": "Name",
-                    "name": "onArg",
+                    "value": "onArg",
                     "span": {
                       "start": {
                         "col": 28,
@@ -1857,7 +1865,7 @@
               "type": "Directive",
               "name": {
                 "type": "Name",
-                "name": "onField",
+                "value": "onField",
                 "span": {
                   "start": {
                     "col": 42,
@@ -1935,7 +1943,7 @@
       "implement_interfaces": null,
       "name": {
         "type": "Name",
-        "name": "UndefinedInterface",
+        "value": "UndefinedInterface",
         "span": {
           "start": {
             "col": 10,
@@ -1968,7 +1976,7 @@
       "type": "InterfaceTypeExtension",
       "name": {
         "type": "Name",
-        "name": "Bar",
+        "value": "Bar",
         "span": {
           "start": {
             "col": 17,
@@ -1989,7 +1997,7 @@
           "description": null,
           "name": {
             "type": "Name",
-            "name": "two",
+            "value": "two",
             "span": {
               "start": {
                 "col": 2,
@@ -2008,7 +2016,7 @@
               "description": null,
               "name": {
                 "type": "Name",
-                "name": "argument",
+                "value": "argument",
                 "span": {
                   "start": {
                     "col": 6,
@@ -2105,7 +2113,7 @@
       "type": "InterfaceTypeExtension",
       "name": {
         "type": "Name",
-        "name": "Bar",
+        "value": "Bar",
         "span": {
           "start": {
             "col": 17,
@@ -2125,7 +2133,7 @@
           "type": "Directive",
           "name": {
             "type": "Name",
-            "name": "onInterface",
+            "value": "onInterface",
             "span": {
               "start": {
                 "col": 22,
@@ -2173,7 +2181,7 @@
       "description": null,
       "name": {
         "type": "Name",
-        "name": "Feed",
+        "value": "Feed",
         "span": {
           "start": {
             "col": 6,
@@ -2253,7 +2261,7 @@
       "description": null,
       "name": {
         "type": "Name",
-        "name": "AnnotatedUnion",
+        "value": "AnnotatedUnion",
         "span": {
           "start": {
             "col": 6,
@@ -2272,7 +2280,7 @@
           "type": "Directive",
           "name": {
             "type": "Name",
-            "name": "onUnion",
+            "value": "onUnion",
             "span": {
               "start": {
                 "col": 22,
@@ -2351,7 +2359,7 @@
       "description": null,
       "name": {
         "type": "Name",
-        "name": "AnnotatedUnionTwo",
+        "value": "AnnotatedUnionTwo",
         "span": {
           "start": {
             "col": 6,
@@ -2370,7 +2378,7 @@
           "type": "Directive",
           "name": {
             "type": "Name",
-            "name": "onUnion",
+            "value": "onUnion",
             "span": {
               "start": {
                 "col": 25,
@@ -2449,7 +2457,7 @@
       "description": null,
       "name": {
         "type": "Name",
-        "name": "UndefinedUnion",
+        "value": "UndefinedUnion",
         "span": {
           "start": {
             "col": 6,
@@ -2482,7 +2490,7 @@
       "type": "UnionTypeExtension",
       "name": {
         "type": "Name",
-        "name": "Feed",
+        "value": "Feed",
         "span": {
           "start": {
             "col": 13,
@@ -2546,7 +2554,7 @@
       "type": "UnionTypeExtension",
       "name": {
         "type": "Name",
-        "name": "Feed",
+        "value": "Feed",
         "span": {
           "start": {
             "col": 13,
@@ -2565,7 +2573,7 @@
           "type": "Directive",
           "name": {
             "type": "Name",
-            "name": "onUnion",
+            "value": "onUnion",
             "span": {
               "start": {
                 "col": 19,
@@ -2613,7 +2621,7 @@
       "description": null,
       "name": {
         "type": "Name",
-        "name": "CustomScalar",
+        "value": "CustomScalar",
         "span": {
           "start": {
             "col": 7,
@@ -2646,7 +2654,7 @@
       "description": null,
       "name": {
         "type": "Name",
-        "name": "AnnotatedScalar",
+        "value": "AnnotatedScalar",
         "span": {
           "start": {
             "col": 7,
@@ -2665,7 +2673,7 @@
           "type": "Directive",
           "name": {
             "type": "Name",
-            "name": "onScalar",
+            "value": "onScalar",
             "span": {
               "start": {
                 "col": 24,
@@ -2711,7 +2719,7 @@
       "type": "ScalarTypeExtension",
       "name": {
         "type": "Name",
-        "name": "CustomScalar",
+        "value": "CustomScalar",
         "span": {
           "start": {
             "col": 14,
@@ -2730,7 +2738,7 @@
           "type": "Directive",
           "name": {
             "type": "Name",
-            "name": "onScalar",
+            "value": "onScalar",
             "span": {
               "start": {
                 "col": 28,
@@ -2777,7 +2785,7 @@
       "description": null,
       "name": {
         "type": "Name",
-        "name": "Site",
+        "value": "Site",
         "span": {
           "start": {
             "col": 5,
@@ -2796,7 +2804,7 @@
         {
           "description": null,
           "value": {
-            "value": "DESKTOP",
+            "code": "DESKTOP",
             "span": {
               "start": {
                 "col": 2,
@@ -2827,7 +2835,7 @@
         {
           "description": null,
           "value": {
-            "value": "MOBILE",
+            "code": "MOBILE",
             "span": {
               "start": {
                 "col": 2,
@@ -2874,7 +2882,7 @@
       "description": null,
       "name": {
         "type": "Name",
-        "name": "AnnotatedEnum",
+        "value": "AnnotatedEnum",
         "span": {
           "start": {
             "col": 5,
@@ -2893,7 +2901,7 @@
           "type": "Directive",
           "name": {
             "type": "Name",
-            "name": "onEnum",
+            "value": "onEnum",
             "span": {
               "start": {
                 "col": 20,
@@ -2926,7 +2934,7 @@
         {
           "description": null,
           "value": {
-            "value": "ANNOTATED_VALUE",
+            "code": "ANNOTATED_VALUE",
             "span": {
               "start": {
                 "col": 2,
@@ -2945,7 +2953,7 @@
               "type": "Directive",
               "name": {
                 "type": "Name",
-                "name": "onEnumValue",
+                "value": "onEnumValue",
                 "span": {
                   "start": {
                     "col": 19,
@@ -2990,7 +2998,7 @@
         {
           "description": null,
           "value": {
-            "value": "OTHER_VALUE",
+            "code": "OTHER_VALUE",
             "span": {
               "start": {
                 "col": 2,
@@ -3037,7 +3045,7 @@
       "description": null,
       "name": {
         "type": "Name",
-        "name": "UndefinedEnum",
+        "value": "UndefinedEnum",
         "span": {
           "start": {
             "col": 5,
@@ -3070,7 +3078,7 @@
       "type": "EnumTypeExtension",
       "name": {
         "type": "Name",
-        "name": "Site",
+        "value": "Site",
         "span": {
           "start": {
             "col": 12,
@@ -3089,7 +3097,7 @@
         {
           "description": null,
           "value": {
-            "value": "VR",
+            "code": "VR",
             "span": {
               "start": {
                 "col": 2,
@@ -3135,7 +3143,7 @@
       "type": "EnumTypeExtension",
       "name": {
         "type": "Name",
-        "name": "Site",
+        "value": "Site",
         "span": {
           "start": {
             "col": 12,
@@ -3154,7 +3162,7 @@
           "type": "Directive",
           "name": {
             "type": "Name",
-            "name": "onEnum",
+            "value": "onEnum",
             "span": {
               "start": {
                 "col": 18,
@@ -3202,7 +3210,7 @@
       "description": null,
       "name": {
         "type": "Name",
-        "name": "InputType",
+        "value": "InputType",
         "span": {
           "start": {
             "col": 6,
@@ -3222,7 +3230,7 @@
           "description": null,
           "name": {
             "type": "Name",
-            "name": "key",
+            "value": "key",
             "span": {
               "start": {
                 "col": 2,
@@ -3274,7 +3282,7 @@
           "description": null,
           "name": {
             "type": "Name",
-            "name": "answer",
+            "value": "answer",
             "span": {
               "start": {
                 "col": 2,
@@ -3306,7 +3314,7 @@
           },
           "default_value": {
             "type": "IntValue",
-            "value": "42",
+            "code": "42",
             "span": {
               "start": {
                 "col": 16,
@@ -3353,7 +3361,7 @@
       "description": null,
       "name": {
         "type": "Name",
-        "name": "AnnotatedInput",
+        "value": "AnnotatedInput",
         "span": {
           "start": {
             "col": 6,
@@ -3372,7 +3380,7 @@
           "type": "Directive",
           "name": {
             "type": "Name",
-            "name": "onInputObject",
+            "value": "onInputObject",
             "span": {
               "start": {
                 "col": 22,
@@ -3406,7 +3414,7 @@
           "description": null,
           "name": {
             "type": "Name",
-            "name": "annotatedField",
+            "value": "annotatedField",
             "span": {
               "start": {
                 "col": 2,
@@ -3442,7 +3450,7 @@
               "type": "Directive",
               "name": {
                 "type": "Name",
-                "name": "onField",
+                "value": "onField",
                 "span": {
                   "start": {
                     "col": 24,
@@ -3503,7 +3511,7 @@
       "description": null,
       "name": {
         "type": "Name",
-        "name": "UndefinedInput",
+        "value": "UndefinedInput",
         "span": {
           "start": {
             "col": 6,
@@ -3536,7 +3544,7 @@
       "type": "InputObjectTypeExtension",
       "name": {
         "type": "Name",
-        "name": "InputType",
+        "value": "InputType",
         "span": {
           "start": {
             "col": 13,
@@ -3556,7 +3564,7 @@
           "description": null,
           "name": {
             "type": "Name",
-            "name": "other",
+            "value": "other",
             "span": {
               "start": {
                 "col": 2,
@@ -3588,7 +3596,7 @@
           },
           "default_value": {
             "type": "IntValue",
-            "value": "12300",
+            "code": "12300",
             "span": {
               "start": {
                 "col": 17,
@@ -3634,7 +3642,7 @@
       "type": "InputObjectTypeExtension",
       "name": {
         "type": "Name",
-        "name": "InputType",
+        "value": "InputType",
         "span": {
           "start": {
             "col": 13,
@@ -3653,7 +3661,7 @@
           "type": "Directive",
           "name": {
             "type": "Name",
-            "name": "onInputObject",
+            "value": "onInputObject",
             "span": {
               "start": {
                 "col": 24,
@@ -3701,7 +3709,7 @@
       "description": null,
       "name": {
         "type": "Name",
-        "name": "skip",
+        "value": "skip",
         "span": {
           "start": {
             "col": 11,
@@ -3720,7 +3728,7 @@
           "description": null,
           "name": {
             "type": "Name",
-            "name": "if",
+            "value": "if",
             "span": {
               "start": {
                 "col": 16,
@@ -3793,7 +3801,7 @@
       "description": null,
       "name": {
         "type": "Name",
-        "name": "include",
+        "value": "include",
         "span": {
           "start": {
             "col": 11,
@@ -3812,7 +3820,7 @@
           "description": null,
           "name": {
             "type": "Name",
-            "name": "if",
+            "value": "if",
             "span": {
               "start": {
                 "col": 19,
@@ -3885,7 +3893,7 @@
       "description": null,
       "name": {
         "type": "Name",
-        "name": "include2",
+        "value": "include2",
         "span": {
           "start": {
             "col": 11,
@@ -3904,7 +3912,7 @@
           "description": null,
           "name": {
             "type": "Name",
-            "name": "if",
+            "value": "if",
             "span": {
               "start": {
                 "col": 20,

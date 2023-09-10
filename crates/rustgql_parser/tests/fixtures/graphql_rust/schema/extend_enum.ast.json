@@ -5,7 +5,7 @@
       "type": "EnumTypeExtension",
       "name": {
         "type": "Name",
-        "name": "Site",
+        "value": "Site",
         "span": {
           "start": {
             "col": 12,
@@ -24,7 +24,7 @@
         {
           "description": null,
           "value": {
-            "value": "VR",
+            "code": "VR",
             "span": {
               "start": {
                 "col": 2,

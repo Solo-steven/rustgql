@@ -4,7 +4,7 @@
     {
       "type": "ScalarTypeDefinition",
       "description": {
-        "value": "\"This is the best scalar type\"",
+        "code": "This is the best scalar type",
         "span": {
           "start": {
             "col": 0,
@@ -16,11 +16,12 @@
             "row": 0,
             "index": 30
           }
-        }
+        },
+        "is_block": false
       },
       "name": {
         "type": "Name",
-        "name": "BestType",
+        "value": "BestType",
         "span": {
           "start": {
             "col": 7,
@@ -39,7 +40,7 @@
           "type": "Directive",
           "name": {
             "type": "Name",
-            "name": "perfectness",
+            "value": "perfectness",
             "span": {
               "start": {
                 "col": 17,
@@ -58,7 +59,7 @@
               "type": "Argument",
               "name": {
                 "type": "Name",
-                "name": "value",
+                "value": "value",
                 "span": {
                   "start": {
                     "col": 29,
@@ -74,7 +75,7 @@
               },
               "value": {
                 "type": "IntValue",
-                "value": "100500",
+                "code": "100500",
                 "span": {
                   "start": {
                     "col": 36,

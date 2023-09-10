@@ -6,7 +6,7 @@ use rustgql_typegen::schema_generator::SchemaGenerator;
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]
-pub fn minifier_query(code: &str) -> String {
+pub fn minify_query(code: &str) -> String {
     let mut parser = Parser::new(code);
     let document = parser.parse();
     let mut query_minifier = QueryMinifier::new();

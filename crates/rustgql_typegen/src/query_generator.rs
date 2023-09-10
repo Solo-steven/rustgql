@@ -9,6 +9,9 @@ pub struct QueryGenerator<'a>{
     output: String,
     table: GrahpQLTable<'a>,
     fragments_table: HashMap<Cow<'a, str>, SelectSet<'a>>,
+    query_anonymous_counter: usize,
+    mutation_anoymouse_counter: usize,
+    subscription_anoymouse_counter: usize,
 }
 
 impl <'a> QueryGenerator<'a> {
@@ -17,6 +20,9 @@ impl <'a> QueryGenerator<'a> {
             output: String::new(),
             table,
             fragments_table: HashMap::new(),
+            query_anonymous_counter: 0,
+            mutation_anoymouse_counter: 0,
+            subscription_anoymouse_counter: 0,
         }
     }
     fn write(&mut self, pat: &str) {
@@ -52,16 +58,47 @@ impl <'a> QueryGenerator<'a> {
         for definition in &document.definations {
             match *definition {
                 Defination::Query(ref query) => self.accept_query(query),
-                Defination::Mutation(ref mutation) => {}
-                Defination::Subscription(ref subscription) => {},
+                Defination::Mutation(ref mutation) => self.accept_mutation(mutation),
+                Defination::Subscription(ref subscription) => self.accept_subscription(subscription),
                 _ => {}
             }
         }
     }
     // query's top level selection must have at least a selection of subfield. 
     fn accept_query(&mut self, query: &Query<'a>) {
-        self.write("type  = {");
+        self.write("type");
+        if let Some(name) = &query.name {
+            self.write(name.value.as_ref());
+        }else {
+            self.write(format!("AnonymousQuery{}", self.query_anonymous_counter).as_str());
+            self.query_anonymous_counter += 1;
+        }
+        self.write(" = {");
         self.accept_selectionset(&query.selectionset, &Cow::Borrowed("Query"));
+        self.write("}");
+    }
+    fn accept_mutation(&mut self, mutation: &Mutation<'a>) {
+        self.write("type");
+        if let Some(name) = &mutation.name {
+            self.write(name.value.as_ref());
+        }else {
+            self.write(format!("AnonymousQuery{}", self.mutation_anoymouse_counter).as_str());
+            self.mutation_anoymouse_counter += 1;
+        }
+        self.write(" = {");
+        self.accept_selectionset(&mutation.selectionset, &Cow::Borrowed("Mutation"));
+        self.write("}");
+    }
+    fn accept_subscription(&mut self, subscription: &Subscription<'a>) {
+        self.write("type");
+        if let Some(name) = &subscription.name {
+            self.write(name.value.as_ref());
+        }else {
+            self.write(format!("AnonymousQuery{}", self.subscription_anoymouse_counter).as_str());
+            self.subscription_anoymouse_counter += 1;
+        }
+        self.write(" = {");
+        self.accept_selectionset(&subscription.selectionset, &Cow::Borrowed("Mutation"));
         self.write("}");
     }
     fn accept_field(&mut self, field: &Field<'a>, mut var_type_of_field: &VarType<'a>) {

@@ -5,7 +5,7 @@
       "type": "Query",
       "name": {
         "type": "Name",
-        "name": "Foo",
+        "value": "Foo",
         "span": {
           "start": {
             "col": 6,
@@ -24,7 +24,7 @@
           "type": "VariableDefination",
           "name": {
             "type": "Name",
-            "name": "site",
+            "value": "site",
             "span": {
               "start": {
                 "col": 11,
@@ -56,7 +56,7 @@
           },
           "default_value": {
             "type": "StringValue",
-            "value": "\"string\"",
+            "code": "string",
             "span": {
               "start": {
                 "col": 26,
@@ -68,7 +68,8 @@
                 "row": 0,
                 "index": 34
               }
-            }
+            },
+            "is_block": false
           },
           "span": {
             "start": {
@@ -92,7 +93,7 @@
             "alias": null,
             "name": {
               "type": "Name",
-              "name": "field",
+              "value": "field",
               "span": {
                 "start": {
                   "col": 2,

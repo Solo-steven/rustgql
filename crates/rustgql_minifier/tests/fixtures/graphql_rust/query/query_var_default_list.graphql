@@ -1,0 +1,1 @@
+query Foo($site:[Int]=[123,456]){field}

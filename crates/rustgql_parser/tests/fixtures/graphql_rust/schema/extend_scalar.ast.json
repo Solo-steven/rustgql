@@ -5,7 +5,7 @@
       "type": "ScalarTypeExtension",
       "name": {
         "type": "Name",
-        "name": "CustomScalar",
+        "value": "CustomScalar",
         "span": {
           "start": {
             "col": 14,
@@ -24,7 +24,7 @@
           "type": "Directive",
           "name": {
             "type": "Name",
-            "name": "onScalar",
+            "value": "onScalar",
             "span": {
               "start": {
                 "col": 28,

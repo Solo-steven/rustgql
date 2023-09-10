@@ -1,0 +1,1 @@
+query Foo($site:Site=MOBILE){field}

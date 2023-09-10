@@ -5,7 +5,7 @@
       "type": "Query",
       "name": {
         "type": "Name",
-        "name": "queryName",
+        "value": "queryName",
         "span": {
           "start": {
             "col": 6,
@@ -24,7 +24,7 @@
           "type": "VariableDefination",
           "name": {
             "type": "Name",
-            "name": "foo",
+            "value": "foo",
             "span": {
               "start": {
                 "col": 17,
@@ -72,7 +72,7 @@
           "type": "VariableDefination",
           "name": {
             "type": "Name",
-            "name": "site",
+            "value": "site",
             "span": {
               "start": {
                 "col": 36,
@@ -104,7 +104,7 @@
           },
           "default_value": {
             "type": "EnumValue",
-            "value": "MOBILE",
+            "code": "MOBILE",
             "span": {
               "start": {
                 "col": 49,
@@ -139,7 +139,7 @@
             "type": "Field",
             "alias": {
               "type": "Name",
-              "name": "whoever123is",
+              "value": "whoever123is",
               "span": {
                 "start": {
                   "col": 2,
@@ -155,7 +155,7 @@
             },
             "name": {
               "type": "Name",
-              "name": "node",
+              "value": "node",
               "span": {
                 "start": {
                   "col": 16,
@@ -174,7 +174,7 @@
                 "type": "Argument",
                 "name": {
                   "type": "Name",
-                  "name": "id",
+                  "value": "id",
                   "span": {
                     "start": {
                       "col": 21,
@@ -190,10 +190,10 @@
                 },
                 "value": {
                   "type": "ListValue",
-                  "value": [
+                  "values": [
                     {
                       "type": "IntValue",
-                      "value": "123",
+                      "code": "123",
                       "span": {
                         "start": {
                           "col": 26,
@@ -209,7 +209,7 @@
                     },
                     {
                       "type": "IntValue",
-                      "value": "456",
+                      "code": "456",
                       "span": {
                         "start": {
                           "col": 31,
@@ -259,7 +259,7 @@
                   "alias": null,
                   "name": {
                     "type": "Name",
-                    "name": "id",
+                    "value": "id",
                     "span": {
                       "start": {
                         "col": 4,
@@ -311,7 +311,7 @@
                       "type": "Directive",
                       "name": {
                         "type": "Name",
-                        "name": "defer",
+                        "value": "defer",
                         "span": {
                           "start": {
                             "col": 17,
@@ -347,7 +347,7 @@
                         "alias": null,
                         "name": {
                           "type": "Name",
-                          "name": "field2",
+                          "value": "field2",
                           "span": {
                             "start": {
                               "col": 6,
@@ -370,7 +370,7 @@
                               "alias": null,
                               "name": {
                                 "type": "Name",
-                                "name": "id",
+                                "value": "id",
                                 "span": {
                                   "start": {
                                     "col": 8,
@@ -404,7 +404,7 @@
                               "type": "Field",
                               "alias": {
                                 "type": "Name",
-                                "name": "alias",
+                                "value": "alias",
                                 "span": {
                                   "start": {
                                     "col": 8,
@@ -420,7 +420,7 @@
                               },
                               "name": {
                                 "type": "Name",
-                                "name": "field1",
+                                "value": "field1",
                                 "span": {
                                   "start": {
                                     "col": 15,
@@ -439,7 +439,7 @@
                                   "type": "Argument",
                                   "name": {
                                     "type": "Name",
-                                    "name": "first",
+                                    "value": "first",
                                     "span": {
                                       "start": {
                                         "col": 22,
@@ -455,7 +455,7 @@
                                   },
                                   "value": {
                                     "type": "IntValue",
-                                    "value": "10",
+                                    "code": "10",
                                     "span": {
                                       "start": {
                                         "col": 29,
@@ -486,7 +486,7 @@
                                   "type": "Argument",
                                   "name": {
                                     "type": "Name",
-                                    "name": "after",
+                                    "value": "after",
                                     "span": {
                                       "start": {
                                         "col": 33,
@@ -502,7 +502,7 @@
                                   },
                                   "value": {
                                     "type": "Variable",
-                                    "value": "foo",
+                                    "code": "foo",
                                     "span": {
                                       "start": {
                                         "col": 40,
@@ -535,7 +535,7 @@
                                   "type": "Directive",
                                   "name": {
                                     "type": "Name",
-                                    "name": "include",
+                                    "value": "include",
                                     "span": {
                                       "start": {
                                         "col": 47,
@@ -554,7 +554,7 @@
                                       "type": "Argument",
                                       "name": {
                                         "type": "Name",
-                                        "name": "if",
+                                        "value": "if",
                                         "span": {
                                           "start": {
                                             "col": 55,
@@ -570,7 +570,7 @@
                                       },
                                       "value": {
                                         "type": "Variable",
-                                        "value": "foo",
+                                        "code": "foo",
                                         "span": {
                                           "start": {
                                             "col": 59,
@@ -619,7 +619,7 @@
                                     "alias": null,
                                     "name": {
                                       "type": "Name",
-                                      "name": "id",
+                                      "value": "id",
                                       "span": {
                                         "start": {
                                           "col": 10,
@@ -653,7 +653,7 @@
                                     "type": "FragmentSpread",
                                     "name": {
                                       "type": "Name",
-                                      "name": "frag",
+                                      "value": "frag",
                                       "span": {
                                         "start": {
                                           "col": 13,
@@ -770,7 +770,7 @@
                       "type": "Directive",
                       "name": {
                         "type": "Name",
-                        "name": "skip",
+                        "value": "skip",
                         "span": {
                           "start": {
                             "col": 9,
@@ -789,7 +789,7 @@
                           "type": "Argument",
                           "name": {
                             "type": "Name",
-                            "name": "unless",
+                            "value": "unless",
                             "span": {
                               "start": {
                                 "col": 14,
@@ -805,7 +805,7 @@
                           },
                           "value": {
                             "type": "Variable",
-                            "value": "foo",
+                            "code": "foo",
                             "span": {
                               "start": {
                                 "col": 22,
@@ -854,7 +854,7 @@
                         "alias": null,
                         "name": {
                           "type": "Name",
-                          "name": "id",
+                          "value": "id",
                           "span": {
                             "start": {
                               "col": 6,
@@ -922,7 +922,7 @@
                         "alias": null,
                         "name": {
                           "type": "Name",
-                          "name": "id",
+                          "value": "id",
                           "span": {
                             "start": {
                               "col": 6,
@@ -1037,7 +1037,7 @@
       "type": "Mutation",
       "name": {
         "type": "Name",
-        "name": "likeStory",
+        "value": "likeStory",
         "span": {
           "start": {
             "col": 9,
@@ -1060,7 +1060,7 @@
             "alias": null,
             "name": {
               "type": "Name",
-              "name": "like",
+              "value": "like",
               "span": {
                 "start": {
                   "col": 2,
@@ -1079,7 +1079,7 @@
                 "type": "Argument",
                 "name": {
                   "type": "Name",
-                  "name": "story",
+                  "value": "story",
                   "span": {
                     "start": {
                       "col": 7,
@@ -1095,7 +1095,7 @@
                 },
                 "value": {
                   "type": "IntValue",
-                  "value": "123",
+                  "code": "123",
                   "span": {
                     "start": {
                       "col": 14,
@@ -1128,7 +1128,7 @@
                 "type": "Directive",
                 "name": {
                   "type": "Name",
-                  "name": "defer",
+                  "value": "defer",
                   "span": {
                     "start": {
                       "col": 20,
@@ -1164,7 +1164,7 @@
                   "alias": null,
                   "name": {
                     "type": "Name",
-                    "name": "story",
+                    "value": "story",
                     "span": {
                       "start": {
                         "col": 4,
@@ -1187,7 +1187,7 @@
                         "alias": null,
                         "name": {
                           "type": "Name",
-                          "name": "id",
+                          "value": "id",
                           "span": {
                             "start": {
                               "col": 6,
@@ -1302,7 +1302,7 @@
       "type": "Subscription",
       "name": {
         "type": "Name",
-        "name": "StoryLikeSubscription",
+        "value": "StoryLikeSubscription",
         "span": {
           "start": {
             "col": 13,
@@ -1321,7 +1321,7 @@
           "type": "VariableDefination",
           "name": {
             "type": "Name",
-            "name": "input",
+            "value": "input",
             "span": {
               "start": {
                 "col": 36,
@@ -1374,7 +1374,7 @@
             "alias": null,
             "name": {
               "type": "Name",
-              "name": "storyLikeSubscribe",
+              "value": "storyLikeSubscribe",
               "span": {
                 "start": {
                   "col": 2,
@@ -1393,7 +1393,7 @@
                 "type": "Argument",
                 "name": {
                   "type": "Name",
-                  "name": "input",
+                  "value": "input",
                   "span": {
                     "start": {
                       "col": 21,
@@ -1409,7 +1409,7 @@
                 },
                 "value": {
                   "type": "Variable",
-                  "value": "input",
+                  "code": "input",
                   "span": {
                     "start": {
                       "col": 28,
@@ -1445,7 +1445,7 @@
                   "alias": null,
                   "name": {
                     "type": "Name",
-                    "name": "story",
+                    "value": "story",
                     "span": {
                       "start": {
                         "col": 4,
@@ -1468,7 +1468,7 @@
                         "alias": null,
                         "name": {
                           "type": "Name",
-                          "name": "likers",
+                          "value": "likers",
                           "span": {
                             "start": {
                               "col": 6,
@@ -1491,7 +1491,7 @@
                               "alias": null,
                               "name": {
                                 "type": "Name",
-                                "name": "count",
+                                "value": "count",
                                 "span": {
                                   "start": {
                                     "col": 8,
@@ -1553,7 +1553,7 @@
                         "alias": null,
                         "name": {
                           "type": "Name",
-                          "name": "likeSentence",
+                          "value": "likeSentence",
                           "span": {
                             "start": {
                               "col": 6,
@@ -1576,7 +1576,7 @@
                               "alias": null,
                               "name": {
                                 "type": "Name",
-                                "name": "text",
+                                "value": "text",
                                 "span": {
                                   "start": {
                                     "col": 8,
@@ -1718,7 +1718,7 @@
       "type": "FragmentDefination",
       "name": {
         "type": "Name",
-        "name": "frag",
+        "value": "frag",
         "span": {
           "start": {
             "col": 9,
@@ -1756,7 +1756,7 @@
             "alias": null,
             "name": {
               "type": "Name",
-              "name": "foo",
+              "value": "foo",
               "span": {
                 "start": {
                   "col": 2,
@@ -1775,7 +1775,7 @@
                 "type": "Argument",
                 "name": {
                   "type": "Name",
-                  "name": "size",
+                  "value": "size",
                   "span": {
                     "start": {
                       "col": 6,
@@ -1791,7 +1791,7 @@
                 },
                 "value": {
                   "type": "Variable",
-                  "value": "size",
+                  "code": "size",
                   "span": {
                     "start": {
                       "col": 12,
@@ -1822,7 +1822,7 @@
                 "type": "Argument",
                 "name": {
                   "type": "Name",
-                  "name": "bar",
+                  "value": "bar",
                   "span": {
                     "start": {
                       "col": 19,
@@ -1838,7 +1838,7 @@
                 },
                 "value": {
                   "type": "Variable",
-                  "value": "b",
+                  "code": "b",
                   "span": {
                     "start": {
                       "col": 24,
@@ -1869,7 +1869,7 @@
                 "type": "Argument",
                 "name": {
                   "type": "Name",
-                  "name": "obj",
+                  "value": "obj",
                   "span": {
                     "start": {
                       "col": 28,
@@ -1885,12 +1885,12 @@
                 },
                 "value": {
                   "type": "ObjectValue",
-                  "value": [
+                  "fields": [
                     {
                       "type": "ObjectField",
                       "name": {
                         "type": "Name",
-                        "name": "block",
+                        "value": "block",
                         "span": {
                           "start": {
                             "col": 34,
@@ -1906,7 +1906,7 @@
                       },
                       "value": {
                         "type": "StringValue",
-                        "value": "\"\"\"\n\n    block string uses \\\"\"\"\n\n  \"\"\"",
+                        "code": "\n\n    block string uses \\\"\"\"\n\n  ",
                         "span": {
                           "start": {
                             "col": 41,
@@ -1918,14 +1918,15 @@
                             "row": 47,
                             "index": 755
                           }
-                        }
+                        },
+                        "is_block": true
                       }
                     },
                     {
                       "type": "ObjectField",
                       "name": {
                         "type": "Name",
-                        "name": "key",
+                        "value": "key",
                         "span": {
                           "start": {
                             "col": 7,
@@ -1941,7 +1942,7 @@
                       },
                       "value": {
                         "type": "StringValue",
-                        "value": "\"value\"",
+                        "code": "value",
                         "span": {
                           "start": {
                             "col": 12,
@@ -1953,7 +1954,8 @@
                             "row": 47,
                             "index": 769
                           }
-                        }
+                        },
+                        "is_block": false
                       }
                     }
                   ],
@@ -2034,7 +2036,7 @@
           "alias": null,
           "name": {
             "type": "Name",
-            "name": "unnamed",
+            "value": "unnamed",
             "span": {
               "start": {
                 "col": 2,
@@ -2053,7 +2055,7 @@
               "type": "Argument",
               "name": {
                 "type": "Name",
-                "name": "truthy",
+                "value": "truthy",
                 "span": {
                   "start": {
                     "col": 10,
@@ -2069,7 +2071,7 @@
               },
               "value": {
                 "type": "BooleanValue",
-                "value": "true",
+                "code": "true",
                 "span": {
                   "start": {
                     "col": 18,
@@ -2100,7 +2102,7 @@
               "type": "Argument",
               "name": {
                 "type": "Name",
-                "name": "falsey",
+                "value": "falsey",
                 "span": {
                   "start": {
                     "col": 24,
@@ -2116,7 +2118,7 @@
               },
               "value": {
                 "type": "BooleanValue",
-                "value": "false",
+                "code": "false",
                 "span": {
                   "start": {
                     "col": 32,
@@ -2147,7 +2149,7 @@
               "type": "Argument",
               "name": {
                 "type": "Name",
-                "name": "nullish",
+                "value": "nullish",
                 "span": {
                   "start": {
                     "col": 39,
@@ -2210,7 +2212,7 @@
           "alias": null,
           "name": {
             "type": "Name",
-            "name": "query",
+            "value": "query",
             "span": {
               "start": {
                 "col": 2,

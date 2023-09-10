@@ -10,7 +10,7 @@
           "type": "Directive",
           "name": {
             "type": "Name",
-            "name": "directive",
+            "value": "directive",
             "span": {
               "start": {
                 "col": 7,
@@ -46,7 +46,7 @@
             "alias": null,
             "name": {
               "type": "Name",
-              "name": "node",
+              "value": "node",
               "span": {
                 "start": {
                   "col": 2,

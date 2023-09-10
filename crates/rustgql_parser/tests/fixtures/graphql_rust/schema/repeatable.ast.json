@@ -6,7 +6,7 @@
       "description": null,
       "name": {
         "type": "Name",
-        "name": "filter",
+        "value": "filter",
         "span": {
           "start": {
             "col": 11,
@@ -25,7 +25,7 @@
           "description": null,
           "name": {
             "type": "Name",
-            "name": "expression",
+            "value": "expression",
             "span": {
               "start": {
                 "col": 18,

@@ -13,7 +13,7 @@
             "alias": null,
             "name": {
               "type": "Name",
-              "name": "node",
+              "value": "node",
               "span": {
                 "start": {
                   "col": 2,
@@ -36,7 +36,7 @@
                   "alias": null,
                   "name": {
                     "type": "Name",
-                    "name": "id",
+                    "value": "id",
                     "span": {
                       "start": {
                         "col": 4,
@@ -70,7 +70,7 @@
                   "type": "FragmentSpread",
                   "name": {
                     "type": "Name",
-                    "name": "something",
+                    "value": "something",
                     "span": {
                       "start": {
                         "col": 7,

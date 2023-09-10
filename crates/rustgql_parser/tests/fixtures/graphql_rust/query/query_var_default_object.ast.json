@@ -5,7 +5,7 @@
       "type": "Query",
       "name": {
         "type": "Name",
-        "name": "Foo",
+        "value": "Foo",
         "span": {
           "start": {
             "col": 6,
@@ -24,7 +24,7 @@
           "type": "VariableDefination",
           "name": {
             "type": "Name",
-            "name": "site",
+            "value": "site",
             "span": {
               "start": {
                 "col": 11,
@@ -56,12 +56,12 @@
           },
           "default_value": {
             "type": "ObjectValue",
-            "value": [
+            "fields": [
               {
                 "type": "ObjectField",
                 "name": {
                   "type": "Name",
-                  "name": "url",
+                  "value": "url",
                   "span": {
                     "start": {
                       "col": 25,
@@ -127,7 +127,7 @@
             "alias": null,
             "name": {
               "type": "Name",
-              "name": "field",
+              "value": "field",
               "span": {
                 "start": {
                   "col": 2,

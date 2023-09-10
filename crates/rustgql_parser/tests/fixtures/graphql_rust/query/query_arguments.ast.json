@@ -13,7 +13,7 @@
             "alias": null,
             "name": {
               "type": "Name",
-              "name": "node",
+              "value": "node",
               "span": {
                 "start": {
                   "col": 2,
@@ -32,7 +32,7 @@
                 "type": "Argument",
                 "name": {
                   "type": "Name",
-                  "name": "id",
+                  "value": "id",
                   "span": {
                     "start": {
                       "col": 7,
@@ -48,7 +48,7 @@
                 },
                 "value": {
                   "type": "IntValue",
-                  "value": "1",
+                  "code": "1",
                   "span": {
                     "start": {
                       "col": 11,
