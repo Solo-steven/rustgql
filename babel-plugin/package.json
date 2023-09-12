@@ -21,8 +21,7 @@
     "dev": "ts-node ./dev.ts",
     "build": "NODE_ENV=production webpack",
     "test": "ts-node ./tests/index.ts",
-    "bench": "node ./benchmark/index.js",
-    "publish": "npm publish"
+    "bench": "node ./benchmark/index.js"
   },
   "dependencies": {
     "rustgql_core": "^0.1.1"
