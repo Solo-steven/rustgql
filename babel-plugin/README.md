@@ -73,7 +73,7 @@ const queryResult1 = `query QueryWithArgument($name:String = "test-name"){... So
 // result of using `babel-plugin-graphql-query-minifier`
 const queryResult2 = `query QueryWithArgument($name:String="test-name"){...SomeFragment...on SomeData{field}}`;
 ```
-And it's speed is also faster then using `graphql-compress`'s related plugin, by using `tinybench` package, result shows that `graphql-query-minifier` is 3 time faster then `transform-compress-graphql`, you can see this result by running `yarn bench` at this repo.
+And it's speed is also faster then using `graphql-compress`'s related plugin, by using `tinybench` package, result shows that `babel-plugin-graphql-query-minifier` is 3 time faster then `babel-plugin-transform-compress-graphql`, you can see this result by running `yarn bench` at this repo.
 
 
 

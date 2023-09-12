@@ -5,6 +5,13 @@ import { type TemplateLiteral } from "@babel/types";
 const DEFAULT_COMMENT = "graphql";
 const DEFAULT_FUNCTION = "gql";
 
+type StateType  = {
+    opts: {
+        comment: string,
+        function: string,
+    }
+}
+
 function handleTemplateLiteral(node: TemplateLiteral) {
     if(node.quasis.length === 1) {
         const rawValue = node.quasis[0].value.raw;
@@ -27,12 +34,12 @@ function handleTemplateLiteral(node: TemplateLiteral) {
 }
 
 const visitor: Visitor = {
-    TemplateLiteral(path) {
+    TemplateLiteral(path, state) {
         const node = path.node;
         if(!node.leadingComments) {
             return;
         }
-        const pluckComment = path.opts.comment || DEFAULT_COMMENT;
+        const pluckComment = (state as StateType).opts.comment || DEFAULT_COMMENT;
         const containPluckCommentIndex = node.leadingComments.findIndex(
             (comment) => comment.value.trim() === pluckComment
         );
@@ -40,9 +47,9 @@ const visitor: Visitor = {
             handleTemplateLiteral(node)
         }
     },
-    TaggedTemplateExpression(path) {
+    TaggedTemplateExpression(path, state) {
         const node = path.node;
-        const pluckTagFunction = path.opts.function || DEFAULT_FUNCTION;
+        const pluckTagFunction = (state as StateType).opts.function || DEFAULT_FUNCTION;
         if(node.tag.type === "Identifier") {
             if(node.tag.name === pluckTagFunction) {
                 handleTemplateLiteral(node.quasi);

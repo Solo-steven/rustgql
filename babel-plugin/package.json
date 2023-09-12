@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-graphql-query-minifier",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Solo-steven <ssteven19@kimo.com>",
   "description": "babel plugin for minify your graphql query string at compile time",
   "keywords": [
@@ -18,6 +18,7 @@
     "url": "https://github.com/Solo-steven/rustgql.git"
   },
   "scripts": {
+    "dev": "ts-node ./dev.ts",
     "build": "NODE_ENV=production webpack",
     "test": "ts-node ./tests/index.ts",
     "bench": "node ./benchmark/index.js",
