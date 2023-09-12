@@ -1,6 +1,6 @@
 import { minify_query as minifyQuery } from "rustgql_core";
-import { Visitor } from "@babel/traverse";
-import { TemplateLiteral, isIdentifier } from "@babel/types";
+import { type Visitor } from "@babel/traverse";
+import { type TemplateLiteral } from "@babel/types";
 
 const DEFAULT_COMMENT = "graphql";
 const DEFAULT_FUNCTION = "gql";
@@ -17,7 +17,8 @@ function handleTemplateLiteral(node: TemplateLiteral) {
         if(index === 0) return current.value.raw;
         return pre + "\"RUSTGQL_SYMBOL\"" + current.value.raw;
     }, "")
-    const nextQuasi = concatQuasi.split("\"RUSTGQL_SYMBOL\"");
+    const minifiedValue = minifyQuery(concatQuasi);
+    const nextQuasi = minifiedValue.split("\"RUSTGQL_SYMBOL\"");
     for(let i = 0 ; i < node.quasis.length ; ++i) {
         node.quasis[i].value.raw = nextQuasi[i];
         node.quasis[i].value.cooked = nextQuasi[i];
@@ -42,7 +43,7 @@ const visitor: Visitor = {
     TaggedTemplateExpression(path) {
         const node = path.node;
         const pluckTagFunction = path.opts.function || DEFAULT_FUNCTION;
-        if(isIdentifier(node.tag)) {
+        if(node.tag.type === "Identifier") {
             if(node.tag.name === pluckTagFunction) {
                 handleTemplateLiteral(node.quasi);
             }

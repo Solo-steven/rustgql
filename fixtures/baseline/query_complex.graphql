@@ -9,7 +9,7 @@ query test(
         name
         smallPic: profilePic(size: 64)
         bigPic: profilePic(size: 1024)
-        ...inline
+        ... inline
         ... on Test {
             some
         }

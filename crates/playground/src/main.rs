@@ -109,22 +109,9 @@ fn main(){
     // println!("cost: {}", (now.elapsed().as_nanos() as f64) / 1000.0 / 1000.0);
 
     let min = r#"
-    query test(
-      $devicePicSize: Int = { name: 4, size: ENUM }
-      $devicePicSiz1e: Int = ["test", 4, ENUMvalu, true, ""]
-    ) {
-      user(id: 4, name: { value: $size })
-        @include(if: $expandedInfo)
-        @include(if: $expandedInfo) {
-        id
+      query GetUser($uuid: String = "RUSTQL_SYMBOL") {
         name
-        smallPic: profilePic(size: 64)
-        bigPic: profilePic(size: 1024)
-        ...inline
-        ... on Test {
-          some
-        }
-      }
+        age
     }
     "#;
     let mut parser = Parser::new(min);
